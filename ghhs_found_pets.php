@@ -449,7 +449,7 @@ function github_plugin_updater_test_init() {
 
         $config = array(
             'slug' => plugin_basename( __FILE__ ),
-            'proper_folder_name' => 'github-updater',
+            'proper_folder_name' => 'GHHS-Found-Pets',
             'api_url' => 'https://api.github.com/repos/askinne2/GHHS-Found-Pets/',
             'raw_url' => 'https://raw.github.com/askinne2/GHHS-Found-Pets/master',
             'github_url' => 'https://github.com/askinne2/GHHS-Found-Pets/',
