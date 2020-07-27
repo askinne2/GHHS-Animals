@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function add_my_plugin_stylesheet() {
-	wp_register_style('ghhs_found_pets_styles', '/wp-content/plugins/ghhs_found_pets/css/style.css');
+	wp_register_style('ghhs_found_pets_styles', plugins_url(plugin_basename(__DIR__)) . '/css/style.css');
 	wp_enqueue_style('ghhs_found_pets_styles');
 	//wp_register_style('api_test2_materialize_styles', '/wp-content/plugins/api_test2.php/css/materialize.min.css');
 	/*
