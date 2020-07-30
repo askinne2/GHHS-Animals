@@ -29,8 +29,8 @@ if (!defined('ABSPATH')) {
 define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 
-include_once 'ghhs_found_pets_includes.php';
-include 'ghhs_found_pets_printer.php';
+require_once 'ghhs_found_pets_includes.php';
+require_once 'ghhs_found_pets_printer.php';
 
 class GHHS_Found_Pets {
 
