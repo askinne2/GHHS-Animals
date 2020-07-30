@@ -42,6 +42,8 @@ class GHHS_Found_Pets {
 	);
 
 	public function __construct() {
+		add_shortcode('ghhs_found_pets', array($this, 'run'));
+
 	}
 
 	public function set_request_uri($request_uri = string) {
@@ -424,52 +426,27 @@ class GHHS_Found_Pets {
 		return;
 	}
 
+	public function run($attributes = string) {
+
+		//$found_pets = new GHHS_Found_Pets();
+
+		if (REMOVE_TRANSIENT) {
+			$this->ghhs_remove_transient();
+		}
+
+		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
+		$number_requests = $this->query_number_animals($this->request_uri, $this->args);
+
+		ob_start();
+
+		$pets_object = $this->request_and_sort($number_requests);
+
+		$this->display_pets($pets_object, $attributes);
+		return ob_get_clean();
+
+	}
+
 } // end class definition
 
-function run_app($attributes = string) {
-
-	$found_pets = new GHHS_Found_Pets();
-
-	if (REMOVE_TRANSIENT) {
-		$found_pets->ghhs_remove_transient();
-	}
-
-	$found_pets->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
-	$number_requests = $found_pets->query_number_animals($found_pets->request_uri, $found_pets->args);
-
-	ob_start();
-
-	$pets_object = $found_pets->request_and_sort($number_requests);
-
-	$found_pets->display_pets($pets_object, $attributes);
-	return ob_get_clean();
-
-}
-add_shortcode('ghhs_found_pets', 'run_app');
-
-function update() {
-
-	include_once 'updater.php';
-
-	if (is_admin()) {
-// note the use of is_admin() to double check that this is happening in the admin
-
-		$config = array(
-			'slug' => plugin_basename(__FILE__),
-			'proper_folder_name' => 'ghhs_found_pets',
-			'api_url' => 'https://api.github.com/repos/askinne2/GHHS-Found-Pets/',
-			'raw_url' => 'https://raw.github.com/askinne2/GHHS-Found-Pets/master',
-			'github_url' => 'https://github.com/askinne2/GHHS-Found-Pets/',
-			'zip_url' => 'https://github.com/askinne2/GHHS-Found-Pets/archive/master.zip',
-			'sslverify' => true,
-			'requires' => '3.0',
-			'tested' => '3.3',
-			'readme' => 'README.md',
-			'access_token' => 'b7535ca8ff897960175d1e6668b5da657c00d00d',
-		);
-
-		new WP_GitHub_Updater($config);
-
-	}
-
-}
+// run GHHS_Found_pets shortcode
+new GHHS_Found_Pets();
