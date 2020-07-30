@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       GHHS Found Pets Shortcode
  * Plugin URI:        https://www.21adsmedia.com
- * Description:       This plugin creates a shortcode that displays all stray cats and dogs that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
+ * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  * Version:           1.1.0
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
