@@ -14,25 +14,29 @@ include 'display_photos.php';
 define('ANIMAL_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 define('DONATE_LINK', 'https://www.ghhs.org/donate');
 
-function print_section_opening_html() {
+class Ghhs_Found_Pets_Printer {
 
-	?>
+	public function __contsruct() {}
+
+	public function print_section_opening_html() {
+
+		?>
 	<div class="elementor-container elementor-column-gap-default">
 		<div class="elementor-row">
 	<?php
 }
 
-function print_section_closing_html() {
-	?>
+	public function print_section_closing_html() {
+		?>
 			</div>
 			</div>
 	<?php
 }
 
-function display_animal($pet) {
-	$adoption_link = ANIMAL_LINK . $pet->ID;
+	public function display_animal($pet) {
+		$adoption_link = ANIMAL_LINK . $pet->ID;
 
-	?>
+		?>
 
 <div class="elementor-element elementor-element-def3b98 elementor-column elementor-col-33 elementor-top-column" data-id="def3b98" data-element_type="column">
     <div class="elementor-column-wrap  elementor-element-populated">
@@ -76,7 +80,7 @@ function display_animal($pet) {
 <div id="<?php echo $pet->ID; ?>" class="animal-description">
     <?php
 display_photos($pet);
-	?>
+		?>
     <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
                             <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
                                 <span class="elementor-button-content-wrapper">
@@ -87,12 +91,12 @@ display_photos($pet);
                         <?php
 if (!empty($pet->Description)) {
 
-		echo "<h5>" . $pet->Description . "</h5>";
-	} else {
-		echo "Sorry! I'm currently putting paw and pen together writing my autobiography!";
-	}
+			echo "<h5>" . $pet->Description . "</h5>";
+		} else {
+			echo "Sorry! I'm currently putting paw and pen together writing my autobiography!";
+		}
 
-	?>
+		?>
 
             </div>
 
@@ -125,20 +129,20 @@ if (!empty($pet->Description)) {
 
 <?php
 
-}
-function display_no_animals_available($type) {
+	}
+	public function display_no_animals_available($type) {
 
-	?>
+		?>
 		<div class="elementor-element elementor-element-3cf6776 elementor-widget elementor-widget-heading ghhs-center-align" data-id="3cf6776" data-element_type="widget" data-widget_type="heading.default">
 			<div class="elementor-widget-container">
 				<h2 class="elementor-heading-title elementor-size-default">
 					No
 					<?php
 if ($type === 'Others') {
-		echo "other animal types";
-	} else {
-		echo $type;
-	}?>
+			echo "other animal types";
+		} else {
+			echo $type;
+		}?>
 					are available to adopt at this time.
 				</h2>
 				<h3>Please view another type of animal.</h3>
@@ -146,5 +150,6 @@ if ($type === 'Others') {
 		</div>
 
 <?php
+}
 }
 ?>

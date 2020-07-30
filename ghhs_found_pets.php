@@ -25,7 +25,7 @@ define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 
 include_once 'ghhs_found_pets_includes.php';
-include 'display_content.php';
+include 'ghhs_found_pets_printer.php';
 
 class GHHS_Found_Pets {
 
@@ -136,18 +136,7 @@ class GHHS_Found_Pets {
 		}
 	}
 
-	public function run_shortcode($attributes = string, $number_requests = int) {
-
-		if (PLUGIN_DEBUG) {
-			echo "<h2>attributes - ";
-			print_r($attributes);
-			echo "</h2>";
-		}
-
-		// get optional attributes and assign default values if not present
-		extract(shortcode_atts(array(
-			'animal_type' => '',
-		), $attributes));
+	public function request_and_sort($number_requests = int) {
 
 		$pets = $this->make_request($number_requests);
 		if (empty($pets)) {
@@ -160,11 +149,10 @@ class GHHS_Found_Pets {
 		$dogs = array();
 		$others = array();
 
-
-        /* loop through $pets object and sort according to 
-         * statuses. We'll only look for pets currently
-         * available for adoption due to GHHS request
-         */
+		/* loop through $pets object and sort according to
+			         * statuses. We'll only look for pets currently
+			         * available for adoption due to GHHS request
+		*/
 
 		$status1 = "Available For Adoption";
 		$status2 = "Available for Adoption - Awaiting Spay/Neuter";
@@ -233,16 +221,41 @@ class GHHS_Found_Pets {
 		} // end $i counter loop
 
 		if (PLUGIN_DEBUG) {
-			echo '<h1 class="red_pet">The number of cats is:  ' . count($cats) '</h1>';
+			echo '<h1 class="red_pet">The number of cats is:  ' . count($cats) . '</h1>';
 			echo '<h1 class="red_pet">The number of dogs is:  ' . count($dogs) . '</h1>';
 			echo '<h1 class="red_pet">The number of others is:  ' . count($others) . '</h1>';
 		}
+		$pets_object = array(
+			'dogs' => $dogs,
+			'cats' => $cats,
+			'others' => $others,
+		);
+		return $pets_object;
+	}
 
+	public function display_pets($pets_object = array(), $attributes = string) {
 		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
+		// get optional attributes and assign default values if not present
+
+		if (PLUGIN_DEBUG) {
+			echo "<h2>attributes - ";
+			print_r($attributes);
+			echo "</h2>";
+		}
+
+		extract(shortcode_atts(array(
+			'animal_type' => '',
+		), $attributes));
+
+		$cats = $pets_object['cats'];
+		$dogs = $pets_object['dogs'];
+		$others = $pets_object['others'];
+
+		$pet_printer = new ghhs_found_pets_printer();
 
 		if ($animal_type == "Cats") {
 			if (empty($cats)) {
-				display_no_animals_available($animal_type);
+				$pet_printer->display_no_animals_available($animal_type);
 			} else {
 				$i = 0;
 				$counter = 0;
@@ -252,41 +265,41 @@ class GHHS_Found_Pets {
 					if ($i == 0) {
 
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($i == ($length - 1)) {
 
 						// print the last pet on this row and close this section
 						if ($counter == 1) {
 
-							print_section_opening_html();
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 
 						} else if ($counter == 2 || $counter == 3) {
 
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 						}
 						$counter = 0; // reset the counter
 
 					} else if ($counter == 1) {
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($counter == 3) {
 
 						// print the last pet on this row and close this section
-						display_animal($pet);
-						print_section_closing_html();
+						$pet_printer->display_animal($pet);
+						$pet_printer->print_section_closing_html();
 
 						$counter = 0; // reset the counter
 
 					} else {
 
-						display_animal($pet);
+						$pet_printer->display_animal($pet);
 
 					}
 					$i++;
@@ -296,7 +309,8 @@ class GHHS_Found_Pets {
 		} else if ($animal_type == "Dogs") {
 
 			if (empty($dogs)) {
-				echo "<h2 style=\"text-align:center;\">No dogs are available to adopt at this time.</h2>";
+				$pet_printer->display_no_animals_available($animal_type);
+
 			} else {
 				$i = 0;
 				$counter = 0;
@@ -306,41 +320,41 @@ class GHHS_Found_Pets {
 					if ($i == 0) {
 
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($i == ($length - 1)) {
 
 						// print the last pet on this row and close this section
 						if ($counter == 1) {
 
-							print_section_opening_html();
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 
 						} else if ($counter == 2 || $counter == 3) {
 
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 						}
 						$counter = 0; // reset the counter
 
 					} else if ($counter == 1) {
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($counter == 3) {
 
 						// print the last pet on this row and close this section
-						display_animal($pet);
-						print_section_closing_html();
+						$pet_printer->display_animal($pet);
+						$pet_printer->print_section_closing_html();
 
 						$counter = 0; // reset the counter
 
 					} else {
 
-						display_animal($pet);
+						$pet_printer->display_animal($pet);
 
 					}
 					$i++;
@@ -350,7 +364,7 @@ class GHHS_Found_Pets {
 		} else if ($animal_type == "Others") {
 
 			if (empty($others)) {
-				display_no_animals_available($animal_type);
+				$pet_printer->display_no_animals_available($animal_type);
 			} else {
 				$i = 0;
 				$counter = 0;
@@ -360,41 +374,41 @@ class GHHS_Found_Pets {
 					if ($i == 0) {
 
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($i == ($length - 1)) {
 
 						// print the last pet on this row and close this section
 						if ($counter == 1) {
 
-							print_section_opening_html();
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 
 						} else if ($counter == 2 || $counter == 3) {
 
-							display_animal($pet);
-							print_section_closing_html();
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
 						}
 						$counter = 0; // reset the counter
 
 					} else if ($counter == 1) {
 						// print the row open and the first pet
-						print_section_opening_html();
-						display_animal($pet);
+						$pet_printer->print_section_opening_html();
+						$pet_printer->display_animal($pet);
 
 					} else if ($counter == 3) {
 
 						// print the last pet on this row and close this section
-						display_animal($pet);
-						print_section_closing_html();
+						$pet_printer->display_animal($pet);
+						$pet_printer->print_section_closing_html();
 
 						$counter = 0; // reset the counter
 
 					} else {
 
-						display_animal($pet);
+						$pet_printer->display_animal($pet);
 
 					}
 					$i++;
@@ -407,7 +421,7 @@ class GHHS_Found_Pets {
 
 } // end class definition
 
-function run_app($attributes = string, $number_requests = string) {
+function run_app($attributes = string) {
 
 	$found_pets = new GHHS_Found_Pets();
 
@@ -420,8 +434,9 @@ function run_app($attributes = string, $number_requests = string) {
 
 	ob_start();
 
-	$found_pets->run_shortcode($attributes, $number_requests);
+	$pets_object = $found_pets->request_and_sort($number_requests);
 
+	$found_pets->display_pets($pets_object, $attributes);
 	return ob_get_clean();
 
 }
