@@ -22,10 +22,9 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', false);
-//define('ANIMAL_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 define('REMOVE_TRANSIENT', false);
 
-include_once 'include_styles.php';
+include_once 'ghhs_found_pets_includes.php';
 include 'display_content.php';
 
 class GHHS_Found_Pets {
@@ -138,7 +137,6 @@ class GHHS_Found_Pets {
 	}
 
 	public function run_shortcode($attributes = string, $number_requests = int) {
-		ob_start();
 
 		if (PLUGIN_DEBUG) {
 			echo "<h2>attributes - ";
@@ -457,6 +455,9 @@ function run_app($attributes = string, $number_requests = string) {
 
 	$found_pets->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 	$number_requests = $found_pets->query_number_animals($found_pets->request_uri, $found_pets->args);
+
+	ob_start();
+
 	$found_pets->run_shortcode($attributes, $number_requests);
 
 	return ob_get_clean();
