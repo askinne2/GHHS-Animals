@@ -1,43 +1,38 @@
 <?php
 /**
- * 
+ *
  * This file disdplays the content of an API request made in the found_pets_shortcode
  *
  *
  */
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly
 }
 
-include ('display_photos.php');
+include 'display_photos.php';
 
 define('ANIMAL_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 define('DONATE_LINK', 'https://www.ghhs.org/donate');
 
-function print_section_opening_html()
-{
+function print_section_opening_html() {
 
 	?>
 	<div class="elementor-container elementor-column-gap-default">
-		<div class="elementor-row">		
+		<div class="elementor-row">
 	<?php
 }
 
-function print_section_closing_html()
-{
+function print_section_closing_html() {
 	?>
 			</div>
 			</div>
 	<?php
 }
 
-
-function display_animal( $pet )
-{
+function display_animal($pet) {
 	$adoption_link = ANIMAL_LINK . $pet->ID;
 
-
-?>
+	?>
 
 <div class="elementor-element elementor-element-def3b98 elementor-column elementor-col-33 elementor-top-column" data-id="def3b98" data-element_type="column">
     <div class="elementor-column-wrap  elementor-element-populated">
@@ -45,11 +40,11 @@ function display_animal( $pet )
             <div class="elementor-element elementor-element-5048a1c elementor-cta--skin-classic elementor-animated-content elementor-bg-transform elementor-bg-transform-zoom-in elementor-widget elementor-widget-call-to-action" data-id="5048a1c" data-element_type="widget" data-widget_type="call-to-action.default">
                 <div class="elementor-widget-container">
                     <div class="elementor-cta__bg-wrapper">
-                        <a href="#" data-featherlight="#<?php echo $pet->ID;?>">
+                        <a href="#" data-featherlight="#<?php echo $pet->ID; ?>">
                         <div class="elementor-cta__bg elementor-bg" style="background-image: url(<?php echo $pet->CoverPhoto; ?>);"></div>
                         <div class="elementor-cta__bg-overlay"></div>
                         </a>
-                        
+
 
                     </div>
                     <div class="elementor-cta__content">
@@ -68,20 +63,20 @@ function display_animal( $pet )
                                 <?php echo $pet->Status; ?>
                                     </br>
                             </p>
-                            <p class="animal-age">Age:     <?php echo number_format($pet->Age/12, 1, ' years, ', ''); ?> months
+                            <p class="animal-age">Age:     <?php echo number_format($pet->Age / 12, 1, ' years, ', ''); ?> months
                             </p>
-                            
+
                           <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
-                            <a href="#" data-featherlight="#<?php echo $pet->ID;?>" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                            <a href="#" data-featherlight="#<?php echo $pet->ID; ?>" class="elementor-button-link elementor-button elementor-size-lg" role="button">
                                 <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">More Pics & Bio</span>
                                 </span>
                             </a>
                         </div>
-<div id="<?php echo $pet->ID;?>" class="animal-description">
+<div id="<?php echo $pet->ID; ?>" class="animal-description">
     <?php
-        display_photos ($pet);
-    ?>
+display_photos($pet);
+	?>
     <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
                             <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
                                 <span class="elementor-button-content-wrapper">
@@ -90,20 +85,20 @@ function display_animal( $pet )
                             </a>
                         </div>
                         <?php
-        if (!empty($pet->Description)) {   
+if (!empty($pet->Description)) {
 
-            echo "<h5>" . $pet->Description . "</h5>";
-        } else { 
-            echo "Sorry! I'm currently putting paw and pen together writing my autobiography!"; 
-        }
+		echo "<h5>" . $pet->Description . "</h5>";
+	} else {
+		echo "Sorry! I'm currently putting paw and pen together writing my autobiography!";
+	}
 
-    ?>
-                
+	?>
+
             </div>
 
 
 
-                            
+
                         </div>
 
                         <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
@@ -126,30 +121,30 @@ function display_animal( $pet )
         </div>
     </div>
 </div>
-			
+
 
 <?php
 
 }
-function display_no_animals_available( $type ) {
+function display_no_animals_available($type) {
 
 	?>
 		<div class="elementor-element elementor-element-3cf6776 elementor-widget elementor-widget-heading ghhs-center-align" data-id="3cf6776" data-element_type="widget" data-widget_type="heading.default">
 			<div class="elementor-widget-container">
 				<h2 class="elementor-heading-title elementor-size-default">
-					No 
-					<?php 
-					if ($type === 'Others') {
-						echo "other animal types";
-					} else {
-						echo $type;
-					} ?> 
+					No
+					<?php
+if ($type === 'Others') {
+		echo "other animal types";
+	} else {
+		echo $type;
+	}?>
 					are available to adopt at this time.
 				</h2>
-				<h3>Please view another type of animal.</h3>		
+				<h3>Please view another type of animal.</h3>
 			</div>
 		</div>
 
-<?php 
+<?php
 }
 ?>
