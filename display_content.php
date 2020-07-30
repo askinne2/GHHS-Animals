@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * This file disdplays the content of an API request made in the found_pets_shortcode
+ * This file displays the content of an API request made in the found_pets_shortcode
  *
  *
  */

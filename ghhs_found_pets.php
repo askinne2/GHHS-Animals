@@ -160,6 +160,12 @@ class GHHS_Found_Pets {
 		$dogs = array();
 		$others = array();
 
+
+        /* loop through $pets object and sort according to 
+         * statuses. We'll only look for pets currently
+         * available for adoption due to GHHS request
+         */
+
 		$status1 = "Available For Adoption";
 		$status2 = "Available for Adoption - Awaiting Spay/Neuter";
 		$status3 = "Available for Adoption - In Foster";
@@ -172,106 +178,62 @@ class GHHS_Found_Pets {
 				$status = $pet->Status;
 
 				if ($pet->Type === "Cat") {
-
-					if (strcmp($status, $status1) === 0) {
-
+					switch ($status) {
+					case $status1:
 						$cats[] = $pet;
-
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status2) === 0) {
-
+						break;
+					case $status2:
 						$cats[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status3) === 0) {
-
+						break;
+					case $status3:
 						$cats[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status4) === 0) {
-
+						break;
+					case $status4:
 						$cats[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
+						break;
 					}
 
 				} else if ($pet->Type === "Dog") {
 
-					if (strcmp($status, $status1) == 0) {
-
+					switch ($status) {
+					case $status1:
 						$dogs[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status2) == 0) {
+						break;
+					case $status2:
 						$dogs[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status3) == 0) {
+						break;
+					case $status3:
 						$dogs[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status4) == 0) {
+						break;
+					case $status4:
 						$dogs[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
+						break;
 					}
 
 				} else {
 
-					if (strcmp($status, $status1) == 0) {
-
+					switch ($status) {
+					case $status1:
 						$others[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status2) == 0) {
+						break;
+					case $status2:
 						$others[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status3) == 0) {
+						break;
+					case $status3:
 						$others[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
-					} else if (strcmp($status, $status4) == 0) {
+						break;
+					case $status4:
 						$others[] = $pet;
-						if (PLUGIN_DEBUG) {
-							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-						}
-
+						break;
 					}
 
 				}
-			} // end of for loop
+			} // end of foreach loop
 
 		} // end $i counter loop
 
 		if (PLUGIN_DEBUG) {
-			echo '<h1 class="red_pet">The number of cats is:  ';
-			echo count($cats);
-			echo '</h1>';
-
+			echo '<h1 class="red_pet">The number of cats is:  ' . count($cats) '</h1>';
 			echo '<h1 class="red_pet">The number of dogs is:  ' . count($dogs) . '</h1>';
 			echo '<h1 class="red_pet">The number of others is:  ' . count($others) . '</h1>';
 		}
