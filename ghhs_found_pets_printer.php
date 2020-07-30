@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-include 'display_photos.php';
+//include 'display_photos.php';
 
 define('ANIMAL_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 define('DONATE_LINK', 'https://www.ghhs.org/donate');
@@ -32,6 +32,16 @@ class Ghhs_Found_Pets_Printer {
 			</div>
 	<?php
 }
+	public function display_photos($pet) {
+
+		echo '<div data-featherlight-gallery data-featherlight-filter="img">';
+
+		foreach ($pet->Photos as $photo) {
+			echo '<img class="gallery animal-pic" style="" src="' . $photo . '">';
+		}
+
+		echo '</div>';
+	}
 
 	public function display_animal($pet) {
 		$adoption_link = ANIMAL_LINK . $pet->ID;
@@ -79,7 +89,7 @@ class Ghhs_Found_Pets_Printer {
                         </div>
 <div id="<?php echo $pet->ID; ?>" class="animal-description">
     <?php
-display_photos($pet);
+$this->display_photos($pet);
 		?>
     <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
                             <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
@@ -152,4 +162,3 @@ if ($type === 'Others') {
 <?php
 }
 }
-?>
