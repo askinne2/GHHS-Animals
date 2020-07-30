@@ -8,7 +8,7 @@
  * Plugin Name:       GHHS Found Pets Shortcode
  * Plugin URI:        https://www.21adsmedia.com
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -447,6 +447,7 @@ function github_plugin_updater_test_init() {
 
     if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
 
+<<<<<<< Updated upstream
         $config = array(
             'slug' => plugin_basename( __FILE__ ),
             'proper_folder_name' => 'GHHS-Found-Pets',
@@ -460,6 +461,21 @@ function github_plugin_updater_test_init() {
             'readme' => 'README.md',
             'access_token' => '384f872dd1b8671680a5995d07151c4eb58aebad',
         );
+=======
+		$config = array(
+			'slug' => plugin_basename(__FILE__),
+			'proper_folder_name' => 'ghhs_found_pets',
+			'api_url' => 'https://api.github.com/repos/askinne2/GHHS-Found-Pets/',
+			'raw_url' => 'https://raw.github.com/askinne2/GHHS-Found-Pets/master',
+			'github_url' => 'https://github.com/askinne2/GHHS-Found-Pets/',
+			'zip_url' => 'https://github.com/askinne2/GHHS-Found-Pets/archive/master.zip',
+			'sslverify' => true,
+			'requires' => '3.0',
+			'tested' => '3.3',
+			'readme' => 'README.md',
+			'access_token' => '8f63e74308dc2483051370226630c32e9edbc200',
+		);
+>>>>>>> Stashed changes
 
         new WP_GitHub_Updater( $config );
 
