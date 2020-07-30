@@ -21,9 +21,9 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', FALSE);
+define('PLUGIN_DEBUG', false);
 //define('ANIMAL_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
-define('REMOVE_TRANSIENT', true);
+define('REMOVE_TRANSIENT', false);
 
 include_once 'include_styles.php';
 include 'display_content.php';
@@ -64,7 +64,9 @@ class GHHS_Found_Pets {
 		}
 		// total animals published in ShelterLuv
 		$animal_count = $pets->total_count;
-
+		if (PLUGIN_DEBUG) {
+			echo "<p>Animal Count   " . ($animal_count) . "</p>";
+		}
 		// get the number of requests we will need to make
 		$total_requests = (($animal_count / 100) % 10) + 1;
 		if (PLUGIN_DEBUG) {
@@ -79,6 +81,10 @@ class GHHS_Found_Pets {
 	}
 
 	public function make_request($number_requests = int) {
+
+		if (PLUGIN_DEBUG) {
+			echo "<h2 style='color:red;'>Number Requests:" . $number_requests . "</h2>";
+		}
 
 		// Build our array of request URI's
 		for ($i = 0; $i < $number_requests; $i++) {
@@ -130,9 +136,318 @@ class GHHS_Found_Pets {
 			return $all_pets;
 		}
 	}
-}
 
-function ghhs_found_pets_shortcode($attributes) {
+	public function run_shortcode($attributes = string, $number_requests = int) {
+		ob_start();
+
+		if (PLUGIN_DEBUG) {
+			echo "<h2>attributes - ";
+			print_r($attributes);
+			echo "</h2>";
+		}
+
+		// get optional attributes and assign default values if not present
+		extract(shortcode_atts(array(
+			'animal_type' => '',
+		), $attributes));
+
+		$pets = $this->make_request($number_requests);
+		if (empty($pets)) {
+			echo "<h2>Uh oh. Our shelter is experiencing technical difficuluties.</h2>";
+			echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
+			return;
+		}
+
+		$cats = array();
+		$dogs = array();
+		$others = array();
+
+		$status1 = "Available For Adoption";
+		$status2 = "Available for Adoption - Awaiting Spay/Neuter";
+		$status3 = "Available for Adoption - In Foster";
+		$status4 = "Awaiting Spay/Neuter - In Foster";
+
+		for ($i = 0; $i < count($pets); $i++) {
+
+			foreach ($pets[$i] as $pet) {
+
+				$status = $pet->Status;
+
+				if ($pet->Type === "Cat") {
+
+					if (strcmp($status, $status1) === 0) {
+
+						$cats[] = $pet;
+
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status2) === 0) {
+
+						$cats[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status3) === 0) {
+
+						$cats[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status4) === 0) {
+
+						$cats[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					}
+
+				} else if ($pet->Type === "Dog") {
+
+					if (strcmp($status, $status1) == 0) {
+
+						$dogs[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status2) == 0) {
+						$dogs[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status3) == 0) {
+						$dogs[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status4) == 0) {
+						$dogs[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					}
+
+				} else {
+
+					if (strcmp($status, $status1) == 0) {
+
+						$others[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status2) == 0) {
+						$others[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status3) == 0) {
+						$others[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					} else if (strcmp($status, $status4) == 0) {
+						$others[] = $pet;
+						if (PLUGIN_DEBUG) {
+							echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
+						}
+
+					}
+
+				}
+			} // end of for loop
+
+		} // end $i counter loop
+
+		if (PLUGIN_DEBUG) {
+			echo '<h1 class="red_pet">The number of cats is:  ';
+			echo count($cats);
+			echo '</h1>';
+
+			echo '<h1 class="red_pet">The number of dogs is:  ' . count($dogs) . '</h1>';
+			echo '<h1 class="red_pet">The number of others is:  ' . count($others) . '</h1>';
+		}
+
+		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
+
+		if ($animal_type == "Cats") {
+			if (empty($cats)) {
+				display_no_animals_available($animal_type);
+			} else {
+				$i = 0;
+				$counter = 0;
+				$length = count($cats);
+				foreach ($cats as $pet) {
+					$counter++;
+					if ($i == 0) {
+
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($i == ($length - 1)) {
+
+						// print the last pet on this row and close this section
+						if ($counter == 1) {
+
+							print_section_opening_html();
+							display_animal($pet);
+							print_section_closing_html();
+
+						} else if ($counter == 2 || $counter == 3) {
+
+							display_animal($pet);
+							print_section_closing_html();
+						}
+						$counter = 0; // reset the counter
+
+					} else if ($counter == 1) {
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($counter == 3) {
+
+						// print the last pet on this row and close this section
+						display_animal($pet);
+						print_section_closing_html();
+
+						$counter = 0; // reset the counter
+
+					} else {
+
+						display_animal($pet);
+
+					}
+					$i++;
+				}
+			}
+
+		} else if ($animal_type == "Dogs") {
+
+			if (empty($dogs)) {
+				echo "<h2 style=\"text-align:center;\">No dogs are available to adopt at this time.</h2>";
+			} else {
+				$i = 0;
+				$counter = 0;
+				$length = count($dogs);
+				foreach ($dogs as $pet) {
+					$counter++;
+					if ($i == 0) {
+
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($i == ($length - 1)) {
+
+						// print the last pet on this row and close this section
+						if ($counter == 1) {
+
+							print_section_opening_html();
+							display_animal($pet);
+							print_section_closing_html();
+
+						} else if ($counter == 2 || $counter == 3) {
+
+							display_animal($pet);
+							print_section_closing_html();
+						}
+						$counter = 0; // reset the counter
+
+					} else if ($counter == 1) {
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($counter == 3) {
+
+						// print the last pet on this row and close this section
+						display_animal($pet);
+						print_section_closing_html();
+
+						$counter = 0; // reset the counter
+
+					} else {
+
+						display_animal($pet);
+
+					}
+					$i++;
+				}
+			}
+
+		} else if ($animal_type == "Others") {
+
+			if (empty($others)) {
+				display_no_animals_available($animal_type);
+			} else {
+				$i = 0;
+				$counter = 0;
+				$length = count($others);
+				foreach ($others as $pet) {
+					$counter++;
+					if ($i == 0) {
+
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($i == ($length - 1)) {
+
+						// print the last pet on this row and close this section
+						if ($counter == 1) {
+
+							print_section_opening_html();
+							display_animal($pet);
+							print_section_closing_html();
+
+						} else if ($counter == 2 || $counter == 3) {
+
+							display_animal($pet);
+							print_section_closing_html();
+						}
+						$counter = 0; // reset the counter
+
+					} else if ($counter == 1) {
+						// print the row open and the first pet
+						print_section_opening_html();
+						display_animal($pet);
+
+					} else if ($counter == 3) {
+
+						// print the last pet on this row and close this section
+						display_animal($pet);
+						print_section_closing_html();
+
+						$counter = 0; // reset the counter
+
+					} else {
+
+						display_animal($pet);
+
+					}
+					$i++;
+				}
+			}
+		}
+
+		return;
+	}
+
+} // end class definition
+
+function run_app($attributes = string, $number_requests = string) {
 
 	$found_pets = new GHHS_Found_Pets();
 
@@ -142,308 +457,12 @@ function ghhs_found_pets_shortcode($attributes) {
 
 	$found_pets->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 	$number_requests = $found_pets->query_number_animals($found_pets->request_uri, $found_pets->args);
-
-	ob_start();
-	// get optional attributes and assign default values if not present
-	extract(shortcode_atts(array(
-		'animal_type' => '',
-	), $attributes));
-
-	$pets = $found_pets->make_request($number_requests);
-	if (empty($pets)) {
-		echo "<h2>Uh oh. Our shelter is experiencing technical difficuluties.</h2>";
-		echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
-		return;
-	}
-
-	$cats = array();
-	$dogs = array();
-	$others = array();
-
-	$status1 = "Available For Adoption";
-	$status2 = "Available for Adoption - Awaiting Spay/Neuter";
-	$status3 = "Available for Adoption - In Foster";
-	$status4 = "Awaiting Spay/Neuter - In Foster";
-
-	for ($i = 0; $i < count($pets); $i++) {
-
-		foreach ($pets[$i] as $pet) {
-
-			$status = $pet->Status;
-
-			if ($pet->Type === "Cat") {
-
-				if (strcmp($status, $status1) === 0) {
-
-					$cats[] = $pet;
-
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status2) === 0) {
-
-					$cats[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status3) === 0) {
-
-					$cats[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status4) === 0) {
-
-					$cats[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				}
-
-			} else if ($pet->Type === "Dog") {
-
-				if (strcmp($status, $status1) == 0) {
-
-					$dogs[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status2) == 0) {
-					$dogs[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status3) == 0) {
-					$dogs[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status4) == 0) {
-					$dogs[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				}
-
-			} else {
-
-				if (strcmp($status, $status1) == 0) {
-
-					$others[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status2) == 0) {
-					$others[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status3) == 0) {
-					$others[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				} else if (strcmp($status, $status4) == 0) {
-					$others[] = $pet;
-					if (PLUGIN_DEBUG) {
-						echo "<p></strong>added:   " . $pet->Name . ":   </strong>" . $pet->Status . "</p>";
-					}
-
-				}
-
-			}
-		} // end of for loop
-
-	} // end $i counter loop
-
-	if (PLUGIN_DEBUG) {
-		echo '<h1 class="red_pet">The number of cats is:  ';
-		echo count($cats);
-		echo '</h1>';
-
-		echo '<h1 class="red_pet">The number of dogs is:  ' . count($dogs) . '</h1>';
-		echo '<h1 class="red_pet">The number of others is:  ' . count($others) . '</h1>';
-	}
-
-	// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
-
-	if ($animal_type == "Cats") {
-		if (empty($cats)) {
-			display_no_animals_available($animal_type);
-		} else {
-			$i = 0;
-			$counter = 0;
-			$length = count($cats);
-			foreach ($cats as $pet) {
-				$counter++;
-				if ($i == 0) {
-
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($i == ($length - 1)) {
-
-					// print the last pet on this row and close this section
-					if ($counter == 1) {
-
-						print_section_opening_html();
-						display_animal($pet);
-						print_section_closing_html();
-
-					} else if ($counter == 2 || $counter == 3) {
-
-						display_animal($pet);
-						print_section_closing_html();
-					}
-					$counter = 0; // reset the counter
-
-				} else if ($counter == 1) {
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($counter == 3) {
-
-					// print the last pet on this row and close this section
-					display_animal($pet);
-					print_section_closing_html();
-
-					$counter = 0; // reset the counter
-
-				} else {
-
-					display_animal($pet);
-
-				}
-				$i++;
-			}
-		}
-
-	} else if ($animal_type == "Dogs") {
-
-		if (empty($dogs)) {
-			echo "<h2 style=\"text-align:center;\">No dogs are available to adopt at this time.</h2>";
-		} else {
-			$i = 0;
-			$counter = 0;
-			$length = count($dogs);
-			foreach ($dogs as $pet) {
-				$counter++;
-				if ($i == 0) {
-
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($i == ($length - 1)) {
-
-					// print the last pet on this row and close this section
-					if ($counter == 1) {
-
-						print_section_opening_html();
-						display_animal($pet);
-						print_section_closing_html();
-
-					} else if ($counter == 2 || $counter == 3) {
-
-						display_animal($pet);
-						print_section_closing_html();
-					}
-					$counter = 0; // reset the counter
-
-				} else if ($counter == 1) {
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($counter == 3) {
-
-					// print the last pet on this row and close this section
-					display_animal($pet);
-					print_section_closing_html();
-
-					$counter = 0; // reset the counter
-
-				} else {
-
-					display_animal($pet);
-
-				}
-				$i++;
-			}
-		}
-
-	} else if ($animal_type == "Others") {
-
-		if (empty($others)) {
-			display_no_animals_available($animal_type);
-		} else {
-			$i = 0;
-			$counter = 0;
-			$length = count($others);
-			foreach ($others as $pet) {
-				$counter++;
-				if ($i == 0) {
-
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($i == ($length - 1)) {
-
-					// print the last pet on this row and close this section
-					if ($counter == 1) {
-
-						print_section_opening_html();
-						display_animal($pet);
-						print_section_closing_html();
-
-					} else if ($counter == 2 || $counter == 3) {
-
-						display_animal($pet);
-						print_section_closing_html();
-					}
-					$counter = 0; // reset the counter
-
-				} else if ($counter == 1) {
-					// print the row open and the first pet
-					print_section_opening_html();
-					display_animal($pet);
-
-				} else if ($counter == 3) {
-
-					// print the last pet on this row and close this section
-					display_animal($pet);
-					print_section_closing_html();
-
-					$counter = 0; // reset the counter
-
-				} else {
-
-					display_animal($pet);
-
-				}
-				$i++;
-			}
-		}
-	}
+	$found_pets->run_shortcode($attributes, $number_requests);
 
 	return ob_get_clean();
-}
 
-add_shortcode('ghhs_found_pets', 'ghhs_found_pets_shortcode');
+}
+add_shortcode('ghhs_found_pets', 'run_app');
 
 add_action('init', 'github_plugin_updater_test_init');
 function github_plugin_updater_test_init() {
