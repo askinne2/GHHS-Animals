@@ -11,7 +11,7 @@
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  *
  *
- * Version:           1.3.6
+ * Version:           1.3.7
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
+define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
