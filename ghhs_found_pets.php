@@ -40,7 +40,7 @@ class GHHS_Found_Pets {
 	public function __construct() {
 		$this->args = array(
 			'headers' => array(
-				'x-api-key' => $_ENV['GHHS_TOKEN'],
+				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
 		add_shortcode('ghhs_found_pets', array($this, 'run'));
