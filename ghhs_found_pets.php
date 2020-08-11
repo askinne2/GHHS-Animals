@@ -40,7 +40,7 @@ class GHHS_Found_Pets {
 	public function __construct() {
 		$this->args = array(
 			'headers' => array(
-				'x-api-key' => $_ENV["GHHS_TOKEN"],
+				'x-api-key' => $_ENV['GHHS_TOKEN'],
 			),
 		);
 		add_shortcode('ghhs_found_pets', array($this, 'run'));
@@ -96,6 +96,7 @@ class GHHS_Found_Pets {
 		// Build our array of request URI's
 		for ($i = 0; $i < $number_requests; $i++) {
 			$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i + 1) . '00';
+			if (PLUGIN_DEBUG) {echo "fetching" . $request_uri[$i];}
 		}
 
 		/* check if a transient already exists
