@@ -11,7 +11,7 @@
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  *
  *
- * Version:           1.3.4
+ * Version:           1.3.5
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -35,17 +35,13 @@ require_once 'ghhs_found_pets_printer.php';
 class GHHS_Found_Pets {
 
 	var $request_uri;
-	var $args;
+	var $args = array(
+		'headers' => array(
+			'x-api-key' => $_ENV['GHHS_TOKEN'],
+		),
+	);
 
 	public function __construct() {
-
-		$this->args = array(
-			'headers' => array(
-				'x-api-key' => $_ENV["GHHS_TOKEN"],
-			),
-		);
-		if (PLUGIN_DEBUG) {echo "<pre>" . print_r($this->args) . "</pre>";}
-
 		add_shortcode('ghhs_found_pets', array($this, 'run'));
 
 	}
@@ -98,8 +94,7 @@ class GHHS_Found_Pets {
 
 		// Build our array of request URI's
 		for ($i = 0; $i < $number_requests; $i++) {
-			$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i + 1) . '00';
-			if (PLUGIN_DEBUG) {echo '<h5 style="color:red;">' . $request_uri[$i] . '</h5>';}
+			$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i+1) . '00';
 		}
 
 		/* check if a transient already exists
