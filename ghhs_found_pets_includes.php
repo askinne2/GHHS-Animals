@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) {
 }
 
 function ghhs_found_pets_stylesheet() {
+	wp_register_style('ghhs_found_pets_tab_styles', plugins_url(plugin_basename(__DIR__)) . '/css/tabs.css');
+	wp_enqueue_style('ghhs_found_pets__tab_styles');
+
 	wp_register_style('ghhs_found_pets_styles', plugins_url(plugin_basename(__DIR__)) . '/css/style.css');
 	wp_enqueue_style('ghhs_found_pets_styles');
 

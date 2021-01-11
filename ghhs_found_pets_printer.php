@@ -146,7 +146,7 @@ if (!empty($pet->Description)) {
       </div>
    </div>
 </div>
-</div>
+
 <?php
 }
 	public function display_no_animals_available($type) {
