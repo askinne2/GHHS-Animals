@@ -92,9 +92,11 @@ class Ghhs_Found_Pets_Printer {
 $this->display_photos($pet);
 		?>
     <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
+
+
                             <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
                                 <span class="elementor-button-content-wrapper">
-                                                <span class="elementor-button-text">Adopt</span>
+                                                <span class="elementor-button-text">Adopt <?php echo $pet->Name; ?></span>
                                 </span>
                             </a>
                         </div>
@@ -116,11 +118,35 @@ if (!empty($pet->Description)) {
                         </div>
 
                         <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
-                            <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+
+                            <a href="#" data-featherlight="#<?php echo $pet->ID . 'adopt'; ?>" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                            <!--a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button"-->
                                 <span class="elementor-button-content-wrapper">
 												<span class="elementor-button-text">Adopt</span>
                                 </span>
                             </a>
+                        </div>
+                        <div id="<?php echo $pet->ID . 'adopt'; ?>" class="animal-description" style="text-align: left;">
+                            <h3 >Our mission is to complete families through a thoughtful and thorough adoption process.</h3>
+                            <p> To ensure every animal is placed in a forever home, GHHS begins this process with a detailed adoption application. You will fill out the application after choosing an animal to adopt.  To be considered for adoption:</p>
+                            <ul>
+    <li>You must be at least 19 years old.</li>
+    <li>Your current pets must be spayed/neutered and up to date on all shots. Veterinarian references will be checked.</li>
+    <li>If you rent housing, you must have written permission from your landlord and proof of pet deposit. (<a href="http://www.zillow.com/huntsville-al/pet-friendly/" target="_blank" rel="noopener noreferrer">Click here</a> if you're looking for pet-friendly housing in Huntsville.)</li>
+    <li>If adopting into a family, we require all members of the family (including current dogs) to meet the animal on GHHS premises. This also means that animals cannot be adopted as "surprises" or "presents."</li>
+    <li>Some dogs may require a home inspection.</li>
+</ul>
+<p><b>Meeting these guidelines is not a guarantee that your application will be accepted. GHHS reserves the right to adopt only to qualified homes based upon our guidelines. Each adoption is considered on a first-come, first-qualified basis once the animal is available for adoption. Exceptions may be made for potential adopters.</b></p>
+<h3>Adoption Fees</h3>
+<p>Our adoption fees start at <b>$100</b> but vary depending on age and species of pet.<p>
+<p>The adoption fee covers: spay/neuter surgery (legally required), current vaccines and boosters, a microchip with a lifetime registration, heartworm preventative until time of adoption, and a small bag of food. Please note: all dogs must leave with a collar and leash. You can bring these items with you or purchase them at the shelter.</p>
+<div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
+                            <a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+                                <span class="elementor-button-content-wrapper">
+                                                <span class="elementor-button-text">Adopt <?php echo $pet->Name; ?></span>
+                                </span>
+                            </a>
+                        </div>
                         </div>
                         <!--div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item " style="text-align: center;">
                             <a href="<?php echo DONATE_LINK; ?>" class="elementor-button-link elementor-button elementor-size-lg" role="button">
