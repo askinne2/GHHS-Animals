@@ -116,7 +116,6 @@ if (!empty($pet->Description)) {
                      <p> To ensure every animal is placed in a forever home, GHHS begins this process with a detailed adoption application. You will fill out the application after choosing an animal to adopt.  To be considered for adoption:</p>
                      <ul>
                         <li>You must be at least 19 years old.</li>
-                        <li>Your current pets must be spayed/neutered and up to date on all shots. Veterinarian references will be checked.</li>
                         <li>If you rent housing, you must have written permission from your landlord and proof of pet deposit. (<a href="http://www.zillow.com/huntsville-al/pet-friendly/" target="_blank" rel="noopener noreferrer">Click here</a> if you're looking for pet-friendly housing in Huntsville.)</li>
                         <li>If adopting into a family, we require all members of the family (including current dogs) to meet the animal on GHHS premises. This also means that animals cannot be adopted as "surprises" or "presents."</li>
                         <li>Some dogs may require a home inspection.</li>
