@@ -149,7 +149,7 @@ class GHHS_Found_Pets {
 
 		$pets = $this->make_request($number_requests);
 		if (empty($pets)) {
-			echo "<h2>Uh oh. Our shelter is experiencing technical difficuluties.</h2>";
+			echo "<h2>Uh oh. Our shelter is experiencing technical difficulties.</h2>";
 			echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
 			return;
 		}
