@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
+define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
@@ -420,7 +420,8 @@ class GHHS_Found_Pets {
 		} else if ($print_mode == "Slideshow") {
 
 			$pet_slideshow = new ghhs_found_pets_slideshow();
-			$pet_slideshow->display();
+
+			$pet_slideshow->display($pets_object);
 
 		} else {
 
