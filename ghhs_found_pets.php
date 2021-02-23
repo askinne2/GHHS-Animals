@@ -26,11 +26,12 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
+define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
 require_once 'ghhs_found_pets_printer.php';
+require_once 'ghhs_found_pets_slideshow.php';
 
 class GHHS_Found_Pets {
 
@@ -242,187 +243,189 @@ class GHHS_Found_Pets {
 		return $pets_object;
 	}
 
-	public function display_pets($pets_object = array(), $attributes = string) {
+	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
 		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
 		// get optional attributes and assign default values if not present
-
-		if (PLUGIN_DEBUG) {
-			echo "<h2>attributes - ";
-			print_r($attributes);
-			echo "</h2>";
-		}
-
-		extract(shortcode_atts(array(
-			'animal_type' => '',
-		), $attributes));
 
 		$cats = $pets_object['cats'];
 		$dogs = $pets_object['dogs'];
 		$others = $pets_object['others'];
 
-		$pet_printer = new ghhs_found_pets_printer();
+		if ($print_mode == "Adopt") {
 
-		if ($animal_type == "Cats") {
-			if (empty($cats)) {
-				$pet_printer->display_no_animals_available($animal_type);
-			} else {
-				$i = 0;
-				$counter = 0;
-				$length = count($cats);
-				foreach ($cats as $pet) {
-					$counter++;
-					if ($i == 0) {
+			$pet_printer = new ghhs_found_pets_printer();
 
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
+			if ($animal_type == "Cats") {
+				if (empty($cats)) {
+					$pet_printer->display_no_animals_available($animal_type);
+				} else {
+					$i = 0;
+					$counter = 0;
+					$length = count($cats);
+					foreach ($cats as $pet) {
+						$counter++;
+						if ($i == 0) {
 
-					} else if ($i == ($length - 1)) {
-
-						// print the last pet on this row and close this section
-						if ($counter == 1) {
-
+							// print the row open and the first pet
 							$pet_printer->print_section_opening_html();
 							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
 
-						} else if ($counter == 2 || $counter == 3) {
+						} else if ($i == ($length - 1)) {
 
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-						}
-						$counter = 0; // reset the counter
+							// print the last pet on this row and close this section
+							if ($counter == 1) {
 
-					} else if ($counter == 1) {
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
+								$pet_printer->print_section_opening_html();
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
 
-					} else if ($counter == 3) {
+							} else if ($counter == 2 || $counter == 3) {
 
-						// print the last pet on this row and close this section
-						$pet_printer->display_animal($pet);
-						$pet_printer->print_section_closing_html();
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
+							}
+							$counter = 0; // reset the counter
 
-						$counter = 0; // reset the counter
-
-					} else {
-
-						$pet_printer->display_animal($pet);
-
-					}
-					$i++;
-				}
-			}
-
-		} else if ($animal_type == "Dogs") {
-
-			if (empty($dogs)) {
-				$pet_printer->display_no_animals_available($animal_type);
-
-			} else {
-				$i = 0;
-				$counter = 0;
-				$length = count($dogs);
-				foreach ($dogs as $pet) {
-					$counter++;
-					if ($i == 0) {
-
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
-
-					} else if ($i == ($length - 1)) {
-
-						// print the last pet on this row and close this section
-						if ($counter == 1) {
-
+						} else if ($counter == 1) {
+							// print the row open and the first pet
 							$pet_printer->print_section_opening_html();
 							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
 
-						} else if ($counter == 2 || $counter == 3) {
+						} else if ($counter == 3) {
 
+							// print the last pet on this row and close this section
 							$pet_printer->display_animal($pet);
 							$pet_printer->print_section_closing_html();
+
+							$counter = 0; // reset the counter
+
+						} else {
+
+							$pet_printer->display_animal($pet);
+
 						}
-						$counter = 0; // reset the counter
-
-					} else if ($counter == 1) {
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
-
-					} else if ($counter == 3) {
-
-						// print the last pet on this row and close this section
-						$pet_printer->display_animal($pet);
-						$pet_printer->print_section_closing_html();
-
-						$counter = 0; // reset the counter
-
-					} else {
-
-						$pet_printer->display_animal($pet);
-
+						$i++;
 					}
-					$i++;
 				}
-			}
 
-		} else if ($animal_type == "Others") {
+			} else if ($animal_type == "Dogs") {
 
-			if (empty($others)) {
-				$pet_printer->display_no_animals_available($animal_type);
-			} else {
-				$i = 0;
-				$counter = 0;
-				$length = count($others);
-				foreach ($others as $pet) {
-					$counter++;
-					if ($i == 0) {
+				if (empty($dogs)) {
+					$pet_printer->display_no_animals_available($animal_type);
 
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
+				} else {
+					$i = 0;
+					$counter = 0;
+					$length = count($dogs);
+					foreach ($dogs as $pet) {
+						$counter++;
+						if ($i == 0) {
 
-					} else if ($i == ($length - 1)) {
-
-						// print the last pet on this row and close this section
-						if ($counter == 1) {
-
+							// print the row open and the first pet
 							$pet_printer->print_section_opening_html();
 							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
 
-						} else if ($counter == 2 || $counter == 3) {
+						} else if ($i == ($length - 1)) {
 
+							// print the last pet on this row and close this section
+							if ($counter == 1) {
+
+								$pet_printer->print_section_opening_html();
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
+
+							} else if ($counter == 2 || $counter == 3) {
+
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
+							}
+							$counter = 0; // reset the counter
+
+						} else if ($counter == 1) {
+							// print the row open and the first pet
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+
+						} else if ($counter == 3) {
+
+							// print the last pet on this row and close this section
 							$pet_printer->display_animal($pet);
 							$pet_printer->print_section_closing_html();
+
+							$counter = 0; // reset the counter
+
+						} else {
+
+							$pet_printer->display_animal($pet);
+
 						}
-						$counter = 0; // reset the counter
-
-					} else if ($counter == 1) {
-						// print the row open and the first pet
-						$pet_printer->print_section_opening_html();
-						$pet_printer->display_animal($pet);
-
-					} else if ($counter == 3) {
-
-						// print the last pet on this row and close this section
-						$pet_printer->display_animal($pet);
-						$pet_printer->print_section_closing_html();
-
-						$counter = 0; // reset the counter
-
-					} else {
-
-						$pet_printer->display_animal($pet);
-
+						$i++;
 					}
-					$i++;
+				}
+
+			} else if ($animal_type == "Others") {
+
+				if (empty($others)) {
+					$pet_printer->display_no_animals_available($animal_type);
+				} else {
+					$i = 0;
+					$counter = 0;
+					$length = count($others);
+					foreach ($others as $pet) {
+						$counter++;
+						if ($i == 0) {
+
+							// print the row open and the first pet
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+
+						} else if ($i == ($length - 1)) {
+
+							// print the last pet on this row and close this section
+							if ($counter == 1) {
+
+								$pet_printer->print_section_opening_html();
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
+
+							} else if ($counter == 2 || $counter == 3) {
+
+								$pet_printer->display_animal($pet);
+								$pet_printer->print_section_closing_html();
+							}
+							$counter = 0; // reset the counter
+
+						} else if ($counter == 1) {
+							// print the row open and the first pet
+							$pet_printer->print_section_opening_html();
+							$pet_printer->display_animal($pet);
+
+						} else if ($counter == 3) {
+
+							// print the last pet on this row and close this section
+							$pet_printer->display_animal($pet);
+							$pet_printer->print_section_closing_html();
+
+							$counter = 0; // reset the counter
+
+						} else {
+
+							$pet_printer->display_animal($pet);
+
+						}
+						$i++;
+					}
 				}
 			}
+		} else if ($print_mode == "Slideshow") {
+
+			$pet_slideshow = new ghhs_found_pets_slideshow();
+			$pet_slideshow->display();
+
+		} else {
+
+			print("<h2>Wrong Use of shortcode. Please try:</h2>");
+			print("<h3>[ghhs_found_pets animal_type='Dogs/Cats/Others' mode='Adopt/Slideshow']</h3>");
 		}
 
 		return;
@@ -443,7 +446,21 @@ class GHHS_Found_Pets {
 
 		$pets_object = $this->request_and_sort($number_requests);
 
-		$this->display_pets($pets_object, $attributes);
+		extract(shortcode_atts(array(
+			'animal_type' => '',
+			'mode' => '',
+		), $attributes));
+
+		if (PLUGIN_DEBUG) {
+			echo "<h2>attributes - ";
+			print_r($attributes);
+			echo "</h2>";
+
+		}
+		$animal_type = $attributes['animal_type'];
+		$print_mode = $attributes['mode'];
+
+		$this->display_pets($pets_object, $animal_type, $print_mode);
 		return ob_get_clean();
 
 	}
