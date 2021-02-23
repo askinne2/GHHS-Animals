@@ -16,35 +16,35 @@ class Ghhs_Found_Pets_Slideshow {
 
 	public function randomize_pets($pets) {
 
-		return array_merge($pets['cats'] + $pets['dogs'] + $pets['others']);
+		return shuffle($pets);
 	}
 	public function display($pets) {
 
-		$newpets = array_merge($pets['cats'] + $pets['dogs'] + $pets['others']);
+		//$newpets = array_merge($pets['cats'] + $pets['dogs'] + $pets['others']);
+		//$newpets = $this->randomize_pets($pets);
+
 		if (PLUGIN_DEBUG) {
 			echo "<h2>printing slideshow</h2>";
 		}
+
 		$pet = NULL;
 
-		?>
-		<!-- Slider main container -->
-		<div class="swiper-container">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-		<?php
-foreach ($newpets as $pet) {
+		echo '<!-- Slider main container -->';
+		echo '<div class="swiper-container-pets">';
+		echo '<!-- Additional required wrapper -->';
+		echo '<div class="swiper-wrapper">';
 
-			echo '<div class="swiper-slide" style="background-image:url(' . $pet->CoverPhoto . ');">';
+		foreach ($pets as $pet) {
+
+			echo '<div class="swiper-slide-pets swiper-slide" style="background-image:url(' . $pet->CoverPhoto . ');">';
 			//echo '<div class="swiper-slide">';
 			//echo '<img src="' . $pet->CoverPhoto . '" style="height:80vh;" />';
-			echo $pet->Name;
+			echo '<a href="' . ANIMAL_LINK . $pet->ID . '" target="_blank">' . $pet->Name . '</a>';
 			echo '</div>';
 
 		}
-		?>
-			</div>
-			<!-- If we need pagination -->
-			<div class="swiper-pagination"></div>
+
+		echo '</div><!-- If we need pagination --><div class="swiper-pagination"></div>
 
 			<!-- If we need navigation buttons
 			<div class="swiper-button-prev"></div>
@@ -54,7 +54,8 @@ foreach ($newpets as $pet) {
 			<!-- If we need scrollbar
 			<div class="swiper-scrollbar"></div>
 			-->
-		</div>
+		</div>';
+		?>
 		<script>
 		const swiper = new Swiper('.swiper-container', {
  			// Optional parameters

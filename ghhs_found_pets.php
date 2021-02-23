@@ -63,10 +63,18 @@ class GHHS_Found_Pets {
 
 		$raw_response = wp_remote_get($request_uri, $args);
 		if (is_wp_error($raw_response) || '200' != wp_remote_retrieve_response_code($raw_response)) {
+			if (PLUGIN_DEBUG) {
+				print('fuck me wp_error');
+				print_r($raw_response);
+			}
+
 			return 0;
 		}
 		$pets = json_decode(wp_remote_retrieve_body($raw_response));
 		if (empty($pets)) {
+			if (PLUGIN_DEBUG) {
+				print('fuck me no json to decode');
+			}
 
 			return 0;
 		}
@@ -149,11 +157,11 @@ class GHHS_Found_Pets {
 	public function request_and_sort($number_requests = int) {
 
 		$pets = $this->make_request($number_requests);
-		if (empty($pets)) {
+		/*if (empty($pets)) {
 			echo "<h2>Uh oh. Our shelter is experiencing technical difficulties.</h2>";
 			echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
 			return;
-		}
+		}*/
 
 		$cats = array();
 		$dogs = array();
@@ -421,7 +429,7 @@ class GHHS_Found_Pets {
 
 			$pet_slideshow = new ghhs_found_pets_slideshow();
 
-			$pet_slideshow->display($pets_object);
+			$pet_slideshow->display(array_merge($cats, $dogs, $others));
 
 		} else {
 
@@ -468,5 +476,11 @@ class GHHS_Found_Pets {
 
 } // end class definition
 
+/*
+function custom_http_request_timeout() {
+return 15;
+}
+add_filter('http_request_timeout', 'custom_http_request_timeout');
+ */
 // run GHHS_Found_pets shortcode
 new GHHS_Found_Pets();

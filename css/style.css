@@ -79,12 +79,12 @@
 
 
 
-	.swiper-container {
+	.swiper-container-pets {
       width: 100%;
       height: 100vh;
 
     }
-    .swiper-slide {
+    .swiper-slide-pets {
       text-align: left;
       font-size: 5em;
       background: #fff;
@@ -92,8 +92,6 @@
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
-
-      height:90vh;
 
       /* Center slide text vertically */
       display: -webkit-box;
