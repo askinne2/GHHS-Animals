@@ -57,7 +57,7 @@ class Ghhs_Found_Pets_Slideshow {
 		</div>';
 		?>
 		<script>
-		const swiper = new Swiper('.swiper-container', {
+		const swiper = new Swiper('.swiper-container-pets', {
  			// Optional parameters
   			direction: 'horizontal',
  			loop: true,
