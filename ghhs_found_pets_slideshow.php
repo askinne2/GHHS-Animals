@@ -239,6 +239,9 @@ class Ghhs_Found_Pets_Slideshow {
                </span>
             </a>
                </div>
+
+
+               <!-- more pics & bio featherlight modal display -->
                <div id="<?php echo $pet->ID; ?>" class="animal-description">
                   <?php $this->display_photos($pet);?>
                   <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
@@ -257,10 +260,7 @@ if (!empty($pet->Description)) {
 		?>
               </div>
            </div>
-           <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
-
-
-         </div>
+        <!-- adoptable featherlight modal display -->
          <div id="<?php echo $pet->ID . 'adopt'; ?>" class="animal-description" style="text-align: left;">
             <h3 >Our mission is to complete families through a thoughtful and thorough adoption process.</h3>
             <p> To ensure every animal is placed in a forever home, GHHS begins this process with a detailed adoption application. You will fill out the application after choosing an animal to adopt.  To be considered for adoption:</p>
