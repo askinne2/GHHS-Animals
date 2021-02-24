@@ -37,10 +37,9 @@ class Ghhs_Found_Pets_Slideshow {
 			echo "<h2>printing slideshow</h2>";
 		}
 
-		echo plugins_url(plugin_basename(__DIR__));
-		echo plugin_basename(__DIR__);
 		$pet = NULL;
 		$id = NULL;
+
 		if ($pets[0]->Type == 'Dog') {
 			$id = "Dog";
 		} else if ($pets[0]->Type == 'Cat') {
@@ -54,13 +53,8 @@ class Ghhs_Found_Pets_Slideshow {
 		echo '<div class="swiper-wrapper">';
 
 		foreach ($pets as $pet) {
-			$adoption_link = ANIMAL_LINK . $pet->ID;
-			//echo '<div class="swiper-slide-pets swiper-slide" style="background-image:url(' . $pet->CoverPhoto . ');">';
-			//echo '<div class="swiper-slide swiper-slide-pets">';
-			//echo '<div class="swiper-slide">';
-			//echo '<img src="' . $pet->CoverPhoto . '" style="height:80vh;" />';
-			//echo '<a href="' . ANIMAL_LINK . $pet->ID . '" target="_blank">' . $pet->Name . '</a>';
 
+			$adoption_link = ANIMAL_LINK . $pet->ID;
 			echo $this->pet_layout($pet, $adoption_link);
 		}
 		?>
@@ -209,6 +203,7 @@ class Ghhs_Found_Pets_Slideshow {
 
       <div class="elementor-element elementor-element-5048a1c elementor-cta--skin-classic elementor-animated-content elementor-bg-transform elementor-bg-transform-zoom-in elementor-widget elementor-widget-call-to-action" data-id="5048a1c" data-element_type="widget" data-widget_type="call-to-action.default">
          <div class="elementor-widget-container">
+         	<div class="elementor-cta">
             <div class="elementor-cta__bg-wrapper">
                <a href="#" data-featherlight="#<?php echo $pet->ID; ?>">
                   <div class="elementor-cta__bg elementor-bg" style="background-image: url(<?php echo $pet->CoverPhoto; ?>);"></div>
@@ -237,6 +232,12 @@ class Ghhs_Found_Pets_Slideshow {
                         <span class="elementor-button-text">More Pics & Bio</span>
                      </span>
                   </a>
+                   <a href="#" data-featherlight="#<?php echo $pet->ID . 'adopt'; ?>" class="elementor-button-link elementor-button elementor-size-med" role="button">
+               <!--a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-med" role="button"-->
+               <span class="elementor-button-content-wrapper">
+                  <span class="elementor-button-text">Adopt</span>
+               </span>
+            </a>
                </div>
                <div id="<?php echo $pet->ID; ?>" class="animal-description">
                   <?php $this->display_photos($pet);?>
@@ -257,12 +258,8 @@ if (!empty($pet->Description)) {
               </div>
            </div>
            <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
-            <a href="#" data-featherlight="#<?php echo $pet->ID . 'adopt'; ?>" class="elementor-button-link elementor-button elementor-size-med" role="button">
-               <!--a href="<?php echo $adoption_link; ?>"  target="_blank" class="elementor-button-link elementor-button elementor-size-med" role="button"-->
-               <span class="elementor-button-content-wrapper">
-                  <span class="elementor-button-text">Adopt</span>
-               </span>
-            </a>
+
+
          </div>
          <div id="<?php echo $pet->ID . 'adopt'; ?>" class="animal-description" style="text-align: left;">
             <h3 >Our mission is to complete families through a thoughtful and thorough adoption process.</h3>
@@ -286,10 +283,12 @@ if (!empty($pet->Description)) {
             </div>
          </div>
       </div>
-   </div>
+  </div>
+  </div>
 </div> <!-- close CTA element -->
 </div> <!-- close animal div --->
          </div> <!-- close swiper slide -->
+
          <?php
 }
 
