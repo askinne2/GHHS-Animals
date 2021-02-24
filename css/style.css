@@ -84,6 +84,12 @@
       /*height: 100vh;*/
 
     }
+    .swiper-slideshow {
+    	height:100vh;
+    }
+    .swiper-name {
+    	font-size: 5em;
+    }
     .swiper-slide-pets {
       text-align: left;
   /*    font-size: 5em;*/
