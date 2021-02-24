@@ -11,7 +11,7 @@
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  *
  *
- * Version:           1.5.5
+ * Version:           1.5.6
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -267,53 +267,60 @@ class GHHS_Found_Pets {
 				if (empty($cats)) {
 					$pet_printer->display_no_animals_available($animal_type);
 				} else {
+
+					/**
 					$i = 0;
 					$counter = 0;
 					$length = count($cats);
 					foreach ($cats as $pet) {
-						$counter++;
-						if ($i == 0) {
+					$counter++;
+					if ($i == 0) {
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
+					// print the row open and the first pet
+					$pet_printer->print_section_opening_html();
+					$pet_printer->display_animal($pet);
 
-						} else if ($i == ($length - 1)) {
+					} else if ($i == ($length - 1)) {
 
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
+					// print the last pet on this row and close this section
+					if ($counter == 1) {
 
-								$pet_printer->print_section_opening_html();
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
+					$pet_printer->print_section_opening_html();
+					$pet_printer->display_animal($pet);
+					$pet_printer->print_section_closing_html();
 
-							} else if ($counter == 2 || $counter == 3) {
+					} else if ($counter == 2 || $counter == 3) {
 
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
-						}
-						$i++;
+					$pet_printer->display_animal($pet);
+					$pet_printer->print_section_closing_html();
 					}
+					$counter = 0; // reset the counter
+
+					} else if ($counter == 1) {
+					// print the row open and the first pet
+					$pet_printer->print_section_opening_html();
+					$pet_printer->display_animal($pet);
+
+					} else if ($counter == 3) {
+
+					// print the last pet on this row and close this section
+					$pet_printer->display_animal($pet);
+					$pet_printer->print_section_closing_html();
+
+					$counter = 0; // reset the counter
+
+					} else {
+
+					$pet_printer->display_animal($pet);
+
+					}
+					$i++;
+					}
+					 */
+					$pet_slideshow = new ghhs_found_pets_slideshow();
+
+					$pet_slideshow->display($cats);
+
 				}
 
 			} else if ($animal_type == "Dogs") {
@@ -322,53 +329,58 @@ class GHHS_Found_Pets {
 					$pet_printer->display_no_animals_available($animal_type);
 
 				} else {
-					$i = 0;
-					$counter = 0;
-					$length = count($dogs);
-					foreach ($dogs as $pet) {
-						$counter++;
-						if ($i == 0) {
+					/*	$i = 0;
+						$counter = 0;
+						$length = count($dogs);
+						foreach ($dogs as $pet) {
+							$counter++;
+							if ($i == 0) {
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($i == ($length - 1)) {
-
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
-
+								// print the row open and the first pet
 								$pet_printer->print_section_opening_html();
 								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
 
-							} else if ($counter == 2 || $counter == 3) {
+							} else if ($i == ($length - 1)) {
 
+								// print the last pet on this row and close this section
+								if ($counter == 1) {
+
+									$pet_printer->print_section_opening_html();
+									$pet_printer->display_animal($pet);
+									$pet_printer->print_section_closing_html();
+
+								} else if ($counter == 2 || $counter == 3) {
+
+									$pet_printer->display_animal($pet);
+									$pet_printer->print_section_closing_html();
+								}
+								$counter = 0; // reset the counter
+
+							} else if ($counter == 1) {
+								// print the row open and the first pet
+								$pet_printer->print_section_opening_html();
+								$pet_printer->display_animal($pet);
+
+							} else if ($counter == 3) {
+
+								// print the last pet on this row and close this section
 								$pet_printer->display_animal($pet);
 								$pet_printer->print_section_closing_html();
+
+								$counter = 0; // reset the counter
+
+							} else {
+
+								$pet_printer->display_animal($pet);
+
 							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
+							$i++;
 						}
-						$i++;
-					}
+					*/
+
+					$pet_slideshow = new ghhs_found_pets_slideshow();
+
+					$pet_slideshow->display($dogs);
 				}
 
 			} else if ($animal_type == "Others") {
@@ -376,53 +388,57 @@ class GHHS_Found_Pets {
 				if (empty($others)) {
 					$pet_printer->display_no_animals_available($animal_type);
 				} else {
-					$i = 0;
-					$counter = 0;
-					$length = count($others);
-					foreach ($others as $pet) {
-						$counter++;
-						if ($i == 0) {
+					/*
+						$i = 0;
+						$counter = 0;
+						$length = count($others);
+						foreach ($others as $pet) {
+							$counter++;
+							if ($i == 0) {
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($i == ($length - 1)) {
-
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
-
+								// print the row open and the first pet
 								$pet_printer->print_section_opening_html();
 								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
 
-							} else if ($counter == 2 || $counter == 3) {
+							} else if ($i == ($length - 1)) {
 
+								// print the last pet on this row and close this section
+								if ($counter == 1) {
+
+									$pet_printer->print_section_opening_html();
+									$pet_printer->display_animal($pet);
+									$pet_printer->print_section_closing_html();
+
+								} else if ($counter == 2 || $counter == 3) {
+
+									$pet_printer->display_animal($pet);
+									$pet_printer->print_section_closing_html();
+								}
+								$counter = 0; // reset the counter
+
+							} else if ($counter == 1) {
+								// print the row open and the first pet
+								$pet_printer->print_section_opening_html();
+								$pet_printer->display_animal($pet);
+
+							} else if ($counter == 3) {
+
+								// print the last pet on this row and close this section
 								$pet_printer->display_animal($pet);
 								$pet_printer->print_section_closing_html();
+
+								$counter = 0; // reset the counter
+
+							} else {
+
+								$pet_printer->display_animal($pet);
+
 							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
+							$i++;
 						}
-						$i++;
-					}
+					*/$pet_slideshow = new ghhs_found_pets_slideshow();
+
+					$pet_slideshow->display($others);
 				}
 			}
 		} else if ($print_mode == "Slideshow") {

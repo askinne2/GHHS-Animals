@@ -47,6 +47,7 @@ class Ghhs_Found_Pets_Printer {
 		$adoption_link = ANIMAL_LINK . $pet->ID;
 
 		?>
+
 <div class="elementor-element elementor-element-def3b98 elementor-column elementor-col-33 elementor-top-column" data-id="def3b98" data-element_type="column">
    <div class="elementor-column-wrap  elementor-element-populated">
       <div class="elementor-widget-wrap animal">

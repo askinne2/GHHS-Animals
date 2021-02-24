@@ -52,11 +52,11 @@
 	}
 	
 	.adopt-button .elementor-button {
-		background-color: #da9240 !important;
+		background-color: #286B87 !important;
 	}
 	
 	.adopt-button .elementor-button:hover {
-		background-color: #54595F !important;
+		background-color: #0F9EDA !important;
 	}
 
 	.foster-button {
@@ -68,7 +68,7 @@
 }
 
 	.elementor-cta--skin-classic .elementor-cta__bg-wrapper {
-		min-height: 300px !important;
+		min-height: 50vh !important;
 	}
 
 	.ghhs-center-align {
@@ -81,12 +81,12 @@
 
 	.swiper-container-pets {
       width: 100%;
-      height: 100vh;
+      /*height: 100vh;*/
 
     }
     .swiper-slide-pets {
       text-align: left;
-      font-size: 5em;
+  /*    font-size: 5em;*/
       background: #fff;
       color: #1da1f2;
       background-position: center;
@@ -106,8 +106,11 @@
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
-      text-shadow: 0 0 10px #54595f;
+      /*text-shadow: 0 0 10px #54595f;*/
   	}
   	.swiper-pagination-bullet {
   		background: #da9240;
   	}
+  	.swiper-button-next, .swiper-button-prev { 
+  		color: #287b87 !important;
+  		background-image:none; }
