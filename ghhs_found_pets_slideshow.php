@@ -220,10 +220,10 @@ class Ghhs_Found_Pets_Slideshow {
                      <br />
                      <?php echo $pet->Breed; ?>
                   </p>
-                  <p class="animal-age">Status:
+                  <!--p class="animal-age">Status:
                      <?php echo $pet->Status; ?>
                   </br>
-               </p>
+               </p-->
                <p class="animal-age">Age:     <?php echo number_format($pet->Age / 12, 1, ' years, ', ''); ?> months
                </p>
                <div class="elementor-cta__button-wrapper elementor-cta__content-item elementor-content-item adopt-button" style="text-align: center;">
