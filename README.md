@@ -1,6 +1,6 @@
 # GHHS-Found-Pets Plugin
 
-~Current Version: 1.5.8~
+~Current Version: 1.6.0~
 
 
  This client specific plugin fetches the animals listed in the Shelterluv database for the Greater Huntsville Humane Society and displays them using the short code:
