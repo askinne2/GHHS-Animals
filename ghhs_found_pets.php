@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
+define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
@@ -436,7 +436,8 @@ class GHHS_Found_Pets {
 							}
 							$i++;
 						}
-					*/$pet_slideshow = new ghhs_found_pets_slideshow();
+					*/
+					$pet_slideshow = new ghhs_found_pets_slideshow();
 
 					$pet_slideshow->display($others);
 				}
@@ -492,11 +493,10 @@ class GHHS_Found_Pets {
 
 } // end class definition
 
-/*
 function custom_http_request_timeout() {
-return 15;
+	return 15;
 }
 add_filter('http_request_timeout', 'custom_http_request_timeout');
- */
+
 // run GHHS_Found_pets shortcode
 new GHHS_Found_Pets();
