@@ -26,28 +26,47 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
+define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
 require_once 'ghhs_found_pets_printer.php';
 require_once 'ghhs_found_pets_slideshow.php';
+require_once 'ghhs_animals.php';
+
+//require_once 'custom-plugin.php';
 
 class GHHS_Found_Pets {
 
 	var $request_uri;
 	var $args;
+	var $ghhs_acf;
 
 	public function __construct() {
+
 		$this->args = array(
 			'headers' => array(
 				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
+		$this->ghhs_acf = new GHHS_Animals();
 		add_shortcode('ghhs_found_pets', array($this, 'run'));
 
 	}
 
+	/**
+	 * Hook into the WordPress activate hook
+	 */
+	public static function activate() {
+		// Do something
+	}
+
+	/**
+	 * Hook into the WordPress deactivate hook
+	 */
+	public static function deactivate() {
+		// Do something
+	}
 	public function set_request_uri($request_uri = string) {
 		$this->request_uri = $request_uri;
 	}
@@ -268,58 +287,9 @@ class GHHS_Found_Pets {
 					$pet_printer->display_no_animals_available($animal_type);
 				} else {
 
-					$i = 0;
-					$counter = 0;
-					$length = count($cats);
-					foreach ($cats as $pet) {
-						$counter++;
-						if ($i == 0) {
+					$pet_slideshow = new ghhs_found_pets_slideshow();
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($i == ($length - 1)) {
-
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
-
-								$pet_printer->print_section_opening_html();
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-
-							} else if ($counter == 2 || $counter == 3) {
-
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
-						}
-						$i++;
-					}
-					/*
-						$pet_slideshow = new ghhs_found_pets_slideshow();
-
-						$pet_slideshow->display($cats);
-					*/
+					$pet_slideshow->display($cats);
 
 				}
 
@@ -329,59 +299,11 @@ class GHHS_Found_Pets {
 					$pet_printer->display_no_animals_available($animal_type);
 
 				} else {
-					$i = 0;
-					$counter = 0;
-					$length = count($dogs);
-					foreach ($dogs as $pet) {
-						$counter++;
-						if ($i == 0) {
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
+					$pet_slideshow = new ghhs_found_pets_slideshow();
 
-						} else if ($i == ($length - 1)) {
+					$pet_slideshow->display($dogs);
 
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
-
-								$pet_printer->print_section_opening_html();
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-
-							} else if ($counter == 2 || $counter == 3) {
-
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
-						}
-						$i++;
-					}
-					/*
-
-						$pet_slideshow = new ghhs_found_pets_slideshow();
-
-						$pet_slideshow->display($dogs);
-					*/
 				}
 
 			} else if ($animal_type == "Others") {
@@ -390,58 +312,10 @@ class GHHS_Found_Pets {
 					$pet_printer->display_no_animals_available($animal_type);
 				} else {
 
-					$i = 0;
-					$counter = 0;
-					$length = count($others);
-					foreach ($others as $pet) {
-						$counter++;
-						if ($i == 0) {
+					$pet_slideshow = new ghhs_found_pets_slideshow();
 
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
+					$pet_slideshow->display($others);
 
-						} else if ($i == ($length - 1)) {
-
-							// print the last pet on this row and close this section
-							if ($counter == 1) {
-
-								$pet_printer->print_section_opening_html();
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-
-							} else if ($counter == 2 || $counter == 3) {
-
-								$pet_printer->display_animal($pet);
-								$pet_printer->print_section_closing_html();
-							}
-							$counter = 0; // reset the counter
-
-						} else if ($counter == 1) {
-							// print the row open and the first pet
-							$pet_printer->print_section_opening_html();
-							$pet_printer->display_animal($pet);
-
-						} else if ($counter == 3) {
-
-							// print the last pet on this row and close this section
-							$pet_printer->display_animal($pet);
-							$pet_printer->print_section_closing_html();
-
-							$counter = 0; // reset the counter
-
-						} else {
-
-							$pet_printer->display_animal($pet);
-
-						}
-						$i++;
-					}
-					/*
-						$pet_slideshow = new ghhs_found_pets_slideshow();
-
-						$pet_slideshow->display($others);
-					*/
 				}
 			}
 		} else if ($print_mode == "Slideshow") {
@@ -489,6 +363,7 @@ class GHHS_Found_Pets {
 		$print_mode = $attributes['mode'];
 
 		$this->display_pets($pets_object, $animal_type, $print_mode);
+
 		return ob_get_clean();
 
 	}
@@ -500,5 +375,35 @@ function custom_http_request_timeout() {
 }
 add_filter('http_request_timeout', 'custom_http_request_timeout');
 
-// run GHHS_Found_pets shortcode
-new GHHS_Found_Pets();
+//$a = new GHHS_Animals();
+//$a->register_fields();
+
+if (class_exists('GHHS_Found_Pets')) {
+	// Installation and uninstallation hooks
+	register_activation_hook(__FILE__, array('GHHS_Found_Pets', 'activate'));
+	register_deactivation_hook(__FILE__, array('GHHS_Found_Pets', 'deactivate'));
+
+	// run GHHS_Found_pets shortcode
+	$pets = new GHHS_Found_Pets();
+}
+
+function ghhs_animal_template($single) {
+
+	global $post;
+
+	/* Checks for single template by post type */
+	if ($post->post_type == 'animal') {
+		if (file_exists(plugin_dir_path(__FILE__) . 'single-animal.php')) {
+
+			$single = plugin_dir_path(__FILE__) . 'single-animal.php';
+		} else {
+			echo "<h2>fuck</h2>";
+		}
+
+	}
+
+	return $single;
+}
+
+/* Filter the single_template with our custom function*/
+add_filter('single_template', 'ghhs_animal_template');

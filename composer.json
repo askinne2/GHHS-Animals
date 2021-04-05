@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jjgrainger/posttypes": "^2.1"
+    }
+}

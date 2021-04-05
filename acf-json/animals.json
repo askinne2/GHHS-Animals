@@ -1,0 +1,43 @@
+"animals": [
+        {
+            "ID": "",
+            "Internal-ID": "",
+            "Name": "",
+            "LitterGroupId": null,
+            "Type": "",
+            "CurrentLocation": {
+                "Tier1": ""
+            },
+            "Sex": "",
+            "Status": "",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "",
+            "DOBUnixTime": "",
+            "Age": "",
+            "CoverPhoto": "",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "",
+                    "IssuingShelter": "",
+                    "Type": ""
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "",
+            "Attributes": [],
+            "LastUpdatedUnixTime": ""
+        },
+    ]
