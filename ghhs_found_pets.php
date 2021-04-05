@@ -393,11 +393,9 @@ function ghhs_animal_template($single) {
 
 	/* Checks for single template by post type */
 	if ($post->post_type == 'animal') {
-		if (file_exists(plugin_dir_path(__FILE__) . 'single-animal.php')) {
+		if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
 
-			$single = plugin_dir_path(__FILE__) . 'single-animal.php';
-		} else {
-			echo "<h2>fuck</h2>";
+			$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
 		}
 
 	}
