@@ -387,6 +387,31 @@ if (class_exists('GHHS_Found_Pets')) {
 	$pets = new GHHS_Found_Pets();
 }
 
+add_filter('template_include', 'ghhs_archive_animal_template');
+
+function ghhs_archive_animal_template($template) {
+	global $post;
+	if (is_archive() && $post->post_type == 'animal') {
+		if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
+
+			$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+		}
+	} else {
+		/* Checks for single template by post type */
+		if ($post->post_type == 'animal') {
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+
+				$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
+				return $single;
+			}
+
+		}
+	}
+	return $archive_template;
+}
+
+/* Filter the single_template with our custom function*/
+add_filter('single_template', 'ghhs_animal_template');
 function ghhs_animal_template($single) {
 
 	global $post;
@@ -398,10 +423,9 @@ function ghhs_animal_template($single) {
 			$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
 		}
 
+	} else {
+		echo "<h2>fuceeek</h2>";
 	}
 
 	return $single;
 }
-
-/* Filter the single_template with our custom function*/
-add_filter('single_template', 'ghhs_animal_template');

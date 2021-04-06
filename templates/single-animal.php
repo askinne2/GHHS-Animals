@@ -7,27 +7,23 @@ Template Post Type: animal
  *
  *
  */
-get_header('');
+get_header();
 
 ?>
 <!--start container-->
 <?php while (have_posts()): the_post();?>
-				<div class="container">
-				  <div class="row">
-				    <div class="col-12 col-sm-12 col-md-12">
 
-				      <?php the_title();?>
 
-				      <?php the_content();?>
-				      <?php
+									      <?php the_title();?>
+
+									      <?php the_content();?>
+									      <?php
 	echo "<h2>";
 	the_field('name');
 	echo "</h2>"; ?>
 
-				    </div>
-				  </div>
-				</div>
-				<?php endwhile?>
+
+									<?php endwhile;?>
 <!--end container-->
 <?php get_footer()?>
 

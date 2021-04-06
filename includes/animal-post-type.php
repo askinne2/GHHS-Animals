@@ -19,7 +19,7 @@ if (!class_exists('GHHS_Animals_PostType')) {
 		 * Hook into the init action
 		 */
 		public function init() {
-			// Register the Analytics Report post type
+			// Register the Animal post type
 			register_post_type(self::SLUG,
 				array(
 					'labels' => array(
@@ -36,8 +36,6 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'show_in_menu' => GHHS_Animals_Settings::SLUG,
 				)
 			);
-
-			//$this->register_post_template();
 
 			if (function_exists("register_field_group")) {
 
@@ -182,26 +180,5 @@ if (!class_exists('GHHS_Animals_PostType')) {
 			} // END if(function_exists("register_field_group"))
 		} // END public function init()
 
-		public function register_post_template() {
-
-			/* Filter the single_template with our custom function*/
-			add_filter('single_template', 'ghhs_animal_template');
-
-			function ghhs_animal_template($single) {
-
-				global $post;
-
-				/* Checks for single template by post type */
-				if ($post->post_type == 'animal') {
-					if (file_exists(plugin_dir_path(__FILE__) . 'single-animal.php')) {
-						$single = plugin_dir_path(__FILE__) . 'single-animal.php';
-					}
-
-				}
-
-				return $single;
-			}
-
-		}
 	} // END class GHHS_Animals_PostType
 } // END if(!class_exists('GHHS_Animals_PostType'))
