@@ -12,7 +12,8 @@ get_header();
 
 $description = get_the_archive_description();
 ?>
-
+<main id="site-content" role="main">
+	<div class="container">
 <?php if (have_posts()): ?>
 
 
@@ -36,7 +37,8 @@ $description = get_the_archive_description();
 <!--?php else: ?
 	php get_template_part(plugin_dir_path(__FILE__) . 'template/animal');?-->
 <?php endif;?>
-
+</div>
+</main><!-- #site-content -->
 <?php get_footer();?>
 
 

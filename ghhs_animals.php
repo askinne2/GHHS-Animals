@@ -1,12 +1,11 @@
 <?php
 /*
 Description: Defines an Advanced Custom Field Post Type (GHHS_Animals) using ACF Pro methods
-
-Author: Francis Yaconiello
-Version: 1.0
-Author URI: http://www.yaconiello.com/
+ *
  */
-
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly
+}
 // Define path and URL to the ACF plugin.
 define('MY_ACF_PATH', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
 define('MY_ACF_URL', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
@@ -43,7 +42,20 @@ if (!class_exists("GHHS_Animals")) {
 			function my_acf_settings_show_admin($show_admin) {
 				return true;
 			}
+			//add_action('init', array(&$this, 'new_animal_post'));
+
 		} // END public function __construct()
+
+		public function new_animal_post() {
+			//if (get_post_type($post_id) == 'animal') {
+
+			$id = wp_insert_post(array(
+				'post_title' => 'Jesus',
+				'post_type' => 'animal',
+				'post_content' => 'demo text',
+			));
+
+		} // END public function new_animal_post()
 
 	} // END class GHHS_Animals
 } // END if(!class_exists("GHHS_Animals"))

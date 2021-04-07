@@ -34,6 +34,7 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'rewrite' => array('slug' => 'adopt'),
 
 				)
+			);
 
 			// create taxonomy terms
 			$terms = array(
