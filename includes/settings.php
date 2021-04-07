@@ -42,16 +42,16 @@ if (!class_exists('GHHS_Animals_Settings')) {
 		 * Add settings fields via ACF
 		 */
 		public function init() {
-			if (function_exists('register_field_group')):
+			if (function_exists('acf_add_local_field_group')):
 
-				register_field_group(array(
+				acf_add_local_field_group(array(
 					'key' => 'group_6069369c504fd',
-					'title' => 'Animal',
+					'title' => 'Animal Info',
 					'fields' => array(
 						array(
 							'key' => 'field_606937818cb9f',
-							'label' => 'Animal ID',
-							'name' => 'animal_id',
+							'label' => 'ID',
+							'name' => 'id',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 1,
@@ -85,6 +85,30 @@ if (!class_exists('GHHS_Animals_Settings')) {
 							'prepend' => '',
 							'append' => '',
 							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_606d1778e89f5',
+							'label' => 'Cover Photo',
+							'name' => 'cover_photo',
+							'type' => 'image',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'url',
+							'preview_size' => 'medium',
+							'library' => 'all',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
 						),
 						array(
 							'key' => 'field_606937088cb9c',
@@ -164,6 +188,84 @@ if (!class_exists('GHHS_Animals_Settings')) {
 							'max' => '',
 							'step' => '',
 						),
+						array(
+							'key' => 'field_606d1893e89f6',
+							'label' => 'Photos',
+							'name' => 'photos',
+							'type' => 'gallery',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'array',
+							'preview_size' => 'medium',
+							'insert' => 'append',
+							'library' => 'all',
+							'min' => '',
+							'max' => '',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
+						),
+						array(
+							'key' => 'field_606d18aee89f7',
+							'label' => 'Videos',
+							'name' => 'videos',
+							'type' => 'oembed',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'width' => '',
+							'height' => '',
+						),
+						array(
+							'key' => 'field_606d18fae89f8',
+							'label' => 'Bio',
+							'name' => 'bio',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'Sorry! I\'m currently putting paw and pen together writing my autobiography!',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_606d1943e89f9',
+							'label' => 'Adopt Link',
+							'name' => 'adopt_link',
+							'type' => 'url',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'https://www.shelterluv.com/matchme/adopt/ghhs-a-',
+							'placeholder' => 'https://www.shelterluv.com/matchme/adopt/ghhs-a-',
+						),
 					),
 					'location' => array(
 						array(
@@ -180,7 +282,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 					'label_placement' => 'top',
 					'instruction_placement' => 'label',
 					'hide_on_screen' => '',
-
+					'active' => true,
+					'description' => 'These are the field available to use in this custom plugin.',
 				));
 
 			endif;

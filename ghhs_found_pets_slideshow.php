@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
 //include 'display_photos.php';
 
 class Ghhs_Found_Pets_Slideshow {
-	public function __contsruct() {}
+	public function __construct() {}
 
 	public function randomize_pets($pets) {
 

@@ -45,18 +45,5 @@ if (!class_exists("GHHS_Animals")) {
 			}
 		} // END public function __construct()
 
-		/**
-		 * Hook into the WordPress activate hook
-		 */
-		public static function activate() {
-			// Do something
-		}
-
-		/**
-		 * Hook into the WordPress deactivate hook
-		 */
-		public static function deactivate() {
-			// Do something
-		}
 	} // END class GHHS_Animals
 } // END if(!class_exists("GHHS_Animals"))

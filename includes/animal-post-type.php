@@ -2,6 +2,8 @@
 /**
  * Add a Custom Post Type: Animal
  */
+//require_once plugins_url(plugin_basename(__DIR__)) . 'ghhs_animals.php';
+
 if (!class_exists('GHHS_Animals_PostType')) {
 	class GHHS_Animals_PostType {
 		const SLUG = "animal";
@@ -19,6 +21,34 @@ if (!class_exists('GHHS_Animals_PostType')) {
 		 * Hook into the init action
 		 */
 		public function init() {
+
+			register_taxonomy(
+				'adopt-animals', // The name of the taxonomy.
+				'animal', // post type name
+				array(
+					'hierarchical' => false,
+					'public' => true,
+					'show_ui' => true,
+					'label' => 'Animal Type', // display name
+					'query_var' => true,
+					'rewrite' => array('slug' => 'adopt'),
+
+				)
+
+			// create taxonomy terms
+			$terms = array(
+				'0' => array('name' => 'Dog', 'slug' => 'dog'),
+				'1' => array('name' => 'Cat', 'slug' => 'cat'),
+				'2' => array('name' => 'Other', 'slug' => 'other'),
+
+			);
+			foreach ($terms as $term) {
+				if (!term_exists($term['name'], 'adopt-animals')) {
+					wp_insert_term($term['name'], 'adopt-animals', array('slug' => $term['slug']));
+				}
+				unset($term);
+			}
+
 			// Register the Animal post type
 			register_post_type(self::SLUG,
 				array(
@@ -27,26 +57,28 @@ if (!class_exists('GHHS_Animals_PostType')) {
 						'singular_name' => __(ucwords(str_replace("_", " ", self::SLUG)), 'custom'),
 					),
 					'description' => __("Animal post type", 'custom'),
-					'supports' => array(
-						'title',
-					),
+					'supports' => array('title', 'excerpt', 'thumbnail', 'post-formats', 'taxonomy', 'custom-fields'),
+					'taxonomies' => array('post-type', 'adopt-animals'),
+
 					'public' => true,
 					'show_ui' => true,
-					'has_archive' => true,
+					'has_archive' => 'adopt',
 					'show_in_menu' => GHHS_Animals_Settings::SLUG,
+					'rewrite' => 'true',
 				)
 			);
 
-			if (function_exists("register_field_group")) {
+			//if (function_exists("register_field_group")) {
+			if (function_exists('acf_add_local_field_group')) {
 
-				register_field_group(array(
+				acf_add_local_field_group(array(
 					'key' => 'group_6069369c504f6',
-					'title' => 'Animal',
+					'title' => 'Animal Info',
 					'fields' => array(
 						array(
 							'key' => 'field_606937818cb9f',
-							'label' => 'Animal ID',
-							'name' => 'animal_id',
+							'label' => 'ID',
+							'name' => 'id',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 1,
@@ -80,6 +112,30 @@ if (!class_exists('GHHS_Animals_PostType')) {
 							'prepend' => '',
 							'append' => '',
 							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_606d1778e89f5',
+							'label' => 'Cover Photo',
+							'name' => 'cover_photo',
+							'type' => 'image',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'url',
+							'preview_size' => 'medium',
+							'library' => 'all',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
 						),
 						array(
 							'key' => 'field_606937088cb9c',
@@ -159,6 +215,84 @@ if (!class_exists('GHHS_Animals_PostType')) {
 							'max' => '',
 							'step' => '',
 						),
+						array(
+							'key' => 'field_606d1893e89f6',
+							'label' => 'Photos',
+							'name' => 'photos',
+							'type' => 'gallery',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'array',
+							'preview_size' => 'medium',
+							'insert' => 'append',
+							'library' => 'all',
+							'min' => '',
+							'max' => '',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
+						),
+						array(
+							'key' => 'field_606d18aee89f7',
+							'label' => 'Videos',
+							'name' => 'videos',
+							'type' => 'oembed',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'width' => '',
+							'height' => '',
+						),
+						array(
+							'key' => 'field_606d18fae89f8',
+							'label' => 'Bio',
+							'name' => 'bio',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'Sorry! I\'m currently putting paw and pen together writing my autobiography!',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
+						array(
+							'key' => 'field_606d1943e89f9',
+							'label' => 'Adopt Link',
+							'name' => 'adopt_link',
+							'type' => 'url',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'https://www.shelterluv.com/matchme/adopt/ghhs-a-',
+							'placeholder' => 'https://www.shelterluv.com/matchme/adopt/ghhs-a-',
+						),
 					),
 					'location' => array(
 						array(
@@ -175,6 +309,8 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'label_placement' => 'top',
 					'instruction_placement' => 'label',
 					'hide_on_screen' => '',
+					'active' => true,
+					'description' => '',
 				));
 
 			} // END if(function_exists("register_field_group"))
