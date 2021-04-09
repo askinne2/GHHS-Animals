@@ -25,31 +25,41 @@ printf('<h3 class="elementor-heading-title elementor-size-default">View our anim
 ?>
 		</header>
 	<?php endif;?>
-	<div class="page-content">
+	<div class="page-content container">
+		<div class="card-group">
 		<?php
 while (have_posts()) {
 	the_post();
 	$post_link = get_permalink();
 	?>
-			<article class="post archive-animal">
+					<div class="col card archive animal archive-animal" style="width: 18rem;">
+
+			<!--article class="post archive-animal"-->
+
+					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_field('cover_photo'), esc_url($post_link));?>
+  <div class="card-body my-3">
+    <?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
+    <p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('type'));?></p>
+    	<?php printf('<a href="%s" class="adopt-button text-white btn btn-primary">More Info</a>', esc_url($post_link));?>
+  </div>
+
 					<?php
-$groups = acf_get_field_groups($post_id);
+/*$groups = acf_get_field_groups($post_id);
 	printf('<H2>GROUPS</H2><pre>%s</pre><br>', var_dump($groups));
 
 	$fields = acf_get_fields($groups[0]);
 	var_dump($fields);
 	foreach ($fields as $field) {
-		printf("<p>field: %s</p>", get_field($field->id));
+	printf("<p>field: %s</p>", get_field($field->id));
 
 	}
-
-	printf('<h2 class="%s"><a href="%s">%s</a></h2>', 'entry-title', esc_url($post_link), esc_html(get_the_title()));
-	printf('<a href="%s">%s</a>', esc_url($post_link), get_the_post_thumbnail($post, 'medium'));
-	the_excerpt();
+	 */
 	?>
-			</article>
-		<?php }?>
-	</div>
+			<!--/article-->
+		</div> <!-- end card div -->
+		<?php } // while posts loop ?>
+	</div> <!-- end card group -->
+	</div> <!-- end container -->
 
 	<?php wp_link_pages();?>
 
