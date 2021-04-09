@@ -379,6 +379,7 @@ add_filter('http_request_timeout', 'custom_http_request_timeout');
 //$a->register_fields();
 //function is_adopt_page() {
 //if (is_page('Archive: Animals')) {
+
 if (class_exists('GHHS_Found_Pets')) {
 	// Installation and uninstallation hooks
 	register_activation_hook(__FILE__, array('GHHS_Found_Pets', 'activate'));

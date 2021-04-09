@@ -5,20 +5,16 @@ if (!defined('ABSPATH')) {
 }
 
 function ghhs_found_pets_stylesheet() {
+	wp_register_style('bootstrap_styles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css');
+	wp_enqueue_style('bootstrap_styles');
 
-	wp_register_style('single_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/single-animal.css');
-	wp_enqueue_style('single-animal');
+	wp_register_style('single_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/single-animal-style.css');
+	wp_enqueue_style('single-animal_style');
 
-	if (file_exists(plugins_url(plugin_basename(__DIR__)) . '/css/archive-animal.css')) {
-		printf('<h2>fuck achrives</h2>');
-	} else {
-		printf('<h2>not fuck achrives</h2>');
-	}
+	wp_register_style('archive_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/archive-animal-style.css');
+	wp_enqueue_style('archive-animal_style');
 
-	wp_register_style('archive_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/archive-animal.css');
-	wp_enqueue_style('archive-animal');
-
-	wp_register_style('ghhs_found_pets_styles', plugins_url(plugin_basename(__DIR__)) . '/css/style.css');
+	wp_register_style('ghhs_found_pets_styles', plugins_url(plugin_basename(__DIR__)) . '/css/ghhs_found_pets.css');
 	wp_enqueue_style('ghhs_found_pets_styles');
 
 	wp_register_style('featherlight_style', plugins_url(plugin_basename(__DIR__)) . '/css/featherlight.min.css');

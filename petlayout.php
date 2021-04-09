@@ -1,7 +1,7 @@
 <?php
 ?>
 <div class="swiper-slide swiper-slide-pets">
-   <div class="animal" style="margin:20px;">
+   <div class="adopt-animal" style="margin:20px;">
 
       <div class="elementor-element elementor-element-5048a1c elementor-cta--skin-classic elementor-animated-content elementor-bg-transform elementor-bg-transform-zoom-in elementor-widget elementor-widget-call-to-action" data-id="5048a1c" data-element_type="widget" data-widget_type="call-to-action.default">
          <div class="elementor-widget-container">
