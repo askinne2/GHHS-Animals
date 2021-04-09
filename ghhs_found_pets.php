@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
+define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
@@ -370,11 +370,6 @@ class GHHS_Found_Pets {
 
 } // end class definition
 
-function custom_http_request_timeout() {
-	return 15;
-}
-add_filter('http_request_timeout', 'custom_http_request_timeout');
-
 //$a = new GHHS_Animals();
 //$a->register_fields();
 //function is_adopt_page() {
@@ -387,52 +382,32 @@ if (class_exists('GHHS_Found_Pets')) {
 
 	// run GHHS_Found_pets shortcode
 	$pets = new GHHS_Found_Pets();
+/*
+add_filter('template_include', 'ghhs_archive_animal_template');
 
-	add_filter('template_include', 'ghhs_archive_animal_template');
-
-	function ghhs_archive_animal_template($template) {
-		global $post;
-		if (is_archive() && $post->post_type == 'animal') {
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
-
-				$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
-			}
-			return $archive_template;
-		} else if (is_archive()) {
-			echo "<h2>fuck</h2>";
-			return $single;
-
-		} else if ($post->post_type == 'animal') {
-// Checks for single template by post type
-
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
-
-				$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-				return $single;
-			}
-
-		}
-
-	}
-}
-
-/* Filter the single_template with our custom function
-add_filter('single_template', 'ghhs_animal_template');
-function ghhs_animal_template($single) {
-
+function ghhs_archive_animal_template($template) {
 global $post;
+if (is_archive() && $post->post_type == 'animal') {
+if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
 
+$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+}
+return $archive_template;
+} else if (is_archive()) {
+echo "<h2>fuck</h2>";
+return $single;
+
+} else if ($post->post_type == 'animal') {
 // Checks for single template by post type
-if ($post->post_type == 'animal') {
+
 if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
 
 $single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-}
-
-} else {
-echo "<h2>fuceeek</h2>";
-}
-
 return $single;
 }
+
+}
+
+}
  */
+}
