@@ -3,6 +3,7 @@
 	box-shadow: 0 50px 10px #54595F !important;
 	padding: 10px;
 	margin: 10px 5px 10px 5px;
+
 }
 
 
@@ -24,6 +25,7 @@
 
 .single-animal-name {
 	text-align: center;
+	font-size: 2em;
 	margin-top: 5px;
 	color: #029bdb !important;
 }
