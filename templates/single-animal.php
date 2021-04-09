@@ -16,12 +16,23 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-													<main <?php post_class('site-main');?> role="main">
-														<?php if (apply_filters('hello_elementor_page_title', true)): ?>
-															<header class="page-header">
-																<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-															</header>
-														<?php endif;?>
+
+
+
+							<main <?php post_class('site-main');?> role="main">
+								<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+										<!-- Post Naviation -->
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<span><?php echo get_post_parent(); ?></span>
+			</div>
+		</div>
+	</div>
+									<header class="page-header">
+										<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+									</header>
+								<?php endif;?>
 		<div class="page-content">
 			<?php the_content();?>
 
@@ -35,7 +46,7 @@ while (have_posts()): the_post();
 				<div class="row">
 					<div class="col-6">
 						<?php
-printf('<img src="%s" class="single-animal-cover-photo img-fluid" />', get_field('cover_photo'));
+printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s"><img src="%s" class="single-animal-cover-photo img-fluid" /></a>', get_the_id(), get_field('cover_photo'));
 ?>
 					</div>
 					<!-- start PET DETAILS div -->
@@ -92,14 +103,14 @@ $size = 'full';
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																								<div class="col">
-																									<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
-																								</div>
-																								<?php
+																		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+																			<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
+																		</div>
+																		<?php
 endforeach;
 else:
 ?>
-											<div class ="col">
+											<div class ="col-lg-4 col-md-12 mb-4 mb-lg-0">
 												<h3 class="text-center fw-bold">No other images to display</h3>
 											</div>
 											<?php
@@ -117,7 +128,7 @@ endif;
 
 				</div>
 				<div class="col"></div>
-					<div class="col"></div>
+				<div class="col"></div>
 			</div><!-- end more photos button row -->
 
 		</div> <!-- end PET PHOTOS -->
