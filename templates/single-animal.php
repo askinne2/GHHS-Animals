@@ -16,12 +16,12 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-																<main <?php post_class('site-main');?> role="main">
-																	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
-																		<header class="page-header">
-																			<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-																		</header>
-																	<?php endif;?>
+		<main <?php post_class('site-main');?> role="main">
+			<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+				<header class="page-header">
+					<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+				</header>
+			<?php endif;?>
 		<div class="page-content">
 			<?php the_content();?>
 
@@ -42,7 +42,7 @@ printf('<img src="%s" class="single-animal-cover-photo img-fluid" />', get_field
 					<div class="col-6 single-animal-details d-flex align-items-center">
 						<div class="container">
 							<div class="row">
-								<?php printf("<h3>%s %s %s</h3>", get_field('color'), get_field('sex'), get_field('type'));?>
+								<?php printf("<h3>%s %s %s</h3>", get_field('color'), get_field('sex'), get_field('animal_type'));?>
 							</div>
 							<div class="row">
 								<?php printf("<h3>Breed: %s </h3>", get_field('breed'));?>
@@ -55,10 +55,10 @@ printf('<img src="%s" class="single-animal-cover-photo img-fluid" />', get_field
 							<!-- action buttons -->
 
 							<div class="row my-3">
-								<?php printf('<a style="background-color: #0F9EDA;" class="text-white btn btn-primary btn-large" href="%s">Adopt %s</a>', get_field('adopt_link'), get_field('name'));?>
+								<?php printf('<a style="background-color: #0F9EDA;" class="text-white btn btn-large" href="%s">Adopt %s</a>', get_field('adopt_link'), get_field('name'));?>
 							</div>
 							<div class="row my-3">
-								<?php printf('<a style="background-color: #286B87;" class="text-white btn btn-primary btn-large" href="%s">Sponsor %s</a>', '/donate', get_field('name'));?>
+								<?php printf('<a style="background-color: #286B87;" class="text-white btn btn-large" href="%s">Sponsor %s</a>', '/donate', get_field('name'));?>
 							</div>
 						</div>
 					</div> <!-- end pet-details div -->
@@ -79,17 +79,17 @@ $size = 'full';
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																						<div class="col">
-																							<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
-																						</div>
-																						<?php
+								<div class="col">
+									<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
+								</div>
+								<?php
 endforeach;
 endif;
 ?>
 
 				</div>
 			</div> <!-- end PET PHOTOS -->
-<!-- PET bio -->
+			<!-- PET bio -->
 			<div class="container">
 				<div class="row">
 					<h3 class="text-center my-5"><?php echo get_field('name') ?>'s Biography</h3>

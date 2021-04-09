@@ -21,26 +21,28 @@ get_header();
 			<?php
 printf('<h1 class="elementor-heading-title elementor-size-default">Adopt an Animal</h1>');
 printf('<h3 class="elementor-heading-title elementor-size-default">View our animals up for adoption at this time</h3>');
+
 //the_archive_description('<p class="archive-description">', '</p>');
 ?>
 		</header>
 	<?php endif;?>
 	<div class="page-content container">
-		<div class="card-group">
+<div class="row row-cols-3 row-cols-md-3 g-3 my-5">
 		<?php
 while (have_posts()) {
 	the_post();
 	$post_link = get_permalink();
+	$animal_type = get_field('animal_type');
 	?>
-					<div class="col card archive animal archive-animal" style="width: 18rem;">
+					<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
 
 			<!--article class="post archive-animal"-->
 
 					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_field('cover_photo'), esc_url($post_link));?>
   <div class="card-body my-3">
     <?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
-    <p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('type'));?></p>
-    	<?php printf('<a href="%s" class="adopt-button text-white btn btn-primary">More Info</a>', esc_url($post_link));?>
+    <p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type'));?></p>
+    	<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
   </div>
 
 					<?php

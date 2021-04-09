@@ -296,8 +296,8 @@ if (!class_exists('GHHS_Animals_PostType')) {
 						),
 						array(
 							'key' => 'field_606fd856c4074',
-							'label' => 'Type',
-							'name' => 'type',
+							'label' => 'Animal Type',
+							'name' => 'animal_type',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 0,
