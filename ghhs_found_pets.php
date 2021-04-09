@@ -377,7 +377,8 @@ add_filter('http_request_timeout', 'custom_http_request_timeout');
 
 //$a = new GHHS_Animals();
 //$a->register_fields();
-
+//function is_adopt_page() {
+//if (is_page('Archive: Animals')) {
 if (class_exists('GHHS_Found_Pets')) {
 	// Installation and uninstallation hooks
 	register_activation_hook(__FILE__, array('GHHS_Found_Pets', 'activate'));
@@ -401,7 +402,7 @@ if (class_exists('GHHS_Found_Pets')) {
 			return $single;
 
 		} else if ($post->post_type == 'animal') {
-			/* Checks for single template by post type */
+// Checks for single template by post type
 
 			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
 
@@ -414,22 +415,23 @@ if (class_exists('GHHS_Found_Pets')) {
 	}
 }
 
-/* Filter the single_template with our custom function*/
+/* Filter the single_template with our custom function
 add_filter('single_template', 'ghhs_animal_template');
 function ghhs_animal_template($single) {
 
-	global $post;
+global $post;
 
-	/* Checks for single template by post type */
-	if ($post->post_type == 'animal') {
-		if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+// Checks for single template by post type
+if ($post->post_type == 'animal') {
+if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
 
-			$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-		}
-
-	} else {
-		echo "<h2>fuceeek</h2>";
-	}
-
-	return $single;
+$single = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
 }
+
+} else {
+echo "<h2>fuceeek</h2>";
+}
+
+return $single;
+}
+ */

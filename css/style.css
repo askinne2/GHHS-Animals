@@ -1,7 +1,24 @@
-.animal {
+.adopt-animal {
 	/*border     : 1px solid white;*/
 	box-shadow: 0 0 10px #54595F;
+	padding: 10px;
+	margin: 10px 5px 10px 5px;
 }
+
+.single-animal {
+	/*border     : 1px solid white;*/
+	box-shadow: 0 0 10px #54595F;
+	padding: 10px;
+	margin: 10px 5px 10px 5px;
+}
+
+.archive-animal {
+	/*border     : 1px solid white;*/
+	box-shadow: 0 0 10px #54595F;
+	padding: 10px;
+	margin: 10px 5px 10px 5px;
+}
+
 
 .featherlight .featherlight-close-icon {
 	top: 10px !important;

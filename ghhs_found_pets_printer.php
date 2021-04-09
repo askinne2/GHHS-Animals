@@ -50,7 +50,7 @@ class Ghhs_Found_Pets_Printer {
 
 <div class="elementor-element elementor-element-def3b98 elementor-column elementor-col-33 elementor-top-column" data-id="def3b98" data-element_type="column">
    <div class="elementor-column-wrap  elementor-element-populated">
-      <div class="elementor-widget-wrap animal">
+      <div class="elementor-widget-wrap adopt-animal">
          <div class="elementor-element elementor-element-5048a1c elementor-cta--skin-classic elementor-animated-content elementor-bg-transform elementor-bg-transform-zoom-in elementor-widget elementor-widget-call-to-action" data-id="5048a1c" data-element_type="widget" data-widget_type="call-to-action.default">
             <div class="elementor-widget-container">
                <div class="elementor-cta__bg-wrapper">

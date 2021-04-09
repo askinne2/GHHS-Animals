@@ -1,0 +1,12 @@
+/* 
+ *
+ archive-animal.css 
+
+*/
+
+.animal {
+	/*border     : 1px solid white;*/
+	box-shadow: 0 0 10px #54595F;
+	padding: 10px;
+	margin: 10px 5px 10px 5px;
+}

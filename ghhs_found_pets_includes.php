@@ -5,8 +5,18 @@ if (!defined('ABSPATH')) {
 }
 
 function ghhs_found_pets_stylesheet() {
-	wp_register_style('ghhs_found_pets_tab_styles', plugins_url(plugin_basename(__DIR__)) . '/css/tabs.css');
-	wp_enqueue_style('ghhs_found_pets__tab_styles');
+
+	wp_register_style('single_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/single-animal.css');
+	wp_enqueue_style('single-animal');
+
+	if (file_exists(plugins_url(plugin_basename(__DIR__)) . '/css/archive-animal.css')) {
+		printf('<h2>fuck achrives</h2>');
+	} else {
+		printf('<h2>not fuck achrives</h2>');
+	}
+
+	wp_register_style('archive_animal_style', plugins_url(plugin_basename(__DIR__)) . '/css/archive-animal.css');
+	wp_enqueue_style('archive-animal');
 
 	wp_register_style('ghhs_found_pets_styles', plugins_url(plugin_basename(__DIR__)) . '/css/style.css');
 	wp_enqueue_style('ghhs_found_pets_styles');
