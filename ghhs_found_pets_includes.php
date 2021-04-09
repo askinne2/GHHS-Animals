@@ -34,6 +34,9 @@ function ghhs_found_pets_scripts() {
 	//wp_register_script('latest_jquery', '//code.jquery.com/jquery-latest.js', true);
 	//wp_enqueue_script('latest_jquery');
 
+	wp_register_script('bootstrap_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js');
+	wp_enqueue_script('bootstrap_js');
+
 	wp_register_script('featherlight_script', plugins_url(plugin_basename(__DIR__)) . '/js/featherlight.min.js', array('jquery'), '', true);
 	wp_enqueue_script('featherlight_script');
 
