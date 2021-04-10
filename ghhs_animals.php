@@ -28,14 +28,14 @@ if (!class_exists("GHHS_Animals")) {
 			add_filter('acf/settings/dir', function () {
 				return sprintf("%s/includes/acf-pro/", plugin_dir_url(__FILE__));
 			});
-			require_once sprintf("%s/includes/acf-pro/acf.php", dirname(__FILE__));
+			require sprintf("%s/includes/acf-pro/acf.php", dirname(__FILE__));
 
 			// Settings managed via ACF
-			require_once sprintf("%s/includes/settings.php", dirname(__FILE__));
+			require sprintf("%s/includes/settings.php", dirname(__FILE__));
 			$settings = new GHHS_Animals_Settings(plugin_basename(__FILE__));
 
 			// CPT for example post type
-			require_once sprintf("%s/includes/animal-post-type.php", dirname(__FILE__));
+			require sprintf("%s/includes/animal-post-type.php", dirname(__FILE__));
 			$exampleposttype = new GHHS_Animals_PostType();
 
 			// (Optional) Hide the ACF admin menu item.

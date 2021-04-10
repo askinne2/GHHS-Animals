@@ -171,7 +171,7 @@ if (!class_exists('GHHS_Animals_Settings')) {
 							'key' => 'field_606937868cba0',
 							'label' => 'Age',
 							'name' => 'age',
-							'type' => 'number',
+							'type' => 'text',
 							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,

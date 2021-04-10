@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', false);
+define('REMOVE_TRANSIENT', true);
 
 require_once 'ghhs_found_pets_includes.php';
 require_once 'ghhs_found_pets_printer.php';
@@ -49,8 +49,11 @@ class GHHS_Found_Pets {
 				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
+
 		$this->ghhs_acf = new GHHS_Animals();
-		add_action('init', array(&$this, 'add_new_animal_post'));
+		add_filter('init', array($this, 'add_new_animal_post'));
+		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
+
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -161,7 +164,7 @@ class GHHS_Found_Pets {
 				}
 
 				$all_pets[] = $pets[$i]->animals;
-				if (PLUGIN_DEBUG) {
+				if (!PLUGIN_DEBUG) {
 					echo '<pre>';
 					print_r($all_pets);
 					echo '</pre>';}
@@ -272,6 +275,27 @@ class GHHS_Found_Pets {
 		return $pets_object;
 	}
 
+	public function create_animals($pets_object) {
+
+		$dogs = $pets_object['dogs'];
+		//print_r($dogs);
+		$postid = $this->add_new_animal_post($dogs[0]);
+		if ($postid) {
+			printf('<h2>successsful insert</h2>');
+		} else {
+			printf('<h2>NOOOOOO insert</h2>');
+		}
+
+		/*
+			foreach ($pets_object as $type) {
+				foreach ($type as $animal) {
+					print_r($animal);
+					printf('<h2>end</h2>');
+				}
+			}
+		*/
+
+	}
 	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
 		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
 		// get optional attributes and assign default values if not present
@@ -335,48 +359,81 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function add_new_animal_post($animal_name) {
+	public function add_new_animal_post($animal) {
 		//if (get_post_type($post_id) == 'animal') {
-		$animal_name = "Wally";
-		for ($i = 0; $i < 2; $i++) {
+		if (PLUGIN_DEBUG) {
+			printf('<h2>NEW ANIMAL</h2>');
+			print_r($animal);
+			printf('<p>Name %s</p>', $animal->Name);
+		}
+		$new_animal = array(
+			'post_title' => $animal->Name,
+			'post_type' => 'animal',
+			'post_content' => $animal->Description,
+			'post_status' => 'publish',
+			'_thumbnail_id' => $animal->CoverPhoto,
+			'comment_status' => 'closed', // if you prefer
+			'ping_status' => 'closed', // if you prefer
+		);
+		$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
 
-			$new_animal = array('post_title' => $animal_name . $i,
-				'post_type' => 'animal',
-				'post_content' => 'demo text' . $i,
-				'post_status' => 'publish',
-				'comment_status' => 'closed', // if you prefer
-				'ping_status' => 'closed', // if you prefer
-			);
-			$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
+		if (!$post_id) {
+			$new_post_id = wp_insert_post($new_animal);
 
-			if (!$post_id) {
-				$new_post_id = wp_insert_post($new_animal);
-
-				if ($new_post_id) {
-					// insert post meta
-					add_post_meta($new_post_id, 'animal_id', (1 + $i));
-					add_post_meta($new_post_id, 'animal_name', 'wally');
-					add_post_meta($new_post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
-				} else {
-					printf('<h2>insert post failed!</h2>');
-				}
-
+			if ($new_post_id) {
+				// insert post meta
+				add_post_meta($new_post_id, 'animal_id', $animal->ID);
+				add_post_meta($new_post_id, 'animal_name', $animal->Name);
+				add_post_meta($new_post_id, 'cover_photo', $animal->CoverPhoto);
+				add_post_meta($new_post_id, 'color', $animal->Color);
+				add_post_meta($new_post_id, 'breed', $animal->Breed);
+				add_post_meta($new_post_id, 'type', $animal->Type);
+				add_post_meta($new_post_id, 'status', $animal->Status);
+				add_post_meta($new_post_id, 'sex', $animal->Sex);
+				add_post_meta($new_post_id, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
+				add_post_meta($new_post_id, 'bio', $animal->Description);
 			} else {
-				printf('<h2>%s</h2>', $post_id->ID);
-
-				$update_animal = array(
-					'post_id' => $post_id->ID,
-					'post_title' => 'George' . $i,
-				);
-				//$update_post_id = wp_update_post($update_animal, true)
-				//add_post_meta($post_id, 'id', (1 + $i));
-				$blah = update_post_meta($post_id->ID, 'animal_name', 'george');
-				echo $blah ? 'true' : 'false';
-				//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+				printf('<h2>insert post failed!</h2>');
 			}
+			$post_id = $new_post_id;
+
+		} /*else {
+			$picture = 'http://ghhs/wp-content/uploads/2021/04/197D6FF8-C080-4085-9601-72BBAD4422AA-scaled.jpeg';
+
+			$update_animal = array(
+				'post_id' => $post_id->ID,
+				'post_title' => 'George',
+			);
+			//$update_post_id = wp_update_post($update_animal, true)
+			//add_post_meta($post_id, 'id', (1 + $i));
+			$blah = update_post_meta($post_id->ID, 'animal_name', $update_animal['post_title']);
+			/***** THIS BREAKS ELEMENTOR ****/
+		//$this->acf_set_featured_image($picture, $post_id->ID);
+		/***** THIS BREAKS ELEMENTOR ****/
+
+		//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+		//}
+		return $post_id;
+	} // END public function new_animal_post()
+
+	function acf_set_featured_image($value, $post_id) {
+
+		if (!$post_id) {
+			printf("<h2> uhohhhhh</h2");
+		} else {
+			print_r($post_id);
+		}
+		if ($value != '') {
+			//Add the value which is the image ID to the _thumbnail_id meta data for the current post
+			add_post_meta($post_id, '_thumbnail_id', $value);
+			add_post_meta($post_id, 'cover_photo', $value);
+			//printf('<h2>fuck in acf_set_featured_image</h2>');
 		}
 
-	} // END public function new_animal_post()
+		return $value;
+	}
+
+	// acf/update_value/name={$field_name} - filter for a specific field based on it's name
 
 	public function run($attributes = string) {
 
@@ -407,7 +464,9 @@ class GHHS_Found_Pets {
 		$animal_type = $attributes['animal_type'];
 		$print_mode = $attributes['mode'];
 
-		$this->display_pets($pets_object, $animal_type, $print_mode);
+		//$this->display_pets($pets_object, $animal_type, $print_mode);
+		//	$this->add_new_animal_post('Caribou', $post);
+		$this->create_animals($pets_object);
 
 		return ob_get_clean();
 

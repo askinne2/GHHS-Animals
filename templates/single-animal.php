@@ -19,22 +19,22 @@ while (have_posts()): the_post();
 
 
 
-				<main <?php post_class('site-main');?> role="main">
-					<?php if (apply_filters('hello_elementor_page_title', true)): ?>
-						<!-- Post Naviation -->
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<span><?php echo get_post_parent(); ?></span>
-								</div>
-							</div>
+		<main <?php post_class('site-main');?> role="main">
+			<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+				<!-- Post Naviation -->
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<span><?php echo get_post_parent(); ?></span>
 						</div>
-						<header class="page-header">
-							<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-						</header>
-					<?php endif;?>
+					</div>
+				</div>
+				<header class="page-header">
+					<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+				</header>
+			<?php endif;?>
 		<div class="page-content">
-			<?php the_content();?>
+			<!--?php the_content();?-->
 
 			<!-- FIX THIS ANDREW --->
 			<div class="post-tags">
@@ -59,7 +59,7 @@ printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s"><img
 								<?php printf("<h3>Breed: %s </h3>", get_field('breed'));?>
 							</div>
 							<div class="row">
-								<?php printf("<h3>Age: %d </h3>", get_field('age'));?>
+								<?php printf("<h3>Age: %s </h3>", get_field('age'));?>
 							</div>
 
 
@@ -103,10 +103,10 @@ $size = 'full';
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-															<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-																<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
-															</div>
-															<?php
+													<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+														<img class="img-fluid" src="<?php echo esc_url($photo['url']); ?>" alt="<?php echo esc_attr($photo['alt']); ?>" />
+													</div>
+													<?php
 endforeach;
 else:
 ?>
@@ -135,7 +135,7 @@ endif;
 		<!-- PET bio -->
 		<div class="container">
 			<div class="row">
-				<h3 class="text-center my-5"><?php echo get_field('animal_name') ?>'s Biography</h3>
+				<h3 class="my-5"><?php echo get_field('animal_name') ?>'s Biography</h3>
 			</div>
 			<div class="row">
 				<?php printf('<p>%s</p>', get_field('bio'));?>
