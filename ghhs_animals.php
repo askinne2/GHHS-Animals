@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 // Define path and URL to the ACF plugin.
 define('MY_ACF_PATH', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
 define('MY_ACF_URL', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
+//require_once '/path/to/wp-load.php';
 
 if (!class_exists("GHHS_Animals")) {
 	/**
@@ -49,11 +50,16 @@ if (!class_exists("GHHS_Animals")) {
 		public function new_animal_post() {
 			//if (get_post_type($post_id) == 'animal') {
 
-			$id = wp_insert_post(array(
+			$post_id = wp_insert_post(array(
 				'post_title' => 'Jesus',
 				'post_type' => 'animal',
 				'post_content' => 'demo text',
 			));
+			if ($post_id) {
+				printf('<h2>fuck</h2>');
+			} else {
+				printf('<h2>fuck</h2>');
+			}
 
 		} // END public function new_animal_post()
 

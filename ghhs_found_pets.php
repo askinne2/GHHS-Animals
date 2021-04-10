@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
+define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
@@ -50,7 +50,8 @@ class GHHS_Found_Pets {
 			),
 		);
 		$this->ghhs_acf = new GHHS_Animals();
-		add_shortcode('ghhs_found_pets', array($this, 'run'));
+		//add_action('init', array(&$this, 'add_new_animal_post'));
+		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
 
@@ -59,6 +60,7 @@ class GHHS_Found_Pets {
 	 */
 	public static function activate() {
 		// Do something
+
 	}
 
 	/**
@@ -332,6 +334,36 @@ class GHHS_Found_Pets {
 
 		return;
 	}
+
+	public function add_new_animal_post() {
+		//if (get_post_type($post_id) == 'animal') {
+
+		for ($i = 0; $i < 2; $i++) {
+
+			$new_animal = array('post_title' => 'Jesus' . $i,
+				'post_type' => 'animal',
+				'post_content' => 'demo text' . $i,
+				'post_status' => 'publish',
+				'comment_status' => 'closed', // if you prefer
+				'ping_status' => 'closed', // if you prefer
+			);
+			$page_exists = get_page_by_title($new_animal['post_title']);
+			var_dump($page_exists);
+			if (!$page_exists) {
+				$post_id = wp_insert_post($new_animal);
+
+				if ($post_id) {
+					// insert post meta
+					add_post_meta($post_id, 'id', (1 + $i));
+					add_post_meta($post_id, 'animal_name', 'wally');
+					add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+				}
+			} else {
+				printf("<h2>Post Exists: %s</h2>", 'Jesus' . $i);
+			}
+		}
+
+	} // END public function new_animal_post()
 
 	public function run($attributes = string) {
 
