@@ -50,7 +50,7 @@ class GHHS_Found_Pets {
 			),
 		);
 		$this->ghhs_acf = new GHHS_Animals();
-		//add_action('init', array(&$this, 'add_new_animal_post'));
+		add_action('init', array(&$this, 'add_new_animal_post'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -335,31 +335,44 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function add_new_animal_post() {
+	public function add_new_animal_post($animal_name) {
 		//if (get_post_type($post_id) == 'animal') {
-
+		$animal_name = "Wally";
 		for ($i = 0; $i < 2; $i++) {
 
-			$new_animal = array('post_title' => 'Jesus' . $i,
+			$new_animal = array('post_title' => $animal_name . $i,
 				'post_type' => 'animal',
 				'post_content' => 'demo text' . $i,
 				'post_status' => 'publish',
 				'comment_status' => 'closed', // if you prefer
 				'ping_status' => 'closed', // if you prefer
 			);
-			$page_exists = get_page_by_title($new_animal['post_title']);
-			var_dump($page_exists);
-			if (!$page_exists) {
-				$post_id = wp_insert_post($new_animal);
+			$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
 
-				if ($post_id) {
+			if (!$post_id) {
+				$new_post_id = wp_insert_post($new_animal);
+
+				if ($new_post_id) {
 					// insert post meta
-					add_post_meta($post_id, 'id', (1 + $i));
-					add_post_meta($post_id, 'animal_name', 'wally');
-					add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+					add_post_meta($new_post_id, 'animal_id', (1 + $i));
+					add_post_meta($new_post_id, 'animal_name', 'wally');
+					add_post_meta($new_post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+				} else {
+					printf('<h2>insert post failed!</h2>');
 				}
+
 			} else {
-				printf("<h2>Post Exists: %s</h2>", 'Jesus' . $i);
+				printf('<h2>%s</h2>', $post_id->ID);
+
+				$update_animal = array(
+					'post_id' => $post_id->ID,
+					'post_title' => 'George' . $i,
+				);
+				//$update_post_id = wp_update_post($update_animal, true)
+				//add_post_meta($post_id, 'id', (1 + $i));
+				$blah = update_post_meta($post_id->ID, 'animal_name', 'george');
+				echo $blah ? 'true' : 'false';
+				//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
 			}
 		}
 

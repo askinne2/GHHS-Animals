@@ -50,8 +50,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 					'fields' => array(
 						array(
 							'key' => 'field_606937818cb9f',
-							'label' => 'ID',
-							'name' => 'id',
+							'label' => 'Animal ID',
+							'name' => 'animal_id',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 1,
@@ -69,8 +69,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 						),
 						array(
 							'key' => 'field_606936d53d6e9',
-							'label' => 'Name',
-							'name' => 'name',
+							'label' => 'Animal Name',
+							'name' => 'animal_name',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 1,

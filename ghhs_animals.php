@@ -47,21 +47,5 @@ if (!class_exists("GHHS_Animals")) {
 
 		} // END public function __construct()
 
-		public function new_animal_post() {
-			//if (get_post_type($post_id) == 'animal') {
-
-			$post_id = wp_insert_post(array(
-				'post_title' => 'Jesus',
-				'post_type' => 'animal',
-				'post_content' => 'demo text',
-			));
-			if ($post_id) {
-				printf('<h2>fuck</h2>');
-			} else {
-				printf('<h2>fuck</h2>');
-			}
-
-		} // END public function new_animal_post()
-
 	} // END class GHHS_Animals
 } // END if(!class_exists("GHHS_Animals"))

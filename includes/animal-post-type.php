@@ -78,8 +78,8 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'fields' => array(
 						array(
 							'key' => 'field_606937818cb9f',
-							'label' => 'ID',
-							'name' => 'id',
+							'label' => 'Animal ID',
+							'name' => 'animal_id',
 							'type' => 'text',
 							'instructions' => '',
 							'required' => 1,
