@@ -332,6 +332,25 @@ if (!class_exists('GHHS_Animals_PostType')) {
 							'append' => '',
 							'maxlength' => '',
 						),
+						array(
+							'key' => 'field_6078559547367',
+							'label' => 'Last Update Time',
+							'name' => 'last_update_time',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
 					),
 					'location' => array(
 						array(

@@ -27,23 +27,29 @@ printf('<h3 class="elementor-heading-title elementor-size-default">View our anim
 		</header>
 	<?php endif;?>
 	<div class="page-content container">
-<div class="row row-cols-3 row-cols-md-3 g-3 my-5">
-		<?php
+		<div class="row row-cols-3 row-cols-md-3 g-3 my-5">
+			<?php
 while (have_posts()) {
 	the_post();
 	$post_link = get_permalink();
 	$animal_type = get_field('animal_type');
 	?>
-					<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
+				<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
 
-			<!--article class="post archive-animal"-->
+					<!--article class="post archive-animal"-->
 
 					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_field('cover_photo'), esc_url($post_link));?>
-  <div class="card-body my-3">
-    <?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
-    <p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type'));?></p>
-    	<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
-  </div>
+					<div class="card-body my-3">
+						<?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
+						<p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type'));?></p>
+
+						<?php printf("<p>Breed: %s </p>", get_field('breed'));?>
+
+
+						<?php printf("<p>Age: %s </p>", get_field('age'));?>
+
+						<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
+					</div>
 
 					<?php
 /*$groups = acf_get_field_groups($post_id);
@@ -57,25 +63,25 @@ while (have_posts()) {
 	}
 	 */
 	?>
-			<!--/article-->
-		</div> <!-- end card div -->
-		<?php } // while posts loop ?>
-	</div> <!-- end card group -->
-	</div> <!-- end container -->
+	<!--/article-->
+</div> <!-- end card div -->
+<?php } // while posts loop ?>
+</div> <!-- end card group -->
+</div> <!-- end container -->
 
-	<?php wp_link_pages();?>
+<?php wp_link_pages();?>
 
-	<?php
+<?php
 global $wp_query;
 if ($wp_query->max_num_pages > 1):
 ?>
-		<nav class="pagination" role="navigation">
-			<?php /* Translators: HTML arrow */?>
-			<div class="nav-previous"><?php next_posts_link(sprintf(__('%s older', 'hello-elementor'), '<span class="meta-nav">&larr;</span>'));?></div>
-			<?php /* Translators: HTML arrow */?>
-			<div class="nav-next"><?php previous_posts_link(sprintf(__('newer %s', 'hello-elementor'), '<span class="meta-nav">&rarr;</span>'));?></div>
-		</nav>
-	<?php endif;?>
+	<nav class="pagination" role="navigation">
+		<?php /* Translators: HTML arrow */?>
+		<div class="nav-previous"><?php next_posts_link(sprintf(__('%s older', 'hello-elementor'), '<span class="meta-nav">&larr;</span>'));?></div>
+		<?php /* Translators: HTML arrow */?>
+		<div class="nav-next"><?php previous_posts_link(sprintf(__('newer %s', 'hello-elementor'), '<span class="meta-nav">&rarr;</span>'));?></div>
+	</nav>
+<?php endif;?>
 </main>
 
 <?php

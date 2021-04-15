@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', true);
+define('REMOVE_TRANSIENT', false);
 
 require_once 'ghhs_found_pets_includes.php';
 require_once 'ghhs_found_pets_printer.php';
@@ -51,9 +51,9 @@ class GHHS_Found_Pets {
 		);
 
 		$this->ghhs_acf = new GHHS_Animals();
-		add_filter('init', array($this, 'add_new_animal_post'));
+		//	add_filter('init', array($this, 'do_animal_post'));
 		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
-
+		//add_action('init', array(&$this, 'run'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -88,7 +88,7 @@ class GHHS_Found_Pets {
 		$raw_response = wp_remote_get($request_uri, $args);
 		if (is_wp_error($raw_response) || '200' != wp_remote_retrieve_response_code($raw_response)) {
 			if (PLUGIN_DEBUG) {
-				print('fuck me wp_error');
+				print('wp_error:');
 				print_r($raw_response);
 			}
 
@@ -97,7 +97,7 @@ class GHHS_Found_Pets {
 		$pets = json_decode(wp_remote_retrieve_body($raw_response));
 		if (empty($pets)) {
 			if (PLUGIN_DEBUG) {
-				print('fuck me no json to decode');
+				print('No JSON to decode');
 			}
 
 			return 0;
@@ -275,16 +275,19 @@ class GHHS_Found_Pets {
 		return $pets_object;
 	}
 
-	public function create_animals($pets_object) {
+	public function create_and_update_animals($pets_object) {
 
 		$dogs = $pets_object['dogs'];
-		//print_r($dogs);
-		$postid = $this->add_new_animal_post($dogs[0]);
+
+		//foreach ($dogs as $dog) {
+
+		$postid = $this->do_animal_post($dogs[0]);
 		if ($postid) {
-			printf('<h2>successsful insert</h2>');
+			printf('<h2>successsful do_animal_post: %s</h2>', $postid->post_title);
 		} else {
 			printf('<h2>NOOOOOO insert</h2>');
 		}
+		//} //end foreach dogs loop
 
 		/*
 			foreach ($pets_object as $type) {
@@ -359,13 +362,9 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function add_new_animal_post($animal) {
+	public function do_animal_post($animal) {
 		//if (get_post_type($post_id) == 'animal') {
-		if (PLUGIN_DEBUG) {
-			printf('<h2>NEW ANIMAL</h2>');
-			print_r($animal);
-			printf('<p>Name %s</p>', $animal->Name);
-		}
+
 		$new_animal = array(
 			'post_title' => $animal->Name,
 			'post_type' => 'animal',
@@ -375,9 +374,18 @@ class GHHS_Found_Pets {
 			'comment_status' => 'closed', // if you prefer
 			'ping_status' => 'closed', // if you prefer
 		);
+
 		$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
 
 		if (!$post_id) {
+
+			if (PLUGIN_DEBUG) {
+				printf('<h2>NEW ANIMAL</h2>');
+				print_r($animal);
+				printf('<h5>Name %s</h5>', $animal->Name);
+			}
+
+			// CREATE A NEW ANIMAL POST AND UPDATE THE META FIELDS
 			$new_post_id = wp_insert_post($new_animal);
 
 			if ($new_post_id) {
@@ -392,27 +400,71 @@ class GHHS_Found_Pets {
 				add_post_meta($new_post_id, 'sex', $animal->Sex);
 				add_post_meta($new_post_id, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
 				add_post_meta($new_post_id, 'bio', $animal->Description);
+				add_post_meta($new_post_id, 'last_update_time', $animal->LastUpdatedUnixTime);
+
+				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
+				add_post_meta($new_post_id, 'adopt_link', $adopt_link);
 			} else {
-				printf('<h2>insert post failed!</h2>');
+
+				printf('<h2>insert post failed for %s</h2>', $animal->Name);
 			}
+
 			$post_id = $new_post_id;
 
-		} /*else {
-			$picture = 'http://ghhs/wp-content/uploads/2021/04/197D6FF8-C080-4085-9601-72BBAD4422AA-scaled.jpeg';
+		} else {
+			//$picture = 'http://ghhs/wp-content/uploads/2021/04/197D6FF8-C080-4085-9601-72BBAD4422AA-scaled.jpeg';
+			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time');
 
-			$update_animal = array(
-				'post_id' => $post_id->ID,
-				'post_title' => 'George',
-			);
-			//$update_post_id = wp_update_post($update_animal, true)
-			//add_post_meta($post_id, 'id', (1 + $i));
-			$blah = update_post_meta($post_id->ID, 'animal_name', $update_animal['post_title']);
-			/***** THIS BREAKS ELEMENTOR ****/
-		//$this->acf_set_featured_image($picture, $post_id->ID);
-		/***** THIS BREAKS ELEMENTOR ****/
+			if (PLUGIN_DEBUG) {
+				printf('<h2>Time</h2>');
+				print_r($postUpdateTime);
+			}
 
-		//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
-		//}
+			// ONLY UPDATE IF THE TWO TIMESTAMPS DO NOT MATCH
+			if ($animal->LastUpdatedUnixTime != $postUpdateTime[0]) {
+				$update_animal = array(
+					'post_id' => $post_id->ID,
+					'post_title' => $animal->Name,
+					'post_type' => 'animal',
+					'post_content' => $animal->Description,
+					'post_status' => 'publish',
+					'_thumbnail_id' => $animal->CoverPhoto,
+					'comment_status' => 'closed', // if you prefer
+					'ping_status' => 'closed', // if you prefer
+				);
+
+				if (PLUGIN_DEBUG) {
+					printf('<h2>UPDATE ANIMAL</h2>');
+					print_r($animal);
+					printf('<h5>Name %s</h5>', $animal->Name);
+				}
+				//$update_post_id = wp_update_post($update_animal, true)
+				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
+				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
+				update_post_meta($post_id->ID, 'cover_photo', $animal->CoverPhoto);
+				update_post_meta($post_id->ID, 'color', $animal->Color);
+				update_post_meta($post_id->ID, 'breed', $animal->Breed);
+				update_post_meta($post_id->ID, 'type', $animal->Type);
+				update_post_meta($post_id->ID, 'status', $animal->Status);
+				update_post_meta($post_id->ID, 'sex', $animal->Sex);
+				update_post_meta($post_id->ID, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
+				update_post_meta($post_id->ID, 'bio', $animal->Description);
+				update_post_meta($post_id->ID, 'last_update_time', $animal->LastUpdatedUnixTime);
+
+				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
+				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
+
+				/***** THIS BREAKS ELEMENTOR ****/
+				//$this->acf_set_featured_image($picture, $post_id->ID);
+				/***** THIS BREAKS ELEMENTOR ****/
+
+				//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
+			} // end timestamp comparison
+			else {
+				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
+				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);}
+
+		}
 		return $post_id;
 	} // END public function new_animal_post()
 
@@ -427,7 +479,7 @@ class GHHS_Found_Pets {
 			//Add the value which is the image ID to the _thumbnail_id meta data for the current post
 			add_post_meta($post_id, '_thumbnail_id', $value);
 			add_post_meta($post_id, 'cover_photo', $value);
-			//printf('<h2>fuck in acf_set_featured_image</h2>');
+			//printf('<h2>error in acf_set_featured_image</h2>');
 		}
 
 		return $value;
@@ -466,7 +518,7 @@ class GHHS_Found_Pets {
 
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
 		//	$this->add_new_animal_post('Caribou', $post);
-		$this->create_animals($pets_object);
+		$this->create_and_update_animals($pets_object);
 
 		return ob_get_clean();
 
@@ -485,6 +537,11 @@ if (class_exists('GHHS_Found_Pets')) {
 	register_deactivation_hook(__FILE__, array('GHHS_Found_Pets', 'deactivate'));
 
 	// run GHHS_Found_pets shortcode
+
+	function custom_http_request_timeout() {
+		return 15;
+	}
+	add_filter('http_request_timeout', 'custom_http_request_timeout');
 	$pets = new GHHS_Found_Pets();
 
 	function ghhs_archive_animal_template($template) {
