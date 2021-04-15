@@ -41,6 +41,12 @@ class GHHS_Found_Pets {
 	var $request_uri;
 	var $args;
 	var $ghhs_acf;
+	var $status_array = array(
+		'status1' => 'Available For Adoption',
+		'status2' => 'Available for Adoption - Awaiting Spay/Neuter',
+		'status3' => 'Available for Adoption - In Foster',
+		'status4' => 'Awaiting Spay/Neuter - In Foster',
+	);
 
 	public function __construct() {
 
@@ -54,6 +60,8 @@ class GHHS_Found_Pets {
 		//	add_filter('init', array($this, 'do_animal_post'));
 		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
 		//add_action('init', array(&$this, 'run'));
+		add_action('trashed_post', array(&$this, 'animal_skip_trash'));
+
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -279,26 +287,17 @@ class GHHS_Found_Pets {
 
 		$dogs = $pets_object['dogs'];
 
-		//foreach ($dogs as $dog) {
+		foreach ($dogs as $dog) {
 
-		$postid = $this->do_animal_post($dogs[0]);
-		if ($postid) {
-			printf('<h2>successsful do_animal_post: %s</h2>', $postid->post_title);
-		} else {
-			printf('<h2>NOOOOOO insert</h2>');
-		}
-		//} //end foreach dogs loop
-
-		/*
-			foreach ($pets_object as $type) {
-				foreach ($type as $animal) {
-					print_r($animal);
-					printf('<h2>end</h2>');
-				}
+			$postid = $this->do_animal_post($dog);
+			if ($postid) {
+				printf('<h2>successsful do_animal_post: %s</h2>', $postid->post_title);
+			} else {
+				printf('<h2>NOOOOOO insert</h2>');
 			}
-		*/
-
+		} //end foreach dogs loop
 	}
+
 	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
 		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
 		// get optional attributes and assign default values if not present
@@ -362,6 +361,38 @@ class GHHS_Found_Pets {
 		return;
 	}
 
+	public function animal_skip_trash($post_id) {
+		if (get_post_type($post_id) == 'animal') {
+			// <-- members type posts
+			// Force delete
+			wp_delete_post($post_id, true);
+		}
+	}
+
+	public function delete_animals() {
+
+		$delete_post = array(
+			'post_type' => 'animal',
+			'post_status' => 'publish',
+		);
+		$posts = new WP_Query($delete_post);
+
+		if ($posts->have_posts()) {
+			//printf('<h2 class="red_pet">fuck deleting: %s</h2>', $posts);
+			print_r($posts);
+			while ($posts->have_posts()) {
+				print_r($posts->the_post());
+				printf('<h2>end post</h2>');
+				//	$posts->the_post();
+				//	wp_delete_post(get_the_ID());
+			}
+		} else {
+
+			print_r($posts);
+		}
+
+	}
+
 	public function do_animal_post($animal) {
 		//if (get_post_type($post_id) == 'animal') {
 
@@ -404,6 +435,13 @@ class GHHS_Found_Pets {
 
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
 				add_post_meta($new_post_id, 'adopt_link', $adopt_link);
+
+				printf('<h2 class="red_pet">Photos for %s</h2>', $animal->Name);
+				print_r($animal->Photos);
+				foreach ($animal->Photos as $photo) {
+					printf('<h4>Add Photo: %s</h4>', $photo);
+					add_post_meta($new_post_id, 'photos', $photo);
+				}
 			} else {
 
 				printf('<h2>insert post failed for %s</h2>', $animal->Name);
@@ -411,17 +449,28 @@ class GHHS_Found_Pets {
 
 			$post_id = $new_post_id;
 
+			// ANIMAL ALREADY EXISTS!
+			// EITHER UPDATE OR DELETE ACCORDING TO STATUS
 		} else {
-			//$picture = 'http://ghhs/wp-content/uploads/2021/04/197D6FF8-C080-4085-9601-72BBAD4422AA-scaled.jpeg';
-			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time');
 
-			if (PLUGIN_DEBUG) {
+			$animal_status = get_post_meta($post_id->ID, 'status', true);
+
+			if (!in_array($animal_status, $this->status_array)) {
+				printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
+				$this->animal_skip_trash($post_id->ID);
+			} else {
+				printf('<h5>Status Match: %s</h5>', $animal->Name);
+			}
+
+			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
+
+			if (!PLUGIN_DEBUG) {
 				printf('<h2>Time</h2>');
 				print_r($postUpdateTime);
 			}
 
 			// ONLY UPDATE IF THE TWO TIMESTAMPS DO NOT MATCH
-			if ($animal->LastUpdatedUnixTime != $postUpdateTime[0]) {
+			if ($animal->LastUpdatedUnixTime != $postUpdateTime) {
 				$update_animal = array(
 					'post_id' => $post_id->ID,
 					'post_title' => $animal->Name,

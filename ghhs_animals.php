@@ -45,6 +45,14 @@ if (!class_exists("GHHS_Animals")) {
 			}
 			//add_action('init', array(&$this, 'new_animal_post'));
 
+			function animal_skip_trash($post_id) {
+				if (get_post_type($post_id) == 'animal') {
+					// <-- members type posts
+					// Force delete
+					wp_delete_post($post_id, true);
+				}
+			}
+			add_action('trashed_post', 'animal_skip_trash');
 		} // END public function __construct()
 
 	} // END class GHHS_Animals
