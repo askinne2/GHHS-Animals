@@ -26,7 +26,7 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 ?>
 		</header>
 	<?php endif;?>
-	<div class="page-content container-lg">
+	<div class="page-content container">
 		<div class="row my-5">
 			<div class="col">
 				<p>Please view our adoptable pets below.</p>
@@ -39,7 +39,7 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 				<h4 class="elementor-heading-title elementor-size-default fw-bold my-3">Our adoption fees start at $100 but vary depending on age and species of pet.</h4>
 			</div>
 		</div>
-		<div class="row row-cols-3 row-cols-md-3 g-3 my-5">
+		<div class="row row-cols-4 row-cols-md-4 g-3 my-5">
 			<?php
 while (have_posts()) {
 	the_post();
