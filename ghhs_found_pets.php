@@ -29,6 +29,8 @@ if (!defined('ABSPATH')) {
 define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 
+define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
+
 require_once 'ghhs_found_pets_includes.php';
 require_once 'ghhs_found_pets_printer.php';
 require_once 'ghhs_found_pets_slideshow.php';
@@ -62,7 +64,7 @@ class GHHS_Found_Pets {
 		//	add_filter('init', array($this, 'do_animal_post'));
 		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
 
-		add_action('trashed_post', array($this, 'animal_skip_trash'));
+		add_action('trashed_post', array($this, 'animal_delete'));
 		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
@@ -83,6 +85,13 @@ class GHHS_Found_Pets {
 				wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
 			}
 		*/
+
+		$upload = wp_upload_dir();
+		$upload_dir = $upload['basedir'];
+		$upload_dir = $upload_dir . '/ghhs-animals';
+		if (!is_dir($upload_dir)) {
+			mkdir($upload_dir, 0755);
+		}
 	}
 
 	/**
@@ -313,6 +322,7 @@ class GHHS_Found_Pets {
 				}
 			} //end foreach dogs loop
 		*/
+		//$this->animal_delete($postid);
 
 	}
 
@@ -379,10 +389,27 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function animal_skip_trash($post_id) {
+	public function animal_delete($post_id) {
 		if (get_post_type($post_id) == 'animal') {
 			// <-- members type posts
 			// Force delete
+
+			printf('<h2>post id:</h2>');
+			print_r($post_id);
+			$post_attachments = get_attached_media('', $post_id);
+
+			printf('<h3>post attachments:</h3>');
+			print_r($post_attachments);
+
+			if ($post_attachments) {
+
+				foreach ($post_attachments as $attachment) {
+
+					wp_delete_attachment($attachment->ID, true);
+
+				}
+
+			}
 			wp_delete_post($post_id, true);
 		}
 	}
@@ -470,7 +497,7 @@ class GHHS_Found_Pets {
 			wp_update_attachment_metadata($attach_id, $attach_data);
 
 			// And finally assign featured image to post
-			$blah = set_post_thumbnail($post_id, $attach_id);
+			set_post_thumbnail($post_id, $attach_id);
 			return $attach_id;
 		}
 	}
@@ -486,6 +513,7 @@ class GHHS_Found_Pets {
 			//'_thumbnail_id' => $animal->CoverPhoto,
 			'comment_status' => 'closed', // if you prefer
 			'ping_status' => 'closed', // if you prefer
+			'tags_input' => array('adopt-animals' => $animal->Type),
 		);
 
 		$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
@@ -543,7 +571,7 @@ class GHHS_Found_Pets {
 
 			if (!in_array($animal_status, $this->status_array)) {
 				printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
-				$this->animal_skip_trash($post_id->ID);
+				$this->animal_delete($post_id->ID);
 			} else {
 				printf('<h5>Status Match: %s</h5>', $animal->Name);
 			}
