@@ -360,6 +360,25 @@ if (!class_exists('GHHS_Animals_PostType')) {
 							'append' => '',
 							'maxlength' => '',
 						),
+						array(
+							'key' => 'field_6078ecbe823c4',
+							'label' => 'Animal Size',
+							'name' => 'animal_size',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
 					),
 					'location' => array(
 						array(

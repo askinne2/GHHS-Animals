@@ -16,13 +16,13 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-						<main role="main">
-							<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+								<main role="main">
+									<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-								<header class="page-header">
-									<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-								</header>
-							<?php endif;?>
+										<header class="page-header">
+											<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+										</header>
+									<?php endif;?>
 		<div class="page-content container">
 
 
@@ -50,6 +50,9 @@ printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s"><img
 							</div>
 							<div class="row">
 								<?php printf("<h3>Age: %s </h3>", get_field('age'));?>
+							</div>
+							<div class="row">
+								<?php printf("<h3>Size: %s </h3>", get_field('animal_size'));?>
 							</div>
 							<div class="row">
 								<p>To begin your adoption process, please click the adopt button below. You will be redirected to Shelterluv to complete your adoption.</p>
@@ -101,10 +104,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																	<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																		<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																	</div>
-																	<?php
+																			<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																				<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																			</div>
+																			<?php
 endforeach;
 else:
 ?>

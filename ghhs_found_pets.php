@@ -48,6 +48,8 @@ class GHHS_Found_Pets {
 		'status4' => 'Awaiting Spay/Neuter - In Foster',
 	);
 
+	const CRON_HOOK = 'update_whatToMine_api';
+
 	public function __construct() {
 
 		$this->args = array(
@@ -59,9 +61,10 @@ class GHHS_Found_Pets {
 		$this->ghhs_acf = new GHHS_Animals();
 		//	add_filter('init', array($this, 'do_animal_post'));
 		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
-		//add_action('init', array(&$this, 'run'));
-		add_action('trashed_post', array(&$this, 'animal_skip_trash'));
 
+		add_action('trashed_post', array($this, 'animal_skip_trash'));
+		//add_action('init', array($this, 'run'));
+		add_action(self::CRON_HOOK, array($this, 'run'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -71,6 +74,14 @@ class GHHS_Found_Pets {
 	 */
 	public static function activate() {
 		// Do something
+		//Use wp_next_scheduled to check if the event is already scheduled
+		$timestamp = wp_next_scheduled(self::CRON_HOOK);
+
+		//If $timestamp === false schedule daily backups since it hasn't been done previously
+		if ($timestamp === false) {
+			//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
+			wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
+		}
 
 	}
 
@@ -79,7 +90,11 @@ class GHHS_Found_Pets {
 	 */
 	public static function deactivate() {
 		// Do something
+		// Get the timestamp for the next event.
+		$timestamp = wp_next_scheduled(self::CRON_HOOK);
+		wp_unschedule_event($timestamp, self::CRON_HOOK);
 	}
+
 	public function set_request_uri($request_uri = string) {
 		$this->request_uri = $request_uri;
 	}
@@ -426,11 +441,12 @@ class GHHS_Found_Pets {
 				add_post_meta($new_post_id, 'cover_photo', $animal->CoverPhoto);
 				add_post_meta($new_post_id, 'color', $animal->Color);
 				add_post_meta($new_post_id, 'breed', $animal->Breed);
-				add_post_meta($new_post_id, 'type', $animal->Type);
+				add_post_meta($new_post_id, 'animal_type', $animal->Type);
 				add_post_meta($new_post_id, 'status', $animal->Status);
 				add_post_meta($new_post_id, 'sex', $animal->Sex);
 				add_post_meta($new_post_id, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
 				add_post_meta($new_post_id, 'bio', $animal->Description);
+				add_post_meta($new_post_id, 'animal_size', $animal->Size);
 				add_post_meta($new_post_id, 'last_update_time', $animal->LastUpdatedUnixTime);
 
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
@@ -493,11 +509,12 @@ class GHHS_Found_Pets {
 				update_post_meta($post_id->ID, 'cover_photo', $animal->CoverPhoto);
 				update_post_meta($post_id->ID, 'color', $animal->Color);
 				update_post_meta($post_id->ID, 'breed', $animal->Breed);
-				update_post_meta($post_id->ID, 'type', $animal->Type);
+				update_post_meta($post_id->ID, 'animal_type', $animal->Type);
 				update_post_meta($post_id->ID, 'status', $animal->Status);
 				update_post_meta($post_id->ID, 'sex', $animal->Sex);
 				update_post_meta($post_id->ID, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
 				update_post_meta($post_id->ID, 'bio', $animal->Description);
+				update_post_meta($post_id->ID, 'animal_size', $animal->Size);
 				update_post_meta($post_id->ID, 'last_update_time', $animal->LastUpdatedUnixTime);
 
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
@@ -551,22 +568,23 @@ class GHHS_Found_Pets {
 
 		$pets_object = $this->request_and_sort($number_requests);
 
-		extract(shortcode_atts(array(
-			'animal_type' => '',
-			'mode' => '',
-		), $attributes));
+/*
+extract(shortcode_atts(array(
+'animal_type' => '',
+'mode' => '',
+), $attributes));
 
-		if (PLUGIN_DEBUG) {
-			echo "<h2>attributes - ";
-			print_r($attributes);
-			echo "</h2>";
+if (PLUGIN_DEBUG) {
+echo "<h2>attributes - ";
+print_r($attributes);
+echo "</h2>";
 
-		}
-		$animal_type = $attributes['animal_type'];
-		$print_mode = $attributes['mode'];
+}
+$animal_type = $attributes['animal_type'];
+$print_mode = $attributes['mode'];
+ */
 
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
-		//	$this->add_new_animal_post('Caribou', $post);
 		$this->create_and_update_animals($pets_object);
 
 		return ob_get_clean();
@@ -575,10 +593,32 @@ class GHHS_Found_Pets {
 
 } // end class definition
 
-//$a = new GHHS_Animals();
-//$a->register_fields();
-//function is_adopt_page() {
-//if (is_page('Archive: Animals')) {
+function ghhs_archive_animal_template($template) {
+
+	global $post;
+
+	if (is_archive() && $post->post_type == 'animal') {
+		if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
+
+			$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+		}
+		return $archive_template;
+
+	} else if (is_single() && $post->post_type == 'animal') {
+// Checks for single template by post type
+
+		if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+
+			$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
+			return $template;
+		}
+
+	} else {
+		return $template;
+	}
+
+}
+add_filter('template_include', 'ghhs_archive_animal_template', 12);
 
 if (class_exists('GHHS_Found_Pets')) {
 	// Installation and uninstallation hooks
@@ -592,32 +632,5 @@ if (class_exists('GHHS_Found_Pets')) {
 	}
 	add_filter('http_request_timeout', 'custom_http_request_timeout');
 	$pets = new GHHS_Found_Pets();
-
-	function ghhs_archive_animal_template($template) {
-
-		global $post;
-
-		if (is_archive() && $post->post_type == 'animal') {
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
-
-				$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
-			}
-			return $archive_template;
-
-		} else if (is_single() && $post->post_type == 'animal') {
-// Checks for single template by post type
-
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
-
-				$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-				return $template;
-			}
-
-		} else {
-			return $template;
-		}
-
-	}
-	add_filter('template_include', 'ghhs_archive_animal_template', 12);
 
 }

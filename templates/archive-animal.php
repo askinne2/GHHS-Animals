@@ -60,6 +60,8 @@ while (have_posts()) {
 
 						<?php printf("<p>Age: %s </p>", get_field('age'));?>
 
+						<?php printf("<p>Size: %s </p>", get_field('animal_size'));?>
+
 						<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
 					</div>
 
