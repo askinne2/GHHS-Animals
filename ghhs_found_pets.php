@@ -310,7 +310,10 @@ class GHHS_Found_Pets {
 	public function create_and_update_animals($pets_object) {
 
 		$dogs = $pets_object['dogs'];
+		$cats = $pets_object['cats'];
+
 		$postid = $this->do_animal_post($dogs[0]);
+		$postid = $this->do_animal_post($cats[0]);
 		/*
 			foreach ($dogs as $dog) {
 
@@ -513,7 +516,6 @@ class GHHS_Found_Pets {
 			//'_thumbnail_id' => $animal->CoverPhoto,
 			'comment_status' => 'closed', // if you prefer
 			'ping_status' => 'closed', // if you prefer
-			'tags_input' => array('adopt-animals' => $animal->Type),
 		);
 
 		$post_id = get_page_by_title($new_animal['post_title'], OBJECT, 'animal');
@@ -528,6 +530,17 @@ class GHHS_Found_Pets {
 
 			// CREATE A NEW ANIMAL POST AND UPDATE THE META FIELDS
 			$new_post_id = wp_insert_post($new_animal);
+			$blah = wp_set_object_terms(
+				$new_post_id,
+				array('0' => 'All Animals', '1' => $animal->Type),
+				'adopt-animals');
+
+			if ($blah) {
+				printf('<h2 class="red_pet">ERROR</h2>');
+				print_r($blah);
+			} else {
+				print_r($blah);
+			}
 			$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
 			print_r($post_thumbnail);
 

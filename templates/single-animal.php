@@ -16,19 +16,31 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-																<main role="main">
-																	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+											<main role="main">
+												<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-																		<header class="page-header">
-																			<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-																		</header>
-																	<?php endif;?>
+													<header class="page-header">
+														<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+													</header>
+												<?php endif;?>
 		<div class="page-content container">
 
 
 			<!-- FIX THIS ANDREW --->
 			<div class="post-tags">
-				<?php the_tags('<span class="tag-links">' . __('Tagged ', 'hello-elementor'), null, '</span><br>');?>
+		<?php
+$terms = get_terms('adopt-animals');
+print_r($terms);
+$count = count($terms);
+if ($count > 0) {
+	echo '<ul>';
+	foreach ($terms as $term) {?>
+
+<a href="<?php echo get_term_link($term->term_id); ?>"><?php echo '<p>' . $term->name . '</p>'; ?> </a>
+
+ <?php }
+	echo '</ul>';
+}?>
 			</div>
 
 			<!-- container for pet info -->
@@ -106,10 +118,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																											<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																												<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																											</div>
-																											<?php
+																						<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																							<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																						</div>
+																						<?php
 endforeach;
 else:
 ?>
@@ -154,18 +166,18 @@ printf('<div class=" modal fade" id="adoptInfoModal" tabindex="-1" aria-labelled
 							<div class="modal-body container">
 								<div class="row">
 
-<h3 >Our mission is to complete families through a thoughtful and thorough adoption process.</h3>
-                     <p> To ensure every animal is placed in a forever home, GHHS begins this process with a detailed adoption application. You will fill out the application after choosing an animal to adopt.  To be considered for adoption:</p>
-                     <ul>
-                        <li>You must be at least 19 years old.</li>
-                        <li>If you rent housing, you must have written permission from your landlord and proof of pet deposit. (<a href="http://www.zillow.com/huntsville-al/pet-friendly/" target="_blank" rel="noopener noreferrer">Click here</a> if you're looking for pet-friendly housing in Huntsville.)</li>
-                        <li>If adopting into a family, we require all members of the family (including current dogs) to meet the animal on GHHS premises. This also means that animals cannot be adopted as "surprises" or "presents."</li>
-                        <li>Some dogs may require a home inspection.</li>
-                     </ul>
-                     <p><b>Meeting these guidelines is not a guarantee that your application will be accepted. GHHS reserves the right to adopt only to qualified homes based upon our guidelines. Each adoption is considered on a first-come, first-qualified basis once the animal is available for adoption. Exceptions may be made for potential adopters.</b></p>
-                     <h3>Adoption Fees</h3>
-                     <p>Our adoption fees start at <b>$100</b> but vary depending on age and species of pet.</p>
-                     <p>The adoption fee covers: spay/neuter surgery (legally required), current vaccines and boosters, a microchip with a lifetime registration, heartworm preventative until time of adoption, and a small bag of food. Please note: all dogs must leave with a collar and leash. You can bring these items with you or purchase them at the shelter.</p>
+									<h3 >Our mission is to complete families through a thoughtful and thorough adoption process.</h3>
+									<p> To ensure every animal is placed in a forever home, GHHS begins this process with a detailed adoption application. You will fill out the application after choosing an animal to adopt.  To be considered for adoption:</p>
+									<ul>
+										<li>You must be at least 19 years old.</li>
+										<li>If you rent housing, you must have written permission from your landlord and proof of pet deposit. (<a href="http://www.zillow.com/huntsville-al/pet-friendly/" target="_blank" rel="noopener noreferrer">Click here</a> if you're looking for pet-friendly housing in Huntsville.)</li>
+										<li>If adopting into a family, we require all members of the family (including current dogs) to meet the animal on GHHS premises. This also means that animals cannot be adopted as "surprises" or "presents."</li>
+										<li>Some dogs may require a home inspection.</li>
+									</ul>
+									<p><b>Meeting these guidelines is not a guarantee that your application will be accepted. GHHS reserves the right to adopt only to qualified homes based upon our guidelines. Each adoption is considered on a first-come, first-qualified basis once the animal is available for adoption. Exceptions may be made for potential adopters.</b></p>
+									<h3>Adoption Fees</h3>
+									<p>Our adoption fees start at <b>$100</b> but vary depending on age and species of pet.</p>
+									<p>The adoption fee covers: spay/neuter surgery (legally required), current vaccines and boosters, a microchip with a lifetime registration, heartworm preventative until time of adoption, and a small bag of food. Please note: all dogs must leave with a collar and leash. You can bring these items with you or purchase them at the shelter.</p>
 								</div>
 							</div>
 							<div class="modal-footer">
