@@ -14,19 +14,31 @@ if (!defined('ABSPATH')) {
 get_header();
 
 ?>
-<main class="site-main" role="main">
+<main  role="main">
 
 	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
-		<header class="page-header">
+		<header class="page-header container">
 			<?php
-printf('<h1 class="elementor-heading-title elementor-size-default">Adopt an Animal</h1>');
-printf('<h3 class="elementor-heading-title elementor-size-default">View our animals up for adoption at this time</h3>');
+printf('<h1 class="elementor-heading-title elementor-size-default my-5 fs-1">Adopt an Animal</h1>');
+printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ever home to an animal in need.</h2>');
 
 //the_archive_description('<p class="archive-description">', '</p>');
 ?>
 		</header>
 	<?php endif;?>
-	<div class="page-content container">
+	<div class="page-content container-lg">
+		<div class="row my-5">
+			<div class="col">
+				<p>Please view our adoptable pets below.</p>
+				<p>To begin your adoption process, please click the image (or button) of the pet you’d like to adopt to view more info about that animal. You will be redirected to Shelterluv to complete your adoption.</p>
+			</div>
+		</div>
+		<div class="row my-5">
+			<div class="col">
+				<h3 class="elementor-heading-title elementor-size-default fw-bold my-3">Adoption Fees:</h3>
+				<h4 class="elementor-heading-title elementor-size-default fw-bold my-3">Our adoption fees start at $100 but vary depending on age and species of pet.</h4>
+			</div>
+		</div>
 		<div class="row row-cols-3 row-cols-md-3 g-3 my-5">
 			<?php
 while (have_posts()) {
@@ -67,21 +79,9 @@ while (have_posts()) {
 </div> <!-- end card div -->
 <?php } // while posts loop ?>
 </div> <!-- end card group -->
+
 </div> <!-- end container -->
 
-<?php wp_link_pages();?>
-
-<?php
-global $wp_query;
-if ($wp_query->max_num_pages > 1):
-?>
-	<nav class="pagination" role="navigation">
-		<?php /* Translators: HTML arrow */?>
-		<div class="nav-previous"><?php next_posts_link(sprintf(__('%s older', 'hello-elementor'), '<span class="meta-nav">&larr;</span>'));?></div>
-		<?php /* Translators: HTML arrow */?>
-		<div class="nav-next"><?php previous_posts_link(sprintf(__('newer %s', 'hello-elementor'), '<span class="meta-nav">&rarr;</span>'));?></div>
-	</nav>
-<?php endif;?>
 </main>
 
 <?php

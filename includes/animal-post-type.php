@@ -69,6 +69,15 @@ if (!class_exists('GHHS_Animals_PostType')) {
 				)
 			);
 
+			add_action('pre_get_posts', 'animals_pre_get_post');
+			function animals_pre_get_post($query) {
+
+				if (is_post_type_archive('animal') && !is_admin() && $query->is_main_query()) {
+					$query->set('posts_per_page', -1);
+					$query->set('orderby', 'menu_order');
+				}
+			}
+
 			//if (function_exists("register_field_group")) {
 			if (function_exists('acf_add_local_field_group')) {
 

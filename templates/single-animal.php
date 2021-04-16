@@ -19,20 +19,20 @@ while (have_posts()): the_post();
 
 
 
-						<main <?php post_class('site-main');?> role="main">
-							<?php if (apply_filters('hello_elementor_page_title', true)): ?>
-								<!-- Post Naviation -->
-								<div class="container">
-									<div class="row">
-										<div class="col">
-											<span><?php echo get_post_parent(); ?></span>
+							<main <?php post_class('site-main');?> role="main">
+								<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+									<!-- Post Naviation -->
+									<div class="container">
+										<div class="row">
+											<div class="col">
+												<span><?php echo get_post_parent(); ?></span>
+											</div>
 										</div>
 									</div>
-								</div>
-								<header class="page-header">
-									<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-								</header>
-							<?php endif;?>
+									<header class="page-header">
+										<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+									</header>
+								<?php endif;?>
 		<div class="page-content">
 			<!--?php the_content();?-->
 
@@ -103,10 +103,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																	<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-																		<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																	</div>
-																	<?php
+																		<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+																			<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																		</div>
+																		<?php
 endforeach;
 else:
 ?>
