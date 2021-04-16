@@ -48,7 +48,7 @@ class GHHS_Found_Pets {
 		'status4' => 'Awaiting Spay/Neuter - In Foster',
 	);
 
-	const CRON_HOOK = 'update_whatToMine_api';
+	const CRON_HOOK = 'ghhs_update_animals';
 
 	public function __construct() {
 
@@ -64,7 +64,7 @@ class GHHS_Found_Pets {
 
 		add_action('trashed_post', array($this, 'animal_skip_trash'));
 		//add_action('init', array($this, 'run'));
-		add_action(self::CRON_HOOK, array($this, 'run'));
+		//add_action(self::CRON_HOOK, array($this, 'run'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 
 	}
@@ -73,16 +73,16 @@ class GHHS_Found_Pets {
 	 * Hook into the WordPress activate hook
 	 */
 	public static function activate() {
-		// Do something
-		//Use wp_next_scheduled to check if the event is already scheduled
-		$timestamp = wp_next_scheduled(self::CRON_HOOK);
+		/* Do something
+			//Use wp_next_scheduled to check if the event is already scheduled
+			$timestamp = wp_next_scheduled(self::CRON_HOOK);
 
-		//If $timestamp === false schedule daily backups since it hasn't been done previously
-		if ($timestamp === false) {
-			//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
-			wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
-		}
-
+			//If $timestamp === false schedule daily backups since it hasn't been done previously
+			if ($timestamp === false) {
+				//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
+				wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
+			}
+		*/
 	}
 
 	/**
@@ -301,16 +301,19 @@ class GHHS_Found_Pets {
 	public function create_and_update_animals($pets_object) {
 
 		$dogs = $pets_object['dogs'];
+		$postid = $this->do_animal_post($dogs[0]);
+		/*
+			foreach ($dogs as $dog) {
 
-		foreach ($dogs as $dog) {
+				$postid = $this->do_animal_post($dog);
+				if ($postid) {
+					//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+				} else {
+					printf('<h2>NOOOOOO insert</h2>');
+				}
+			} //end foreach dogs loop
+		*/
 
-			$postid = $this->do_animal_post($dog);
-			if ($postid) {
-				printf('<h2>successsful do_animal_post: %s</h2>', $postid->post_title);
-			} else {
-				printf('<h2>NOOOOOO insert</h2>');
-			}
-		} //end foreach dogs loop
 	}
 
 	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
@@ -408,6 +411,70 @@ class GHHS_Found_Pets {
 
 	}
 
+	function upload_image($url, $post_id) {
+		// Add Featured Image to Post
+		$image_url = $url; // Define the image URL here
+		$image_name = 'animal-' . $post_id . '.png';
+		$upload_dir = wp_upload_dir(); // Set upload folder
+
+		// Set attachment data
+		$attachment = array(
+			'name' => $image_name,
+			'posts_per_page' => 1,
+			'post_type' => 'attachment',
+		);
+
+		// check if image exists
+		$attachment_check = new Wp_Query($attachment);
+
+		if ($attachment_check->have_posts()) {
+			printf('<h2>attachment exists</h2>');
+
+		} else {
+
+			$image_data = file_get_contents($image_url); // Get image data
+			$unique_file_name = wp_unique_filename($upload_dir['path'], $image_name); // Generate unique name
+			$filename = basename($unique_file_name); // Create image file name
+
+			// Check folder permission and define file location
+			if (wp_mkdir_p($upload_dir['path'])) {
+				$file = $upload_dir['path'] . '/' . $filename;
+			} else {
+				$file = $upload_dir['basedir'] . '/' . $filename;
+			}
+
+			// Create the image  file on the server
+			file_put_contents($file, $image_data);
+
+			// Check image file type
+			$wp_filetype = wp_check_filetype($filename, null);
+
+			// Set attachment data
+			$attachment = array(
+				'post_mime_type' => $wp_filetype['type'],
+				'post_title' => sanitize_file_name($filename),
+				'post_content' => '',
+				'post_status' => 'inherit',
+			);
+
+			// Create the attachment
+			$attach_id = wp_insert_attachment($attachment, $file, $post_id);
+
+			// Include image.php
+			require_once ABSPATH . 'wp-admin/includes/image.php';
+
+			// Define attachment metadata
+			$attach_data = wp_generate_attachment_metadata($attach_id, $file);
+
+			// Assign metadata to attachment
+			wp_update_attachment_metadata($attach_id, $attach_data);
+
+			// And finally assign featured image to post
+			$blah = set_post_thumbnail($post_id, $attach_id);
+			return $attach_id;
+		}
+	}
+
 	public function do_animal_post($animal) {
 		//if (get_post_type($post_id) == 'animal') {
 
@@ -416,7 +483,7 @@ class GHHS_Found_Pets {
 			'post_type' => 'animal',
 			'post_content' => $animal->Description,
 			'post_status' => 'publish',
-			'_thumbnail_id' => $animal->CoverPhoto,
+			//'_thumbnail_id' => $animal->CoverPhoto,
 			'comment_status' => 'closed', // if you prefer
 			'ping_status' => 'closed', // if you prefer
 		);
@@ -433,9 +500,12 @@ class GHHS_Found_Pets {
 
 			// CREATE A NEW ANIMAL POST AND UPDATE THE META FIELDS
 			$new_post_id = wp_insert_post($new_animal);
+			$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
+			print_r($post_thumbnail);
 
 			if ($new_post_id) {
 				// insert post meta
+				//add_post_meta($new_post_id, '_thumbnail_id', $post_thumbnail);
 				add_post_meta($new_post_id, 'animal_id', $animal->ID);
 				add_post_meta($new_post_id, 'animal_name', $animal->Name);
 				add_post_meta($new_post_id, 'cover_photo', $animal->CoverPhoto);
@@ -493,7 +563,6 @@ class GHHS_Found_Pets {
 					'post_type' => 'animal',
 					'post_content' => $animal->Description,
 					'post_status' => 'publish',
-					'_thumbnail_id' => $animal->CoverPhoto,
 					'comment_status' => 'closed', // if you prefer
 					'ping_status' => 'closed', // if you prefer
 				);
@@ -504,6 +573,9 @@ class GHHS_Found_Pets {
 					printf('<h5>Name %s</h5>', $animal->Name);
 				}
 				//$update_post_id = wp_update_post($update_animal, true)
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
+				//update_post_meta($post_id->ID, '_thumbnail_id', $post_thumbnail);
+
 				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
 				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
 				update_post_meta($post_id->ID, 'cover_photo', $animal->CoverPhoto);
@@ -528,30 +600,15 @@ class GHHS_Found_Pets {
 			} // end timestamp comparison
 			else {
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
-				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);}
+				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
 
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
+				var_dump($post_thumbnail);
+				//update_post_meta($post_id->ID, '_thumbnail_id', $post_thumbnail);
+			}
 		}
 		return $post_id;
 	} // END public function new_animal_post()
-
-	function acf_set_featured_image($value, $post_id) {
-
-		if (!$post_id) {
-			printf("<h2> uhohhhhh</h2");
-		} else {
-			print_r($post_id);
-		}
-		if ($value != '') {
-			//Add the value which is the image ID to the _thumbnail_id meta data for the current post
-			add_post_meta($post_id, '_thumbnail_id', $value);
-			add_post_meta($post_id, 'cover_photo', $value);
-			//printf('<h2>error in acf_set_featured_image</h2>');
-		}
-
-		return $value;
-	}
-
-	// acf/update_value/name={$field_name} - filter for a specific field based on it's name
 
 	public function run($attributes = string) {
 

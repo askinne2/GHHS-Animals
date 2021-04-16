@@ -16,13 +16,13 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-								<main role="main">
-									<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+																<main role="main">
+																	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-										<header class="page-header">
-											<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-										</header>
-									<?php endif;?>
+																		<header class="page-header">
+																			<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+																		</header>
+																	<?php endif;?>
 		<div class="page-content container">
 
 
@@ -36,7 +36,9 @@ while (have_posts()): the_post();
 				<div class="row">
 					<div class="col-md-6">
 						<?php
-printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s"><img src="%s" class="single-animal-cover-photo img-fluid" /></a>', get_the_id(), get_field('cover_photo'));
+//printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s"><img src="%s" class="single-animal-cover-photo img-fluid" /></a>', get_the_id(), get_field('cover_photo'));
+printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s">%s</a>', get_the_id(), get_the_post_thumbnail($post, 'large'));
+
 ?>
 					</div>
 					<!-- start PET DETAILS div -->
@@ -104,10 +106,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																			<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																				<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																			</div>
-																			<?php
+																											<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																												<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																											</div>
+																											<?php
 endforeach;
 else:
 ?>
@@ -167,8 +169,8 @@ printf('<div class=" modal fade" id="adoptInfoModal" tabindex="-1" aria-labelled
 								</div>
 							</div>
 							<div class="modal-footer">
-								<?php printf('<a style="background-color: #0F9EDA;" class="text-white fw-bold btn btn-large" href="%s">Adopt %s</a>', get_field('adopt_link'), get_field('animal_name'));?>
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<?php printf('<a style="background-color: #0F9EDA;" class="text-white fw-bold btn" href="%s">Adopt %s</a>', get_field('adopt_link'), get_field('animal_name'));?>
+								<button type="button" class="btn" data-bs-dismiss="modal">Close</button>
 							</div>
 						</div>
 					</div> <!-- end modal-dialog -->
