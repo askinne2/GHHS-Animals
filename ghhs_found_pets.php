@@ -36,8 +36,6 @@ require_once 'ghhs_found_pets_printer.php';
 require_once 'ghhs_found_pets_slideshow.php';
 require_once 'ghhs_animals.php';
 
-//require_once 'custom-plugin.php';
-
 class GHHS_Found_Pets {
 
 	var $request_uri;
@@ -62,7 +60,7 @@ class GHHS_Found_Pets {
 		$this->ghhs_acf = new GHHS_Animals();
 		add_action('trashed_post', array($this, 'animal_delete'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
-		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 12);
+		add_filter('template_include', array($this, 'ghhs_archive_animal_template'));
 
 		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
@@ -73,6 +71,8 @@ class GHHS_Found_Pets {
 	 * Hook into the WordPress activate hook
 	 */
 	public static function activate() {
+		//add_action('init', new GHHS_Animals());
+
 		/* Do something
 			//Use wp_next_scheduled to check if the event is already scheduled
 			$timestamp = wp_next_scheduled(self::CRON_HOOK);
@@ -83,15 +83,6 @@ class GHHS_Found_Pets {
 				wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
 			}
 		*/
-/*
-$upload = wp_upload_dir();
-$upload_dir = $upload['basedir'];
-$upload_dir = $upload_dir . '/ghhs-animals';
-if (!is_dir($upload_dir)) {
-mkdir($upload_dir, 0755);
-}
- */
-
 	}
 
 	/**
@@ -108,13 +99,6 @@ mkdir($upload_dir, 0755);
 		$this->request_uri = $request_uri;
 	}
 
-	/* Interacts with Shelterluv to determine total
-		     * number of requests needed to process all animals
-		     * in the GHHS animal database
-		     *
-		     * @param string $request_uri
-		     * @param array $args
-	*/
 	public function query_number_animals($request_uri = string, $args = array()) {
 
 		$raw_response = wp_remote_get($request_uri, $args);
@@ -341,9 +325,6 @@ mkdir($upload_dir, 0755);
 			}
 		} //end foreach dogs loop
 
-		//$this->animal_delete($postid);
-		//$this->delete_animals();
-
 	}
 
 	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
@@ -439,12 +420,16 @@ mkdir($upload_dir, 0755);
 		$delete_post = array(
 			'post_type' => 'animal',
 			'post_status' => 'publish',
+			'posts_per_page' => -1,
 		);
-		$posts = new WP_Query($delete_post);
-		if ($posts->have_posts()) {
+		$query = new WP_Query($delete_post);
+		$posts = $query->posts;
+		if ($posts) {
+			printf('<h4>count: %d</h4>', count($posts));
 
-			foreach ($posts->get_posts() as $post) {
+			foreach ($posts as $post) {
 				//var_dump($post);
+				//printf('<h3>end animal</h3>');
 				$this->animal_delete($post->ID);
 			}
 
@@ -674,29 +659,34 @@ mkdir($upload_dir, 0755);
 		}
 	}
 
-	function ghhs_archive_animal_template($template) {
+	public function ghhs_archive_animal_template($template) {
 
 		global $post;
-		global $query;
+		$delete_post = array(
+			'post_type' => 'animal',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		);
+		$query = new WP_Query($delete_post);
+		$posts = $query->posts;
+		if ($posts) {
 
-		if (is_archive() && $post->post_type == 'animal') {
-			//$query->set('posts_per_page', -1);
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
+			if (is_archive() && $post->post_type == 'animal') {
+				if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
 
-				$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+					$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+				}
+				return $archive_template;
+
+			} else if (is_single() && $post->post_type == 'animal') {
+				// Checks for single template by post type
+				if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+
+					$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
+					return $template;
+				}
+
 			}
-			return $archive_template;
-
-		} else if (is_single() && $post->post_type == 'animal') {
-			//$query->set('posts_per_page', -1);
-			// Checks for single template by post type
-
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
-
-				$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-				return $template;
-			}
-
 		} else {
 			return $template;
 		}
@@ -704,8 +694,6 @@ mkdir($upload_dir, 0755);
 	}
 
 	public function run($attributes = string) {
-
-		//$found_pets = new GHHS_Found_Pets();
 
 		if (REMOVE_TRANSIENT) {
 			$this->ghhs_remove_transient();
@@ -718,26 +706,25 @@ mkdir($upload_dir, 0755);
 
 		$pets_object = $this->request_and_sort($number_requests);
 
-/*
-extract(shortcode_atts(array(
-'animal_type' => '',
-'mode' => '',
-), $attributes));
+		extract(shortcode_atts(array(
+			'animal_type' => '',
+			'mode' => '',
+		), $attributes));
 
-if (PLUGIN_DEBUG) {
-echo "<h2>attributes - ";
-print_r($attributes);
-echo "</h2>";
+		if (PLUGIN_DEBUG) {
+			echo "<h2>attributes - ";
+			print_r($attributes);
+			echo "</h2>";
 
-}
-$animal_type = $attributes['animal_type'];
-$print_mode = $attributes['mode'];
- */
+		}
+		$animal_type = $attributes['animal_type'];
+		$print_mode = $attributes['mode'];
 
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
 		$this->create_and_update_animals($pets_object);
+		//$this->delete_all_animals();
 
-		return ob_get_clean();
+		//return ob_get_clean();
 
 	}
 
@@ -754,6 +741,7 @@ if (class_exists('GHHS_Found_Pets')) {
 		return 15;
 	}
 	add_filter('http_request_timeout', 'custom_http_request_timeout');
+
 	$pets = new GHHS_Found_Pets();
 
 }
