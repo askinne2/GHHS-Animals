@@ -326,6 +326,7 @@ class GHHS_Found_Pets {
 			} //end foreach dogs loop
 		*/
 		//$this->animal_delete($postid);
+		//$this->delete_animals();
 
 	}
 
@@ -417,26 +418,20 @@ class GHHS_Found_Pets {
 		}
 	}
 
-	public function delete_animals() {
+	public function delete_all_animals() {
 
 		$delete_post = array(
 			'post_type' => 'animal',
 			'post_status' => 'publish',
 		);
 		$posts = new WP_Query($delete_post);
-
 		if ($posts->have_posts()) {
-			//printf('<h2 class="red_pet">fuck deleting: %s</h2>', $posts);
-			print_r($posts);
-			while ($posts->have_posts()) {
-				print_r($posts->the_post());
-				printf('<h2>end post</h2>');
-				//	$posts->the_post();
-				//	wp_delete_post(get_the_ID());
-			}
-		} else {
 
-			print_r($posts);
+			foreach ($posts->get_posts() as $post) {
+				//var_dump($post);
+				$this->animal_delete($post->ID);
+			}
+
 		}
 
 	}
