@@ -59,16 +59,14 @@ class GHHS_Found_Pets {
 				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
-
 		$this->ghhs_acf = new GHHS_Animals();
-		//	add_filter('init', array($this, 'do_animal_post'));
-		//add_filter('acf/update_value/name=cover_photo', array(&$this, 'acf_set_featured_image', 10, 3));
-
 		add_action('trashed_post', array($this, 'animal_delete'));
+		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
+		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 12);
+
 		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
 		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
-
 	}
 
 	/**
@@ -85,13 +83,15 @@ class GHHS_Found_Pets {
 				wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
 			}
 		*/
+/*
+$upload = wp_upload_dir();
+$upload_dir = $upload['basedir'];
+$upload_dir = $upload_dir . '/ghhs-animals';
+if (!is_dir($upload_dir)) {
+mkdir($upload_dir, 0755);
+}
+ */
 
-		$upload = wp_upload_dir();
-		$upload_dir = $upload['basedir'];
-		$upload_dir = $upload_dir . '/ghhs-animals';
-		if (!is_dir($upload_dir)) {
-			mkdir($upload_dir, 0755);
-		}
 	}
 
 	/**
@@ -311,20 +311,36 @@ class GHHS_Found_Pets {
 
 		$dogs = $pets_object['dogs'];
 		$cats = $pets_object['cats'];
+		$others = $pets_object['others'];
 
-		$postid = $this->do_animal_post($dogs[0]);
-		$postid = $this->do_animal_post($cats[0]);
-		/*
-			foreach ($dogs as $dog) {
+		foreach ($dogs as $dog) {
 
-				$postid = $this->do_animal_post($dog);
-				if ($postid) {
-					//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
-				} else {
-					printf('<h2>NOOOOOO insert</h2>');
-				}
-			} //end foreach dogs loop
-		*/
+			$postid = $this->do_animal_post($dog);
+			if ($postid) {
+				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+			} else {
+				printf('<h2>NOOOOOO insert</h2>');
+			}
+		} //end foreach dogs loop
+		foreach ($cats as $cat) {
+
+			$postid = $this->do_animal_post($cat);
+			if ($postid) {
+				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+			} else {
+				printf('<h2>NOOOOOO insert</h2>');
+			}
+		} //end foreach dogs loop
+		foreach ($others as $other) {
+
+			$postid = $this->do_animal_post($other);
+			if ($postid) {
+				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+			} else {
+				printf('<h2>NOOOOOO insert</h2>');
+			}
+		} //end foreach dogs loop
+
 		//$this->animal_delete($postid);
 		//$this->delete_animals();
 
@@ -643,6 +659,50 @@ class GHHS_Found_Pets {
 		return $post_id;
 	} // END public function new_animal_post()
 
+	public function animals_change_posts_per_page($query) {
+		if (is_admin() || !$query->is_main_query()) {
+			return;
+		}
+
+		if (is_post_type_archive('animal')) {
+			$query->set('orderby', 'rand');
+			$query->set('posts_per_page', -1);
+		}
+		if (is_tax('adopt-animals')) {
+			$query->set('posts_per_page', -1);
+			$query->set('orderby', 'rand');
+		}
+	}
+
+	function ghhs_archive_animal_template($template) {
+
+		global $post;
+		global $query;
+
+		if (is_archive() && $post->post_type == 'animal') {
+			//$query->set('posts_per_page', -1);
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
+
+				$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+			}
+			return $archive_template;
+
+		} else if (is_single() && $post->post_type == 'animal') {
+			//$query->set('posts_per_page', -1);
+			// Checks for single template by post type
+
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+
+				$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
+				return $template;
+			}
+
+		} else {
+			return $template;
+		}
+
+	}
+
 	public function run($attributes = string) {
 
 		//$found_pets = new GHHS_Found_Pets();
@@ -682,33 +742,6 @@ $print_mode = $attributes['mode'];
 	}
 
 } // end class definition
-
-function ghhs_archive_animal_template($template) {
-
-	global $post;
-
-	if (is_archive() && $post->post_type == 'animal') {
-		if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
-
-			$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
-		}
-		return $archive_template;
-
-	} else if (is_single() && $post->post_type == 'animal') {
-// Checks for single template by post type
-
-		if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
-
-			$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-			return $template;
-		}
-
-	} else {
-		return $template;
-	}
-
-}
-add_filter('template_include', 'ghhs_archive_animal_template', 12);
 
 if (class_exists('GHHS_Found_Pets')) {
 	// Installation and uninstallation hooks

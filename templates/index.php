@@ -1,4 +1,3 @@
 <?php
 
-echo "<h2>fuck meeee</h2>";
-?>
+// Silence is golden

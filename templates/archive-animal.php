@@ -42,12 +42,13 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 				<h4 class="elementor-heading-title elementor-size-default fw-bold my-3">Our adoption fees start at $100 but vary depending on age and species of pet.</h4>
 			</div>
 		</div>
+		<?php if (PLUGIN_DEBUG) {printf('<h2 class="red_pet">Total Animals: %d.</h2>', $GLOBALS['wp_query']->post_count);}?>
 		<div class="row post-tags container my-3">
 						<?php
 $terms = get_terms('adopt-animals');
 $count = count($terms);
 if ($count > 0) {
-	echo '<ul class="list-group list-group-horizontal">';
+	echo '<ul class="list-group list-group-horizontal-sm">';
 	foreach ($terms as $term) {?>
 
 				<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
@@ -61,12 +62,13 @@ if ($count > 0) {
 if (!have_posts()) {
 	printf('<h2 class="red_pet">No adoptable animals at this time.</h2>');
 } else {
+
 	while (have_posts()) {
 		the_post();
 		$post_link = get_permalink();
 		$animal_type = get_field('animal_type');
 		?>
-				<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
+				<div class="col card text-center archive animal archive-animal mx-auto" style="width: 18rem;">
 
 					<!--article class="post archive-animal"-->
 					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_the_post_thumbnail_url($post, 'large'), esc_url($post_link));?>
@@ -79,7 +81,7 @@ if (!have_posts()) {
 
 						<?php printf("<p>Age: %s </p>", get_field('age'));?>
 
-						<?php if (get_field('animal_size')) {printf("<p>Size: %s </p>", get_field('animal_size'));} else {echo '<p>Size Info Unavailable</p>';}?>
+						<!--?php if (get_field('animal_size')) {printf("<p>Size: %s </p>", get_field('animal_size'));} else {echo '<p>Size Info Unavailable</p>';}?-->
 
 						<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
 					</div>
@@ -105,7 +107,19 @@ if (!have_posts()) {
 </div> <!-- end card group -->
 
 </div> <!-- end container -->
+<?php wp_link_pages();?>
 
+	<?php
+global $wp_query;
+if ($wp_query->max_num_pages > 1):
+?>
+		<nav class="pagination" role="navigation">
+			<?php /* Translators: HTML arrow */?>
+			<div class="nav-previous"><?php next_posts_link(sprintf(__('%s older', 'hello-elementor'), '<span class="meta-nav">&larr;</span>'));?></div>
+			<?php /* Translators: HTML arrow */?>
+			<div class="nav-next"><?php previous_posts_link(sprintf(__('newer %s', 'hello-elementor'), '<span class="meta-nav">&rarr;</span>'));?></div>
+		</nav>
+	<?php endif;?>
 </main>
 
 <?php

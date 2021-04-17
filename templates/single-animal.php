@@ -16,28 +16,28 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-										<main role="main">
-											<!-- FIX THIS ANDREW --->
-											<div class="post-tags container my-3">
-												<?php
+											<main role="main">
+												<!-- FIX THIS ANDREW --->
+												<div class="post-tags container my-3">
+													<?php
 	$terms = get_terms('adopt-animals');
 	$count = count($terms);
 	if ($count > 0) {
-		echo '<ul class="list-group list-group-horizontal">';
+		echo '<ul class="list-group list-group-horizontal-sm">';
 		foreach ($terms as $term) {?>
 
-														<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+															<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
 
-													<?php }
+														<?php }
 		echo '</ul>';
 	}?>
-											</div>
-											<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+												</div>
+												<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-												<header class="page-header">
-													<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-												</header>
-											<?php endif;?>
+													<header class="page-header">
+														<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+													</header>
+												<?php endif;?>
 		<div class="page-content container">
 
 
@@ -118,10 +118,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																					<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																						<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																					</div>
-																					<?php
+																						<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																							<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																						</div>
+																						<?php
 endforeach;
 else:
 ?>

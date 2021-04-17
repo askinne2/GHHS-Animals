@@ -27,6 +27,7 @@ if (!class_exists('GHHS_Animals_PostType')) {
 				'animal', // post type name
 				array(
 					'hierarchical' => false,
+					'posts_per_page' => -1,
 					'public' => true,
 					'show_ui' => true,
 					'label' => 'Animal Type', // display name
