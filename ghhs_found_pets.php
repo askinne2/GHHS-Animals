@@ -532,7 +532,7 @@ class GHHS_Found_Pets {
 			$new_post_id = wp_insert_post($new_animal);
 			$blah = wp_set_object_terms(
 				$new_post_id,
-				array('0' => 'All Animals', '1' => $animal->Type),
+				array('0' => 'All Animal', '1' => $animal->Type),
 				'adopt-animals');
 
 			if ($blah) {

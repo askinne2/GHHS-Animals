@@ -16,32 +16,32 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-											<main role="main">
-												<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+					<main role="main">
+						<!-- FIX THIS ANDREW --->
+						<div class="post-tags container my-3">
+							<?php
+	$terms = get_terms('adopt-animals');
+	$count = count($terms);
+	if ($count > 0) {
+		echo '<ul class="list-group list-group-horizontal">';
+		foreach ($terms as $term) {?>
 
-													<header class="page-header">
-														<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-													</header>
-												<?php endif;?>
+									<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+
+								<?php }
+		echo '</ul>';
+	}?>
+						</div>
+						<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+
+							<header class="page-header">
+								<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+							</header>
+						<?php endif;?>
 		<div class="page-content container">
 
 
-			<!-- FIX THIS ANDREW --->
-			<div class="post-tags">
-		<?php
-$terms = get_terms('adopt-animals');
-print_r($terms);
-$count = count($terms);
-if ($count > 0) {
-	echo '<ul>';
-	foreach ($terms as $term) {?>
 
-<a href="<?php echo get_term_link($term->term_id); ?>"><?php echo '<p>' . $term->name . '</p>'; ?> </a>
-
- <?php }
-	echo '</ul>';
-}?>
-			</div>
 
 			<!-- container for pet info -->
 			<div class="container">
@@ -66,7 +66,7 @@ printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s">%s</
 								<?php printf("<h3>Age: %s </h3>", get_field('age'));?>
 							</div>
 							<div class="row">
-								<?php printf("<h3>Size: %s </h3>", get_field('animal_size'));?>
+								<?php if (get_field('animal_size')) {printf("<h3>Size: %s </h3>", get_field('animal_size'));} else {echo '';}?>
 							</div>
 							<div class="row">
 								<p>To begin your adoption process, please click the adopt button below. You will be redirected to Shelterluv to complete your adoption.</p>
@@ -118,10 +118,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																						<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																							<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																						</div>
-																						<?php
+																<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																	<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																</div>
+																<?php
 endforeach;
 else:
 ?>
@@ -175,8 +175,7 @@ printf('<div class=" modal fade" id="adoptInfoModal" tabindex="-1" aria-labelled
 										<li>Some dogs may require a home inspection.</li>
 									</ul>
 									<p><b>Meeting these guidelines is not a guarantee that your application will be accepted. GHHS reserves the right to adopt only to qualified homes based upon our guidelines. Each adoption is considered on a first-come, first-qualified basis once the animal is available for adoption. Exceptions may be made for potential adopters.</b></p>
-									<h3>Adoption Fees</h3>
-									<p>Our adoption fees start at <b>$100</b> but vary depending on age and species of pet.</p>
+									<?php printf('<h3>Adoption Fee for %s: %0.2f</h3>', get_field('animal_name'), 123.32);?>
 									<p>The adoption fee covers: spay/neuter surgery (legally required), current vaccines and boosters, a microchip with a lifetime registration, heartworm preventative until time of adoption, and a small bag of food. Please note: all dogs must leave with a collar and leash. You can bring these items with you or purchase them at the shelter.</p>
 								</div>
 							</div>

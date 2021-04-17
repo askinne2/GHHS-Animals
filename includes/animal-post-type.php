@@ -41,7 +41,7 @@ if (!class_exists('GHHS_Animals_PostType')) {
 				'0' => array('name' => 'Dog', 'slug' => 'dog'),
 				'1' => array('name' => 'Cat', 'slug' => 'cat'),
 				'2' => array('name' => 'Other', 'slug' => 'other'),
-				'3' => array('name' => 'All Animals', 'slug' => 'all-animals'),
+				'3' => array('name' => 'All Animal', 'slug' => 'all-animal'),
 
 			);
 			foreach ($terms as $term) {

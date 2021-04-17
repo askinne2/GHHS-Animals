@@ -16,6 +16,8 @@ get_header();
 ?>
 <main  role="main">
 
+
+
 	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 		<header class="page-header container">
 			<?php
@@ -25,6 +27,7 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 //the_archive_description('<p class="archive-description">', '</p>');
 ?>
 		</header>
+
 	<?php endif;?>
 	<div class="page-content container">
 		<div class="row my-5">
@@ -39,6 +42,20 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 				<h4 class="elementor-heading-title elementor-size-default fw-bold my-3">Our adoption fees start at $100 but vary depending on age and species of pet.</h4>
 			</div>
 		</div>
+		<div class="row post-tags container my-3">
+						<?php
+$terms = get_terms('adopt-animals');
+$count = count($terms);
+if ($count > 0) {
+	echo '<ul class="list-group list-group-horizontal">';
+	foreach ($terms as $term) {?>
+
+				<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+
+				 <?php }
+	echo '</ul>';
+}?>
+							</div>
 		<div class="row row-cols-4 row-cols-md-4 g-3 my-5">
 			<?php
 while (have_posts()) {
@@ -49,8 +66,7 @@ while (have_posts()) {
 				<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
 
 					<!--article class="post archive-animal"-->
-
-					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_field('cover_photo'), esc_url($post_link));?>
+					<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_the_post_thumbnail_url($post, 'large'), esc_url($post_link));?>
 					<div class="card-body my-3">
 						<?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
 						<p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type'));?></p>
@@ -60,7 +76,7 @@ while (have_posts()) {
 
 						<?php printf("<p>Age: %s </p>", get_field('age'));?>
 
-						<?php printf("<p>Size: %s </p>", get_field('animal_size'));?>
+						<?php if (get_field('animal_size')) {printf("<p>Size: %s </p>", get_field('animal_size'));} else {echo '<p>Size Info Unavailable</p>';}?>
 
 						<?php printf('<a href="%s" style="background-color: #0F9EDA;"  class="text-white btn btn-large">More Info</a>', esc_url($post_link));?>
 					</div>
