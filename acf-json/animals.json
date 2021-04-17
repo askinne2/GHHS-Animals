@@ -1,43 +1,1630 @@
-"animals": [
+{
+    "success": 1,
+    "animals": [
         {
-            "ID": "",
-            "Internal-ID": "",
-            "Name": "",
+            "ID": "4997",
+            "Internal-ID": "17335916",
+            "Name": "Winston",
             "LitterGroupId": null,
-            "Type": "",
+            "Type": "Dog",
             "CurrentLocation": {
-                "Tier1": ""
+                "Tier1": "In Foster"
             },
-            "Sex": "",
-            "Status": "",
+            "Sex": "Male",
+            "Status": "Hold In Foster",
             "InFoster": false,
             "CurrentWeightPounds": "",
             "Size": "",
-            "Altered": "",
-            "DOBUnixTime": "",
-            "Age": "",
-            "CoverPhoto": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
             "Photos": [],
             "Videos": [],
-            "Breed": "",
+            "Breed": "Pyrenees, Great",
             "Color": "",
             "Description": "",
             "PreviousIds": [
                 {
-                    "IdValue": "",
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1574237613"
+        },
+        {
+            "ID": "6228",
+            "Internal-ID": "18841013",
+            "Name": "Shine (zeke)",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1573418361,
+            "Age": 17,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219123236.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219123236.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/08/09/20210208093539.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/10/16/20210210165158.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219123223.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/24/09/20210224091549.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Medium)",
+            "Color": "Black/White",
+            "Pattern": "Tricolor",
+            "AdoptionFeeGroup": {
+                "Id": "155023",
+                "Name": "Puppy 2",
+                "Price": "250",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Shine aka Zeke. I've recently found myself looking for a new family to love. I'm a medium sized and full of energy. I'd love to find an active adopter to take me on walks or play fetch with me. I'm a bit unsure in new situations and would love to find someone who will help build my confidence. I can be a bit protective about my things/food, the staff at GHHS is working on teaching me it's okay to share. I've been around children and I'm crate trained.  I'm currently staying in a foster home.\nPhoto Credit: K8 Photo",
+            "PreviousIds": [
+                {
+                    "IdValue": "12299",
+                    "IssuingShelter": "Athens Limestone Animal Shelter",
+                    "Type": ""
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "985113003770811",
+                    "Issuer": "Home Again",
+                    "ImplantUnixTime": "1576828800"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1612557560",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618599834"
+        },
+        {
+            "ID": "7179",
+            "Internal-ID": "25741702",
+            "Name": "Chris P. Bacon (brown)",
+            "LitterGroupId": "25741702",
+            "Type": "Guinea Pig",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "No",
+            "DOBUnixTime": 1585249886,
+            "Age": 12,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/14/11/20210214110728.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/14/11/20210214110728.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/07/22/08/20200722081424.png"
+            ],
+            "Videos": [],
+            "Breed": "American",
+            "Color": "Brown/None",
+            "AdoptionFeeGroup": {
+                "Id": "189289",
+                "Name": "Guinea Pig",
+                "Price": "35",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Chris P. Bacon. My buddy, Porkchop and I were rescued from a hoarding situation and are ready for a new home. We're a bit shy still but with lots of TLC we'll warm up to you quickly. We love our veggies and make cute squeaks when we hear the fridge door open. We are a bonded pair and need to be adopted together.\n\nPlease check with a staff member to learn more about us.",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1612815086",
+            "Attributes": [
+                {
+                    "Internal-ID": "45290",
+                    "AttributeName": "Bonded",
+                    "Publish": "No"
+                }
+            ],
+            "LastUpdatedUnixTime": "1616946971"
+        },
+        {
+            "ID": "7180",
+            "Internal-ID": "25741764",
+            "Name": "Porkchop (white)",
+            "LitterGroupId": "25741702",
+            "Type": "Guinea Pig",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "No",
+            "DOBUnixTime": 1585249270,
+            "Age": 12,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/14/11/20210214110828.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/14/11/20210214110828.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/07/22/08/20200722081403.png"
+            ],
+            "Videos": [],
+            "Breed": "American",
+            "Color": "White/None",
+            "AdoptionFeeGroup": {
+                "Id": "189289",
+                "Name": "Guinea Pig",
+                "Price": "35",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Porkchop. My buddy, Chris P. Bacon and I were rescued from a hoarding situation and are ready for a new home. We're a bit shy still but with lots of TLC we'll warm up to you quickly. I'm very vocal and love to talk to you. Chris P. and I love our veggies and make cute squeaks when we hear the fridge door open. We are a bonded pair and need to be adopted together.\n\nPlease check with a staff member to learn more about us.",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1612814470",
+            "Attributes": [
+                {
+                    "Internal-ID": "45290",
+                    "AttributeName": "Bonded",
+                    "Publish": "No"
+                }
+            ],
+            "LastUpdatedUnixTime": "1616946934"
+        },
+        {
+            "ID": "7362",
+            "Internal-ID": "28478302",
+            "Name": "Bronwyn",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Admin Office"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "45",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1382471525,
+            "Age": 89,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/09/07/20210309070143.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/09/07/20210309070143.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/10/20/09/20201020095046.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/09/07/20210309070128.png"
+            ],
+            "Videos": [],
+            "Breed": "Hound, Plott",
+            "Color": "Brown/None",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155025",
+                "Name": "Senior Dogs (7+ years)",
+                "Price": "100",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi. I'm Bronwyn. I have been through a lot in my life and I'm looking for a quiet home where I can relax and just enjoy being loved. I enjoy short walks, peanutbutter Kongs, and chewy bones. I'm kennel & potty trained.  I'm now in a foster home with 2 other dogs and 4 cats. I would love to just be a companion for someone who loves the quiet life. I require a home visit, fenced in yard, and a dog friend.  Could that be you?\nPlease apply at ghhs.org for me. I'm currently staying in a foster home.\n",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1615236725",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618599746"
+        },
+        {
+            "ID": "7465",
+            "Internal-ID": "30819469",
+            "Name": "Bosco ( Bear)",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "60",
+            "Size": "Large (60-99)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1528490095,
+            "Age": 34,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/12/07/13/20201207133429_0.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/12/07/13/20201207133429_0.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/08/12/20210308123736.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/08/12/20210308123721.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Large)",
+            "Color": "Tan/None",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi my name is Bosco aka Bear. I am a very loveable guy that needs that special someone to help me come out of my shell.  I have come a long way while being in foster.  If you would like to meet me and my big lovable self please apply at GHHS.org  ",
+            "PreviousIds": [
+                {
+                    "IdValue": "unknown",
                     "IssuingShelter": "",
                     "Type": ""
                 }
             ],
             "Microchips": [
                 {
-                    "Id": "",
-                    "Issuer": "",
+                    "Id": "981020035517679",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1615190400"
+                }
+            ],
+            "LastIntakeUnixTime": "1607376895",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1615996203"
+        },
+        {
+            "ID": "7492",
+            "Internal-ID": "31657849",
+            "Name": "Cowboy (Rusty)",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "44.8",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1529673424,
+            "Age": 33,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/10/08/20210410085424.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/10/08/20210410085424.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/31/08/20210331083220.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/10/20210326101232.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2020/12/21/10/20201221101255.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Medium)",
+            "Color": "Black/Tan",
+            "Pattern": "Brindle",
+            "AdoptionFeeGroup": {
+                "Id": "155023",
+                "Name": "Puppy 2",
+                "Price": "250",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi, I'm Cowboy. I'm a great dog who is looking for a new family to love. I'm a friendly, medium energy guy. I weigh around 45 lbs and I have a handsome brindle coat. I love to play ball and run around the yard. Unfortunately I do have some separation anxiety and would do best with someone who is home most the time or someone with another friendly dog to keep me company. Small children tend to make me nervous so I would do best with teens and adults. If you think you can give me a great home apply at ghhs.org",
+            "PreviousIds": [
+                {
+                    "IdValue": "unknown",
+                    "IssuingShelter": "",
+                    "Type": ""
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020035155330",
+                    "Issuer": "Found Animals",
                     "ImplantUnixTime": ""
                 }
             ],
-            "LastIntakeUnixTime": "",
+            "LastIntakeUnixTime": "1616419023",
             "Attributes": [],
-            "LastUpdatedUnixTime": ""
+            "LastUpdatedUnixTime": "1618070071"
         },
-    ]
+        {
+            "ID": "7544",
+            "Internal-ID": "33002217",
+            "Name": "Pickles",
+            "LitterGroupId": "32995041",
+            "Type": "Guinea Pig",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "No",
+            "DOBUnixTime": 1589404821,
+            "Age": 11,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/10/11/20210110111657.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/10/11/20210110111657.png"
+            ],
+            "Videos": [],
+            "Breed": "American",
+            "Color": "Brown/White",
+            "AdoptionFeeGroup": {
+                "Id": "189289",
+                "Name": "Guinea Pig",
+                "Price": "35",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi, I'm Pickles. I'm a cute little guy who'd love a new family. I'm a friendly piggy who doesn't mind being held for short periods. I'm also very vocal and make \"wheeking\" sounds when I get excited or hear treats heading my way. \nI am currently living alone but I would do well in a divided set up. I am not neutered so I need to be kept away from the ladies at all times. Apply for me at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1610230821",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1615741561"
+        },
+        {
+            "ID": "7550",
+            "Internal-ID": "33039428",
+            "Name": "Nora",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "61.9",
+            "Size": "Large (60-99)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1510522226,
+            "Age": 41,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219121248.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219121248.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/27/12/20210127124943_0.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/27/12/20210127125008_0.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219121130.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/12/20210219121157.png"
+            ],
+            "Videos": [],
+            "Breed": "Retriever, Labrador/Mixed Breed (Large)",
+            "Color": "Black",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Nora. I'm a happy-go-lucky girl who is looking for a new family to love. I'm sweet pup who loves to run and play. I'd be great for an active family with a fenced in yard. I can be a bit possessive with my stuff, I need an experienced adopter who can teach me that it's okay to share my things. I do fairly well on a lead and would love someone who will continue my training so I can be the best dog ever! Apply for me at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020031614507",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1610524800"
+                }
+            ],
+            "LastIntakeUnixTime": "1612474226",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1615571991"
+        },
+        {
+            "ID": "7556",
+            "Internal-ID": "33326932",
+            "Name": "Dirk",
+            "LitterGroupId": "33326388",
+            "Type": "Guinea Pig",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "No",
+            "DOBUnixTime": 1592852376,
+            "Age": 9,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/18/12/20210118123640.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/18/12/20210118123640.png"
+            ],
+            "Videos": [],
+            "Breed": "American",
+            "Color": "White/Brown",
+            "Description": "Hi, I'm Dirk. I'm a cute little guy who'd love a new family. I was surrendered with my mate but to prevent us from having more kids we're now living apart. I'm a friendly piggy who doesn't mind being held for short periods. I'm also very vocal and make \"wheeking\" sounds when I get excited or hear treats heading my way. \nI've been paired with Sprout and we're great buddies so far. Because Sprout is my new guinea pig friend we must be kept together. I am not neutered so I need to be kept away from the ladies at all times. Apply for me at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1610999976",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1616167441"
+        },
+        {
+            "ID": "7589",
+            "Internal-ID": "34179360",
+            "Name": "Cooper",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "50",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1533054383,
+            "Age": 32,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/22/12/20210322122712.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/22/12/20210322122712.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/29/09/20210129092615.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Large)",
+            "Color": "Brown",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Cooper! I'm a happy boy who'd love an paw-some new home. I'm a medium energy pup who loves treats, cuddles and belly rubs. I'd love to find an active family who will take me on walks and play with me in their backyard. I was heartworm positive but I've had my treatment and I'm 100% good as new! I am okay with cats and don't mind older children. Apply for me at ghhs.org ",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035105629",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1611907200"
+                }
+            ],
+            "LastIntakeUnixTime": "1611854783",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1616441243"
+        },
+        {
+            "ID": "7590",
+            "Internal-ID": "34179767",
+            "Name": "Rucker",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "Large (60-99)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1509467712,
+            "Age": 41,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/21/09/20210221090830.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/21/09/20210221090830.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/01/29/09/20210129094116.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/22/12/20210322122828.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Large)",
+            "Color": "Black/None",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Rucker. I'm a big goofy guy who is in need of a new home. I'm a high energy pup who would be best suited with an active family. I'll make a great running buddy or hiking buddy. I know basic commands and I'm a fast learner, especially when rewarded with a tasty treat. I'd love a large yard to run and play in. I'd do well as an only pet but may be able to have a canine friend if we get along and play well together. Apply for me at ghhs.org\nPhoto credit: K8 photo ",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "956000013482996",
+                    "Issuer": "AKC Reunite",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1611855311",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617643658"
+        },
+        {
+            "ID": "7602",
+            "Internal-ID": "34397428",
+            "Name": "Andy",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Awaiting Vet Exam / Health Check",
+            "InFoster": false,
+            "CurrentWeightPounds": "35",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1470509558,
+            "Age": 56,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/11/20210219114753.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/11/20210219114753.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/02/11/20210202115012.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/06/15/20210206154933.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/08/01/20210208013332.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/08/01/20210208013353.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/19/11/20210219115115.png"
+            ],
+            "Videos": [],
+            "Breed": "Beagle",
+            "Color": "Red/Mahogany/Black",
+            "Pattern": "Tick",
+            "AdoptionFeeGroup": {
+                "Id": "189287",
+                "Name": "Dog - Special",
+                "Price": "200",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "My name's Andy and I'm looking for my forever home. I'm a beagle mix and weigh around 35 lbs. Isn't my tongue cute? It hangs out like that most the time. Don't worry though, I have all my teeth. I'm good with pets and people of all ages. I'm very sweet but do take some time to warm up to new people. I love walks, water trails, and Pup-a-chinos!  I'm currently staying in a foster home.\nPhoto Credit: K8 Photo",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035099835",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1612209158",
+            "Attributes": [
+                {
+                    "Internal-ID": "72352",
+                    "AttributeName": "HW+",
+                    "Publish": "Yes"
+                }
+            ],
+            "LastUpdatedUnixTime": "1618605644"
+        },
+        {
+            "ID": "7615",
+            "Internal-ID": "34461787",
+            "Name": "Sweetie",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1454783660,
+            "Age": 62,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114754.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114754.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114910.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114812.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114836.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/11/20210402114931.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Black/None",
+            "Pattern": "None",
+            "Description": "Meet SWEETIE!  And oh what a perfect name for this girl. She is very sweet and friendly. She loves to be petted and has a wonderful purr.  She came from a multi-cat situation and would probably be OK around other friendly cats.\nSweetie is a beautiful black cat with absolutely stunning amber/green eyes. She seems to have a hint of dark chocolate in her undercoat.\nShe is five years old. If you are interested in this lovely, sleek house panther you can fill out an application at www.ghhs.org/adopt.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035110703",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1612512000"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1612463660",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617391522"
+        },
+        {
+            "ID": "7626",
+            "Internal-ID": "34910298",
+            "Name": "Mojo",
+            "LitterGroupId": "34910298",
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "3",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1608922855,
+            "Age": 3,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/04/07/20210404074757.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/04/07/20210404074757.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/02/09/13/20210209134934.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "White/Grey",
+            "AdoptionFeeGroup": {
+                "Id": "155019",
+                "Name": "Kitten",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm a cute kitten in need of a loving new home. I'm very playful and independent.  Apply at ghhs.org.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "956000013486097",
+                    "Issuer": "AKC Reunite",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1617472855",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618325592"
+        },
+        {
+            "ID": "7659",
+            "Internal-ID": "36697012",
+            "Name": "Leopold",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "7",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1569943521,
+            "Age": 18,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/05/12/20210305122103.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/05/12/20210305122103.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/05/12/20210305122154.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/05/12/20210305122125.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/01/10/20210301104625.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/05/12/20210305122035.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Orange",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Meet LEOPOLD.  This is one big, friendly boy.  He is a sweet lover boy. He is prone to love bites when he gets over excited.  Seasoned cat owners will recognize this behavior.  It could be once he is out of a confining kennel and settled in a home, his smooches will be sweeter.  He prefers to be an only cat.\nLeopold is just over a year old.  He weighs seven pounds, and is lean and leggy.  He has a plushy, bright ginger tabby coat and amazing amber eyes. He is SO handsome!\nIf you are interested in a sweet, dude cat - can apply for him online at www.ghhs.org/adopt.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035080305",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1614931200"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1614615921",
+            "Attributes": [
+                {
+                    "Internal-ID": "72032",
+                    "AttributeName": "Single Cat Home",
+                    "Publish": "Yes"
+                }
+            ],
+            "LastUpdatedUnixTime": "1617457286"
+        },
+        {
+            "ID": "7666",
+            "Internal-ID": "36971255",
+            "Name": "Amilo",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "12.6",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1545236496,
+            "Age": 27,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/14/07/20210314072328.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/14/07/20210314072328.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/14/07/20210314072305.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/14/07/20210314072345.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/11/10/20210311104039.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "White/Orange",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Meet AMILO.  Just look at this big ole boy. He is friendly and sweet with a wonderful purr.  He loves attention. He loves to be petted.\nHe's a great companion cat.\nAMILO is a BIG boy.  Not necessarily chonky - just big. We love big cats. We don't know how squeezable he is yet.. He has a luscious white and orange coat, with big friendly amber/green eyes.  He is two years old.\nIf you are interested in this boy, call us at 256-881-8081.  You can also fill out an application at www.ghhs.org/adopt",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035098895",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1615536000"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1615393296",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617198517"
+        },
+        {
+            "ID": "7672",
+            "Internal-ID": "37119187",
+            "Name": "Sprout",
+            "LitterGroupId": "32995041",
+            "Type": "Guinea Pig",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "No",
+            "DOBUnixTime": 1614360348,
+            "Age": 1,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/15/09/20210315093921.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/15/09/20210315093921.png"
+            ],
+            "Videos": [],
+            "Breed": "American",
+            "Color": "White/Orange",
+            "AdoptionFeeGroup": {
+                "Id": "189289",
+                "Name": "Guinea Pig",
+                "Price": "35",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm Sprout and I'm a cute little guinea pig. I've been paired with my new buddy, Dirk and we are getting along great. Because we are such good friends we must be adopted together. I'm still a bit shy but with some consistent handling I'll be your best friend.  Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1614619547",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1616167276"
+        },
+        {
+            "ID": "7676",
+            "Internal-ID": "37129734",
+            "Name": "Merlin",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "16.8",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1363378975,
+            "Age": 97,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/11/20210326111403.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/11/20210326111403.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/16/07/20210316074208.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/16/14/20210316140826.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/11/20210326111344.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/11/20210326111429.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Brown",
+            "Pattern": "Tabby",
+            "Description": "Meet Merlin.  This big, ole boy is a real sweetie.  He has been difficult to photograph because he wants pets and attention as soon as you get near. He's a real dear who will make a great companion cat.\nMerlin is a handsome brown tabby with intense, wise, green eyes.  He is 8 years old and a sturdy, chonky boy. He may do OK in a multi-cat household if everyone stays respectful.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035080745",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1615878000"
+                }
+            ],
+            "LastIntakeUnixTime": "1615839775",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1616784570"
+        },
+        {
+            "ID": "7678",
+            "Internal-ID": "37183141",
+            "Name": "Sadie",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "55",
+            "Size": "Large (60-99)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1505488609,
+            "Age": 43,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/07/11/20210407110750.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/07/11/20210407110750.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/16/11/20210316111023.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/10/08/20210410085226.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Large)",
+            "Color": "Tan/White",
+            "Pattern": "Bicolor",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi, I'm Sadie.  I'm a vibrant young pup who has a lot to offer! I walk well on a lead, and I'm a good girl in my kennel. I hardly ever make messes, and I keep my bed as neat as can be. My caretakers have discovered that I love to play with the water hose! Romping around in the fields here at the shelter makes me happy. I'm just a great girl looking for a great family! Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035529697",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1616569200"
+                }
+            ],
+            "LastIntakeUnixTime": "1615907809",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618496915"
+        },
+        {
+            "ID": "7682",
+            "Internal-ID": "37246347",
+            "Name": "Josie",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "26",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1489941034,
+            "Age": 48,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/18/09/20210318093020.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/18/09/20210318093020.png"
+            ],
+            "Videos": [],
+            "Breed": "Cattle Dog, Australian (Blue Heeler)",
+            "Color": "Blue/None",
+            "Pattern": "Tick",
+            "AdoptionFeeGroup": {
+                "Id": "155024",
+                "Name": "Adult Dog (1-6 years)",
+                "Price": "150",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hello! I'm a sweet 2 year old girl who was rescued from a neglectful outside situation. I had to find my bed between metal scraps and trash. I ended up getting a stick lodged in my mouth, and it was left for so long it pushed through the top. Because of this I am now blind with possible neurological issues, so I will need a quiet family who is prepared for the challenges I now face. Despite this, I am still a sweet dog who craves love. Apply for me at ghhs.org I'm currently staying in a foster home.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1616085034",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618599726"
+        },
+        {
+            "ID": "7685",
+            "Internal-ID": "37538333",
+            "Name": "Tabitha",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Kitten Cages (Front Lobby)"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "5.3",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1522167643,
+            "Age": 36,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/12/20210401122232.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/12/20210401122232.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/26/10/20210326102246.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/30/12/20210330125229.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/30/12/20210330125253.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/12/20210401122217.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Grey",
+            "Pattern": "Torbie",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Tabitha. I'm a friendly girl who is looking for a family to love. I'm a beautiful tabby/tortie mix with big green eyes. I'm very sweet and love attention. I get along with other cats and would probably be okay with dogs. If youre looking for a paw-some new family member apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035522277",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1616742000"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1616775643",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617458087"
+        },
+        {
+            "ID": "7687",
+            "Internal-ID": "37614939",
+            "Name": "Calliope",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "7.6",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1490886187,
+            "Age": 48,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405162255.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405162255.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/11/10/20210411100451.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405162310.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405162236.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405162208.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Calico",
+            "Description": "",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1617030187",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618593595"
+        },
+        {
+            "ID": "7693",
+            "Internal-ID": "37676625",
+            "Name": "Shylee",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "69.7",
+            "Size": "Large (60-99)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1364656988,
+            "Age": 96,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/30/10/20210330105733.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/03/30/10/20210330105733.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Large)",
+            "Color": "Blue/None",
+            "Pattern": "None",
+            "Description": "Hi, I'm Shylee. Have you ever seen such a cute face? I'm a sweet lady who needs a new family to love. I'm 8 years old and a bit on the curvaceous side. My friends at GHHS have started me on a weight loss plan. I'm a loyal girl and get very attached to my human.  If you're looking for a paw-some new family member apply for me at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035088878",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1617174000"
+                }
+            ],
+            "LastIntakeUnixTime": "1617117788",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617295038"
+        },
+        {
+            "ID": "7694",
+            "Internal-ID": "37677427",
+            "Name": "Nallah",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "37.6",
+            "Size": "Medium (20-59)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1601480576,
+            "Age": 6,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/09/10/20210409103210.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/09/10/20210409103210.png"
+            ],
+            "Videos": [],
+            "Breed": "Retriever, Black Labrador/Mixed Breed (Large)",
+            "Color": "Black/None",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155022",
+                "Name": "Puppy 1",
+                "Price": "200",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Nallah. I'm a playful pup who's in need of a paw-some new family! I'm 6 months old and currently 25 lbs. Being a puppy I'm high energy and working on my manners. I'm very playful and would love to a large backyard for me to play in. I love my toys and getting back scratches. Apply for me at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035079236",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1617174000"
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1617118976",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617989606"
+        },
+        {
+            "ID": "7702",
+            "Internal-ID": "37766990",
+            "Name": "Muggles",
+            "LitterGroupId": "37766905",
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Puppy Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "4",
+            "Size": "Small (1-19)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1612459071,
+            "Age": 2,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/13/20210401132302.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/13/20210401132302.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Medium)",
+            "Color": "Black/White",
+            "Pattern": "Tricolor",
+            "AdoptionFeeGroup": {
+                "Id": "155022",
+                "Name": "Puppy 1",
+                "Price": "200",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm a cute pupper in need of a loving home. My friends at GHHS don't know how big I'll grow but they guess maybe medium sized? I'm friendly and playful. Appy for me at ghhs.org\nDisclaimer...All unalterd animals must remain within the Hunsville metro until spay/neuter has been completed. If you have questions please call at 256-881-8081. ",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035523976",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1618210800"
+                }
+            ],
+            "LastIntakeUnixTime": "1617293871",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618249496"
+        },
+        {
+            "ID": "7703",
+            "Internal-ID": "37767045",
+            "Name": "Pawdry",
+            "LitterGroupId": "37766905",
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Puppy Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "4.4",
+            "Size": "Small (1-19)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1612459150,
+            "Age": 2,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/13/20210401132351.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/01/13/20210401132351.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Medium)",
+            "Color": "Tan",
+            "AdoptionFeeGroup": {
+                "Id": "155022",
+                "Name": "Puppy 1",
+                "Price": "200",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm a cute pupper in need of a loving home. My friends at GHHS don't know how big I'll grow but they guess maybe medium sized? I'm friendly and playful. Appy for me at ghhs.org\nDisclaimer...All unalterd animals must remain within the Hunsville metro until spay/neuter has been completed. If you have questions please call at 256-881-8081. ",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035537646",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1618210800"
+                }
+            ],
+            "LastIntakeUnixTime": "1617293949",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618249473"
+        },
+        {
+            "ID": "7707",
+            "Internal-ID": "37783416",
+            "Name": "Lil Mama",
+            "LitterGroupId": "37783416",
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "10.7",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538585750,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073044.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073044.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073123.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073205.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073139.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403073103.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Black/Brown",
+            "Pattern": "Tabby",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm Lil' Mama and I'm looking for my forever family. I'm a sweet cat, I'm just a little unsure of being in the shelter right now. Once I'm adopted and in my new home I'm sure to be your best friend. Apply for me at ghhs.com",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035090006",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1617346800"
+                }
+            ],
+            "LastIntakeUnixTime": "1617296150",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617551778"
+        },
+        {
+            "ID": "7708",
+            "Internal-ID": "37783614",
+            "Name": "Smokey",
+            "LitterGroupId": "37783416",
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "15.6",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538585966,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405163351.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405163351.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405163416.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403075131.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403075113.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/05/16/20210405160458.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Black/Brown",
+            "Pattern": "Tabby",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi, I'm Smokey. Are you looking for the purr-fect new family member? I'm a handsome tabby guy with big green eyes. I'm a little shy right now being in a new place but once I get into a home I'll warm up quickly. Please give me the chance to be your new best friend. Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035083907",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1617346800"
+                }
+            ],
+            "LastIntakeUnixTime": "1617296366",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617665694"
+        },
+        {
+            "ID": "7709",
+            "Internal-ID": "37783689",
+            "Name": "Dusty",
+            "LitterGroupId": "37783416",
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "12.2",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538586060,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403074255.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403074255.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403074316.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/02/09/20210402095458.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/03/07/20210403075800.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Black/Brown",
+            "Pattern": "Tabby",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "I'm Dusty and I'm in need of a new family to love. I'm a little shy right now but I'm just a bit insecure being in the shelter. I'm a sweet boy though, I just need a little time and patience. If you're ready to adopt a paw-some kitty apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035118889",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1617346800"
+                }
+            ],
+            "LastIntakeUnixTime": "1617296460",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1617641137"
+        },
+        {
+            "ID": "7718",
+            "Internal-ID": "38077094",
+            "Name": "Dino",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "11.1",
+            "Size": "",
+            "Altered": "Unknown",
+            "DOBUnixTime": 1594395636,
+            "Age": 9,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123525.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123525.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123247.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123315.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123329.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/12/20210414123353.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Brown",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155020",
+                "Name": "Adult Cat (1-6 years)",
+                "Price": "125",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Meet DINO! This is one shy but friendly tabby boy. He's sweet, sweet, sweet. He gets along with other kitties and is shyly curious and playful despite his current circumstances.\n\nDino is only about 9 months old - but already weighs 11 lbs. He's going to be one big gorgeous boy.  He is beautifully stripped with a handsome muzzle. Check out those amber eyes.  Dino is an absolute TEN on the \"handsome meter.\n\nIf you are interested in Dino or any of our other beautiful tabbies, call us at 256-881-8081.  You can fill out an application at www.ghhs.org/adopt.",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1618069235",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618519705"
+        },
+        {
+            "ID": "7721",
+            "Internal-ID": "38161751",
+            "Name": "Olenna",
+            "LitterGroupId": null,
+            "Type": "Cat",
+            "CurrentLocation": {
+                "Tier1": "Cat Room"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1397403300,
+            "Age": 84,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130101.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130101.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130245.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130212.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130123.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414130144.png"
+            ],
+            "Videos": [],
+            "Breed": "Domestic Shorthair",
+            "Color": "Grey/White",
+            "AdoptionFeeGroup": {
+                "Id": "189286",
+                "Name": "Senior Cat (7+ years)",
+                "Price": "75",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Meet OLENNA.  This friendly girl rules the roost.  She loves to be brushed and petted. She loves attention.  She gets around.  She's going to be your next BFF!!!  She gets along with other cats, dogs, and children!\n\nOlenna has plushy gray coat with flashes of snowy white.  She has a delightful tiny bit of chonkiness about her.  Her big, watchful eyes are a beautiful green.  And she wears those white whiskers like nobody's business!  Olenna is 7 years old.\n\nIf you are interested in this gal, give us a call at 256-881-8081. You can also fill out an application at www.ghhs.org/adopt.",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "0A13716671",
+                    "Issuer": "24PetWatch",
+                    "ImplantUnixTime": ""
+                },
+                {
+                    "Id": "",
+                    "Issuer": "Did Not Attempt to Scan",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1618328100",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618491089"
+        },
+        {
+            "ID": "7722",
+            "Internal-ID": "38162160",
+            "Name": "Didi",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Female",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "17",
+            "Size": "Small (1-19)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1391274034,
+            "Age": 86,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414132552.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/14/13/20210414132552.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Small)",
+            "Color": "Black/None",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155025",
+                "Name": "Senior Dogs (7+ years)",
+                "Price": "100",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Didi and I'm a friendly girl who's looking for a new family. I'm a petite lady who would be good in an apartment or smaller home. I walk well on a leash and have been around other dogs. If you're looking for a paw-some pooch to add to your home. Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035086614",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1618383600"
+                }
+            ],
+            "LastIntakeUnixTime": "1618328633",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618586443"
+        },
+        {
+            "ID": "7723",
+            "Internal-ID": "38162303",
+            "Name": "Ewok",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "Dog Kennel"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "18",
+            "Size": "Small (1-19)",
+            "Altered": "Yes",
+            "DOBUnixTime": 1241193523,
+            "Age": 143,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/17/07/20210417075738.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/17/07/20210417075738.png"
+            ],
+            "Videos": [],
+            "Breed": "Mixed Breed (Small)",
+            "Color": "Black/White",
+            "Pattern": "None",
+            "AdoptionFeeGroup": {
+                "Id": "155025",
+                "Name": "Senior Dogs (7+ years)",
+                "Price": "100",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Ewok. Are you looking for an older gentleman? I'm a small guy, possibly a Shih Tzu mix? I'm around 10 years old and 18 lbs. I'm looking for a forever home to live out my golden years. Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [
+                {
+                    "Id": "981020035511830",
+                    "Issuer": "Found Animals",
+                    "ImplantUnixTime": "1618383600"
+                }
+            ],
+            "LastIntakeUnixTime": "1618328825",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618683542"
+        },
+        {
+            "ID": "7725",
+            "Internal-ID": "38781906",
+            "Name": "Tyrion",
+            "LitterGroupId": null,
+            "Type": "Ferret",
+            "CurrentLocation": {
+                "Tier1": "Caged Pet"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Unknown",
+            "DOBUnixTime": 1592252516,
+            "Age": 10,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/16/08/20210416082039.png",
+            "Photos": [
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/16/08/20210416082039.png",
+                "https://www.shelterluv.com/sites/default/files/animal_pics/4980/2021/04/16/08/20210416082029.png"
+            ],
+            "Videos": [],
+            "Breed": null,
+            "Color": "Cream",
+            "AdoptionFeeGroup": {
+                "Id": "189289",
+                "Name": "Guinea Pig",
+                "Price": "35",
+                "Discount": 0,
+                "Tax": 0
+            },
+            "Description": "Hi! I'm Tyrion. I'm a friendly ferret who is need of a new home. I'm a neutered/de-scented male who is around 10 months old. I have been living alone but would do best if have a ferret friend. Please be sure you do your research before applying for me, I require specific care and want to find the best home ever! Apply at ghhs.org",
+            "PreviousIds": [],
+            "Microchips": [],
+            "LastIntakeUnixTime": "1618518116",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1618598138"
+        }
+    ],
+    "has_more": false,
+    "total_count": "35"
+}

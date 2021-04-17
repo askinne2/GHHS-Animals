@@ -11,7 +11,7 @@
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  *
  *
- * Version:           1.6.1
+ * Version:           2.0.0
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if (!defined('ABSPATH')) {
 
 define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
-
+define('LOCAL_JSON', true);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 
 require_once 'ghhs_found_pets_includes.php';
@@ -41,6 +41,7 @@ class GHHS_Found_Pets {
 	var $request_uri;
 	var $args;
 	var $ghhs_acf;
+	var $multiple_request_flag = 0;
 	var $status_array = array(
 		'status1' => 'Available For Adoption',
 		'status2' => 'Available for Adoption - Awaiting Spay/Neuter',
@@ -99,44 +100,118 @@ class GHHS_Found_Pets {
 		$this->request_uri = $request_uri;
 	}
 
-	public function query_number_animals($request_uri = string, $args = array()) {
+	/*
+		* returns an unsorted $pets object of all published animals from shelterluv
+		*
+		*/
+	public function make_request($request_uri = string, $args = array()) {
 
-		$raw_response = wp_remote_get($request_uri, $args);
-		if (is_wp_error($raw_response) || '200' != wp_remote_retrieve_response_code($raw_response)) {
+		$transient = get_transient('ghhs_pets');
+		if (!empty($transient)) {
+			return $transient->animals;
+
+		} else {
+			if (!LOCAL_JSON) {
+				$request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
+				$raw_response = wp_remote_get($request_uri, $args);
+				if (is_wp_error($raw_response) || '200' != wp_remote_retrieve_response_code($raw_response)) {
+					if (PLUGIN_DEBUG) {
+						print('wp_error:');
+						print_r($raw_response);
+					}
+
+					return 0;
+				}
+				$pets = json_decode(wp_remote_retrieve_body($raw_response));
+
+			} else {
+
+				$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
+				$pets = json_decode($jsonpets);
+			}
+			if (empty($pets)) {
+				if (PLUGIN_DEBUG) {
+					print('No JSON to decode');
+				}
+
+				return 0;
+			}
+			// total animals published in ShelterLuv
+			$animal_count = $pets->total_count;
 			if (PLUGIN_DEBUG) {
-				print('wp_error:');
-				print_r($raw_response);
+				echo "<p>Animal Count   " . ($animal_count) . "</p>";
+			}
+			$total_requests = (($animal_count / 100) % 10) + 1;
+			if (PLUGIN_DEBUG) {
+				echo "<p>Total Request   " . ($total_requests) . "</p>";
 			}
 
-			return 0;
-		}
-		$pets = json_decode(wp_remote_retrieve_body($raw_response));
-		if (empty($pets)) {
-			if (PLUGIN_DEBUG) {
-				print('No JSON to decode');
+			if ($animal_count < 100) {
+
+				// low animal count, we can just return animals 0 -> 100.
+				set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
+				return $pets->animals;
+
+			} else {
+
+				$this->multiple_request_flag = true;
+				if (!LOCAL_JSON) {
+
+					// Build our array of request URI's and make more calls
+					for ($i = 0; $i < $number_requests; $i++) {
+						$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i + 1) . '00';
+						if (PLUGIN_DEBUG) {echo "fetching" . $request_uri[$i];}
+					}
+
+					$all_pets = array();
+					for ($i = 0; $i < $number_requests; $i++) {
+
+						$raw_response[$i] = wp_remote_get($request_uri[$i], $this->args);
+						if (is_wp_error($raw_response[$i]) || '200' != wp_remote_retrieve_response_code($raw_response[$i])) {
+							if (PLUGIN_DEBUG) {
+								echo "<p>Bad wp_remote_get Request </p>";
+							}
+
+							return;
+						}
+						$pets[$i] = json_decode(wp_remote_retrieve_body($raw_response[$i]));
+					}
+
+					if (empty($pets)) {
+						if (PLUGIN_DEBUG) {
+							echo "<p>make_request(): No pets to json_decode </p>";
+						}
+
+						return;
+					}
+
+					$all_pets[] = $pets[$i]->animals;
+					if (!PLUGIN_DEBUG) {
+						echo '<pre>';
+						print_r($all_pets);
+						echo '</pre>';
+					}
+
+				} else {
+					$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
+					$pets[$i] = json_decode($jsonpets);
+				}
+
+				// Save the API response so we don't have to call again for one hour.
+				set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
+
+				return $all_pets;
 			}
 
-			return 0;
-		}
-		// total animals published in ShelterLuv
-		$animal_count = $pets->total_count;
-		if (PLUGIN_DEBUG) {
-			echo "<p>Animal Count   " . ($animal_count) . "</p>";
-		}
-		// get the number of requests we will need to make
-		$total_requests = (($animal_count / 100) % 10) + 1;
-		if (PLUGIN_DEBUG) {
-			echo "<p>Total Request   " . ($total_requests) . "</p>";
 		}
 
-		return $total_requests;
 	}
 
 	public function ghhs_remove_transient() {
 		delete_transient('ghhs_pets');
 	}
 
-	public function make_request($number_requests = int) {
+	public function make_request_OLD($number_requests = int) {
 
 		if (PLUGIN_DEBUG) {
 			echo "<h2 style='color:red;'>Number Requests:" . $number_requests . "</h2>";
@@ -155,7 +230,7 @@ class GHHS_Found_Pets {
 		*/
 		$transient = get_transient('ghhs_pets');
 		if (!empty($transient)) {
-			return $transient;
+			return $transient->animals;
 
 		} else {
 			$all_pets = array();
@@ -169,6 +244,10 @@ class GHHS_Found_Pets {
 
 					return;
 				}
+
+				//$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
+				//$pets[$i] = json_decode($jsonpets);
+
 				$pets[$i] = json_decode(wp_remote_retrieve_body($raw_response[$i]));
 
 				if (empty($pets)) {
@@ -188,20 +267,20 @@ class GHHS_Found_Pets {
 			}
 
 			// Save the API response so we don't have to call again for one hour.
-			set_transient('ghhs_pets', $all_pets, HOUR_IN_SECONDS);
+			set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
 
 			return $all_pets;
 		}
 	}
 
-	public function request_and_sort($number_requests = int) {
+	public function request_and_sort($request_uri = string, $args = array()) {
 
-		$pets = $this->make_request($number_requests);
-		/*if (empty($pets)) {
+		$pets = $this->make_request($request_uri, $args);
+		if (empty($pets)) {
 			echo "<h2>Uh oh. Our shelter is experiencing technical difficulties.</h2>";
 			echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
 			return;
-		}*/
+		}
 
 		$cats = array();
 		$dogs = array();
@@ -217,66 +296,55 @@ class GHHS_Found_Pets {
 		$status3 = "Available for Adoption - In Foster";
 		$status4 = "Awaiting Spay/Neuter - In Foster";
 
-		for ($i = 0; $i < count($pets); $i++) {
+		if ($this->multiple_request_flag) {
+			for ($i = 0; $i < count($pets); $i++) {
 
-			foreach ($pets[$i] as $pet) {
+				foreach ($pets as $pet) {
 
-				$status = $pet->Status;
+					if ($pet->Type === "Cat") {
+						if (in_array($pet->Status, $this->status_array)) {
+							$cats[] = $pet;
+						}
+
+					} else if ($pet->Type === "Dog") {
+
+						if (in_array($pet->Status, $this->status_array)) {
+							$dogs[] = $pet;
+						}
+
+					} else {
+
+						if (in_array($pet->Status, $this->status_array)) {
+							$others[] = $pet;
+						}
+
+					}
+				} // end of foreach loop
+
+			} // end $i counter loop
+		} else {
+			foreach ($pets as $pet) {
 
 				if ($pet->Type === "Cat") {
-					switch ($status) {
-					case $status1:
+					if (in_array($pet->Status, $this->status_array)) {
 						$cats[] = $pet;
-						break;
-					case $status2:
-						$cats[] = $pet;
-						break;
-					case $status3:
-						$cats[] = $pet;
-						break;
-					case $status4:
-						$cats[] = $pet;
-						break;
 					}
 
 				} else if ($pet->Type === "Dog") {
 
-					switch ($status) {
-					case $status1:
+					if (in_array($pet->Status, $this->status_array)) {
 						$dogs[] = $pet;
-						break;
-					case $status2:
-						$dogs[] = $pet;
-						break;
-					case $status3:
-						$dogs[] = $pet;
-						break;
-					case $status4:
-						$dogs[] = $pet;
-						break;
 					}
 
 				} else {
 
-					switch ($status) {
-					case $status1:
+					if (in_array($pet->Status, $this->status_array)) {
 						$others[] = $pet;
-						break;
-					case $status2:
-						$others[] = $pet;
-						break;
-					case $status3:
-						$others[] = $pet;
-						break;
-					case $status4:
-						$others[] = $pet;
-						break;
 					}
 
 				}
 			} // end of foreach loop
-
-		} // end $i counter loop
+		}
 
 		if (PLUGIN_DEBUG) {
 			echo '<h1 class="red_pet">The number of cats is:  ' . count($cats) . '</h1>';
@@ -437,6 +505,11 @@ class GHHS_Found_Pets {
 
 	}
 
+	/*
+		 *
+		 * returns attachment ID of either newly created image or attachment ID of existing image
+		 *
+	*/
 	function upload_image($url, $post_id) {
 		// Add Featured Image to Post
 		$image_url = $url; // Define the image URL here
@@ -455,7 +528,7 @@ class GHHS_Found_Pets {
 
 		if ($attachment_check->have_posts()) {
 			printf('<h2>attachment exists</h2>');
-
+			return $attachment_check;
 		} else {
 
 			$image_data = file_get_contents($image_url); // Get image data
@@ -509,7 +582,6 @@ class GHHS_Found_Pets {
 			'post_type' => 'animal',
 			'post_content' => $animal->Description,
 			'post_status' => 'publish',
-			//'_thumbnail_id' => $animal->CoverPhoto,
 			'comment_status' => 'closed', // if you prefer
 			'ping_status' => 'closed', // if you prefer
 		);
@@ -532,11 +604,11 @@ class GHHS_Found_Pets {
 				'adopt-animals'
 			);
 
-			$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
-
 			if ($new_post_id) {
+
 				// insert post meta
-				//add_post_meta($new_post_id, '_thumbnail_id', $post_thumbnail);
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
+
 				add_post_meta($new_post_id, 'animal_id', $animal->ID);
 				add_post_meta($new_post_id, 'animal_name', $animal->Name);
 				add_post_meta($new_post_id, 'cover_photo', $animal->CoverPhoto);
@@ -637,7 +709,7 @@ class GHHS_Found_Pets {
 				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
 
 				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
-				var_dump($post_thumbnail);
+				//var_dump($post_thumbnail);
 				//update_post_meta($post_id->ID, '_thumbnail_id', $post_thumbnail);
 			}
 		}
@@ -700,11 +772,11 @@ class GHHS_Found_Pets {
 		}
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
-		$number_requests = $this->query_number_animals($this->request_uri, $this->args);
+		//$number_requests = $this->query_number_animals($this->request_uri, $this->args);
 
 		ob_start();
 
-		$pets_object = $this->request_and_sort($number_requests);
+		$pets_object = $this->request_and_sort($this->request_uri, $this->args);
 
 		extract(shortcode_atts(array(
 			'animal_type' => '',
@@ -721,7 +793,7 @@ class GHHS_Found_Pets {
 		$print_mode = $attributes['mode'];
 
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
-		$this->create_and_update_animals($pets_object);
+		//$this->create_and_update_animals($pets_object);
 		//$this->delete_all_animals();
 
 		//return ob_get_clean();
