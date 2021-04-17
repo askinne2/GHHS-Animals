@@ -58,11 +58,14 @@ if ($count > 0) {
 							</div>
 		<div class="row row-cols-4 row-cols-md-4 g-3 my-5">
 			<?php
-while (have_posts()) {
-	the_post();
-	$post_link = get_permalink();
-	$animal_type = get_field('animal_type');
-	?>
+if (!have_posts()) {
+	printf('<h2 class="red_pet">No adoptable animals at this time.</h2>');
+} else {
+	while (have_posts()) {
+		the_post();
+		$post_link = get_permalink();
+		$animal_type = get_field('animal_type');
+		?>
 				<div class="col card text-center archive animal archive-animal" style="width: 18rem;">
 
 					<!--article class="post archive-animal"-->
@@ -83,19 +86,22 @@ while (have_posts()) {
 
 					<?php
 /*$groups = acf_get_field_groups($post_id);
-	printf('<H2>GROUPS</H2><pre>%s</pre><br>', var_dump($groups));
+		printf('<H2>GROUPS</H2><pre>%s</pre><br>', var_dump($groups));
 
-	$fields = acf_get_fields($groups[0]);
-	var_dump($fields);
-	foreach ($fields as $field) {
-	printf("<p>field: %s</p>", get_field($field->id));
+		$fields = acf_get_fields($groups[0]);
+		var_dump($fields);
+		foreach ($fields as $field) {
+		printf("<p>field: %s</p>", get_field($field->id));
 
-	}
-	 */
-	?>
+		}
+		 */
+		?>
 	<!--/article-->
 </div> <!-- end card div -->
-<?php } // while posts loop ?>
+<?php
+} // while posts loop
+} // end if (have_posts())
+?>
 </div> <!-- end card group -->
 
 </div> <!-- end container -->

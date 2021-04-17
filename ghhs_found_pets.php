@@ -533,16 +533,10 @@ class GHHS_Found_Pets {
 			$blah = wp_set_object_terms(
 				$new_post_id,
 				array('0' => 'All Animal', '1' => $animal->Type),
-				'adopt-animals');
+				'adopt-animals'
+			);
 
-			if ($blah) {
-				printf('<h2 class="red_pet">ERROR</h2>');
-				print_r($blah);
-			} else {
-				print_r($blah);
-			}
 			$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
-			print_r($post_thumbnail);
 
 			if ($new_post_id) {
 				// insert post meta
@@ -559,6 +553,9 @@ class GHHS_Found_Pets {
 				add_post_meta($new_post_id, 'bio', $animal->Description);
 				add_post_meta($new_post_id, 'animal_size', $animal->Size);
 				add_post_meta($new_post_id, 'last_update_time', $animal->LastUpdatedUnixTime);
+				if (isset($animal->AdoptionFeeGroup->Price)) {
+					add_post_meta($new_post_id, 'adoption_fee', $animal->AdoptionFeeGroup->Price);
+				}
 
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
 				add_post_meta($new_post_id, 'adopt_link', $adopt_link);
