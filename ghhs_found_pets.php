@@ -62,7 +62,7 @@ class GHHS_Found_Pets {
 		$this->ghhs_animals = new GHHS_Animals();
 		add_action('trashed_post', array($this, 'delete_animal_post'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
-		add_filter('template_include', array($this, 'ghhs_archive_animal_template'));
+		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 12);
 
 		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
@@ -802,9 +802,9 @@ printf('<h2>ghhs: %s</h2>', $id);
 		if ($posts) {
 
 			if (is_archive() && $post->post_type == 'animal') {
-				if (file_exists(plugin_dir_path(__FILE__) . 'templates/archive-animal.php')) {
+				if (file_exists(plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php')) {
 
-					$archive_template = plugin_dir_path(__FILE__) . 'templates/archive-animal.php';
+					$archive_template = plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php';
 				}
 				return $archive_template;
 
