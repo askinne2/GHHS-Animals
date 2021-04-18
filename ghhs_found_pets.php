@@ -38,19 +38,19 @@ require_once 'ghhs_animals.php';
 
 class GHHS_Found_Pets {
 
+	const CRON_HOOK = 'ghhs_update_animals';
+
 	var $request_uri;
 	var $args;
-	var $ghhs_acf;
+	var $ghhs_animals;
 	var $multiple_request_flag = 0;
-	var $petIDs;
+	var $petID_array;
 	var $status_array = array(
 		'status1' => 'Available For Adoption',
 		'status2' => 'Available for Adoption - Awaiting Spay/Neuter',
 		'status3' => 'Available for Adoption - In Foster',
 		'status4' => 'Awaiting Spay/Neuter - In Foster',
 	);
-
-	const CRON_HOOK = 'ghhs_update_animals';
 
 	public function __construct() {
 
@@ -59,14 +59,14 @@ class GHHS_Found_Pets {
 				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
-		$this->ghhs_acf = new GHHS_Animals();
+		$this->ghhs_animals = new GHHS_Animals();
 		add_action('trashed_post', array($this, 'delete_animal_post'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
 		add_filter('template_include', array($this, 'ghhs_archive_animal_template'));
 
 		//add_action('init', array($this, 'run'));
-		add_action(self::CRON_HOOK, array($this, 'run'));
-		//add_shortcode('ghhs_found_pets', array(&$this, 'run'));
+		//add_action(self::CRON_HOOK, array($this, 'run'));
+		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 	}
 
 	/**
@@ -81,7 +81,7 @@ class GHHS_Found_Pets {
 
 		//If $timestamp === false schedule daily backups since it hasn't been done previously
 		if ($timestamp === false) {
-			//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
+			//Schedule the event for right now, then to repeat daily using the hook
 			wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
 		}
 
@@ -823,7 +823,8 @@ printf('<h2>ghhs: %s</h2>', $id);
 
 	}
 
-	public function run($attributes = string) {
+	public function run() {
+		//$attributes = string) {
 
 		if (REMOVE_TRANSIENT) {
 			$this->ghhs_remove_transient();
@@ -838,7 +839,7 @@ printf('<h2>ghhs: %s</h2>', $id);
 		//$pets = $this->super_request($this->args);
 		//print_r($pets_object);
 		//print_r($this->petID_array);
-
+		/*
 		extract(shortcode_atts(array(
 			'animal_type' => '',
 			'mode' => '',
@@ -852,7 +853,7 @@ printf('<h2>ghhs: %s</h2>', $id);
 		}
 		$animal_type = $attributes['animal_type'];
 		$print_mode = $attributes['mode'];
-
+*/
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
 		$this->create_and_update_animals($pets_object);
 		$this->delete_adopted_animals($this->petID_array);
