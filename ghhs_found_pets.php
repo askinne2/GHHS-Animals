@@ -27,8 +27,8 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', true);
-define('LOCAL_JSON', true);
+define('REMOVE_TRANSIENT', false);
+define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 
 require_once 'ghhs_found_pets_includes.php';
@@ -65,8 +65,8 @@ class GHHS_Found_Pets {
 		add_filter('template_include', array($this, 'ghhs_archive_animal_template'));
 
 		//add_action('init', array($this, 'run'));
-		//add_action(self::CRON_HOOK, array($this, 'run'));
-		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
+		add_action(self::CRON_HOOK, array($this, 'run'));
+		//add_shortcode('ghhs_found_pets', array(&$this, 'run'));
 	}
 
 	/**
@@ -75,16 +75,16 @@ class GHHS_Found_Pets {
 	public static function activate() {
 		//add_action('init', new GHHS_Animals());
 
-		/* Do something
-			//Use wp_next_scheduled to check if the event is already scheduled
-			$timestamp = wp_next_scheduled(self::CRON_HOOK);
+		// Do something
+		//Use wp_next_scheduled to check if the event is already scheduled
+		$timestamp = wp_next_scheduled(self::CRON_HOOK);
 
-			//If $timestamp === false schedule daily backups since it hasn't been done previously
-			if ($timestamp === false) {
-				//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
-				wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
-			}
-		*/
+		//If $timestamp === false schedule daily backups since it hasn't been done previously
+		if ($timestamp === false) {
+			//Schedule the event for right now, then to repeat daily using the hook 'update_whatToMine_api'
+			wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
+		}
+
 	}
 
 	/**
@@ -95,6 +95,7 @@ class GHHS_Found_Pets {
 		// Get the timestamp for the next event.
 		$timestamp = wp_next_scheduled(self::CRON_HOOK);
 		wp_unschedule_event($timestamp, self::CRON_HOOK);
+		self::delete_all_animals();
 	}
 
 	public function set_request_uri($request_uri = string) {
@@ -428,18 +429,21 @@ class GHHS_Found_Pets {
 			}
 
 		}
-
-		printf('<h4>delete_adopted_animals() count: %d</h4>', count($posts));
-		print_r($animal_ids);
-		printf('<br><br>');
+/*
+printf('<h4>delete_adopted_animals() count: %d</h4>', count($posts));
+print_r($animal_ids);
+printf('<br><br>');
+ */
 		$i = 0;
 		foreach ($animal_ids->ghhs_id as $id) {
-			$post_to_delete = $animal_ids->wp_id[$i];
-			printf('aid:');
-			print_r($id);
-			printf('<h2>ghhs: %s</h2>', $id);
-			//printf('<h2>wp: %s</h2>', $aid->wp_id[$i]);
+
+/*
+printf('aid:');
+print_r($id);
+printf('<h2>ghhs: %s</h2>', $id);
+ */
 			if (!in_array($id, $this->petID_array)) {
+				$post_to_delete = $animal_ids->wp_id[$i];
 				printf('<h2> delete this animal: %d ORRRRR %d</h2>', $id, $animal_ids->wp_id[$i]);
 				$this->delete_animal_post($post_to_delete);
 			}
@@ -512,7 +516,7 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function delete_animal_post($post_id) {
+	public static function delete_animal_post($post_id) {
 		if (get_post_type($post_id) == 'animal') {
 			// <-- members type posts
 			// Force delete
@@ -537,7 +541,7 @@ class GHHS_Found_Pets {
 		}
 	}
 
-	public function delete_all_animals() {
+	public static function delete_all_animals() {
 
 		$delete_post = array(
 			'post_type' => 'animal',
@@ -552,7 +556,7 @@ class GHHS_Found_Pets {
 			foreach ($posts as $post) {
 				//var_dump($post);
 				//printf('<h3>end animal</h3>');
-				$this->delete_animal_post($post->ID);
+				self::delete_animal_post($post->ID);
 			}
 
 		}
@@ -854,7 +858,7 @@ class GHHS_Found_Pets {
 		$this->delete_adopted_animals($this->petID_array);
 		//$this->delete_all_animals();
 
-		//return ob_get_clean();
+		return ob_get_clean();
 
 	}
 
