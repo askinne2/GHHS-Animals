@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', false);
+define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', true);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 
@@ -42,6 +42,7 @@ class GHHS_Found_Pets {
 	var $args;
 	var $ghhs_acf;
 	var $multiple_request_flag = 0;
+	var $petIDs;
 	var $status_array = array(
 		'status1' => 'Available For Adoption',
 		'status2' => 'Available for Adoption - Awaiting Spay/Neuter',
@@ -59,7 +60,7 @@ class GHHS_Found_Pets {
 			),
 		);
 		$this->ghhs_acf = new GHHS_Animals();
-		add_action('trashed_post', array($this, 'animal_delete'));
+		add_action('trashed_post', array($this, 'delete_animal_post'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
 		add_filter('template_include', array($this, 'ghhs_archive_animal_template'));
 
@@ -100,6 +101,41 @@ class GHHS_Found_Pets {
 		$this->request_uri = $request_uri;
 	}
 
+	public function super_request($args = array()) {
+		//$this->ghhs_remove_transient();
+		$transient = get_transient('super_ghhs_pets');
+		if (!empty($transient)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
+			}
+			return $transient;
+
+		} else {
+			$number_requests = 77;
+			// Build our array of request URI's and make more calls
+			for ($i = 0; $i < $number_requests; $i++) {
+				$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=100';
+				if (PLUGIN_DEBUG) {echo "fetching" . $i;}
+			}
+
+			$all_pets = array();
+			for ($i = 0; $i < $number_requests; $i++) {
+
+				$raw_response[$i] = wp_remote_get($request_uri[$i], $this->args);
+				if (is_wp_error($raw_response[$i]) || '200' != wp_remote_retrieve_response_code($raw_response[$i])) {
+					if (PLUGIN_DEBUG) {
+						echo "<p>Bad wp_remote_get Request </p>";
+					}
+
+					return;
+				}
+				$all_pets[$i] = json_decode(wp_remote_retrieve_body($raw_response[$i]));
+			}
+		}
+		set_transient('super_ghhs_pets', $all_pets, HOUR_IN_SECONDS);
+
+		return $all_pets;
+	}
 	/*
 		* returns an unsorted $pets object of all published animals from shelterluv
 		*
@@ -108,10 +144,19 @@ class GHHS_Found_Pets {
 
 		$transient = get_transient('ghhs_pets');
 		if (!empty($transient)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
+			}
 			return $transient->animals;
 
 		} else {
-			if (!LOCAL_JSON) {
+			if (LOCAL_JSON) {
+				$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
+				$pets = json_decode($jsonpets);
+				//print_r($pets);
+				return $pets->animals;
+
+			} else {
 				$request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 				$raw_response = wp_remote_get($request_uri, $args);
 				if (is_wp_error($raw_response) || '200' != wp_remote_retrieve_response_code($raw_response)) {
@@ -124,17 +169,13 @@ class GHHS_Found_Pets {
 				}
 				$pets = json_decode(wp_remote_retrieve_body($raw_response));
 
-			} else {
-
-				$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
-				$pets = json_decode($jsonpets);
 			}
 			if (empty($pets)) {
 				if (PLUGIN_DEBUG) {
 					print('No JSON to decode');
 				}
 
-				return 0;
+				return;
 			}
 			// total animals published in ShelterLuv
 			$animal_count = $pets->total_count;
@@ -148,18 +189,26 @@ class GHHS_Found_Pets {
 
 			if ($animal_count < 100) {
 
-				// low animal count, we can just return animals 0 -> 100.
+				// low animal count, we can just set transient and return animals 0 -> 100.
+				if (PLUGIN_DEBUG) {
+					printf('<h2 class="red_pet">SET TRANSIENT LOW ANIMALS</h2>');
+				}
 				set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
 				return $pets->animals;
 
 			} else {
 
 				$this->multiple_request_flag = true;
-				if (!LOCAL_JSON) {
+				if (LOCAL_JSON) {
 
+					$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
+					$pets = json_decode($jsonpets);
+					return $pets->animals;
+
+				} else {
 					// Build our array of request URI's and make more calls
 					for ($i = 0; $i < $number_requests; $i++) {
-						$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i + 1) . '00';
+						$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=100';
 						if (PLUGIN_DEBUG) {echo "fetching" . $request_uri[$i];}
 					}
 
@@ -192,12 +241,12 @@ class GHHS_Found_Pets {
 						echo '</pre>';
 					}
 
-				} else {
-					$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
-					$pets[$i] = json_decode($jsonpets);
 				}
 
 				// Save the API response so we don't have to call again for one hour.
+				if (PLUGIN_DEBUG) {
+					printf('<h2 class="red_pet">SET TRANSIENT HIGH ANIMALS</h2>');
+				}
 				set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
 
 				return $all_pets;
@@ -209,68 +258,7 @@ class GHHS_Found_Pets {
 
 	public function ghhs_remove_transient() {
 		delete_transient('ghhs_pets');
-	}
-
-	public function make_request_OLD($number_requests = int) {
-
-		if (PLUGIN_DEBUG) {
-			echo "<h2 style='color:red;'>Number Requests:" . $number_requests . "</h2>";
-		}
-
-		// Build our array of request URI's
-		for ($i = 0; $i < $number_requests; $i++) {
-			$request_uri[$i] = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable&offset=' . $i . '00&limit=' . ($i + 1) . '00';
-			if (PLUGIN_DEBUG) {echo "fetching" . $request_uri[$i];}
-		}
-
-		/* check if a transient already exists
-			         *
-			         * if no transient, build a transient and store it
-			         *
-		*/
-		$transient = get_transient('ghhs_pets');
-		if (!empty($transient)) {
-			return $transient->animals;
-
-		} else {
-			$all_pets = array();
-			for ($i = 0; $i < $number_requests; $i++) {
-
-				$raw_response[$i] = wp_remote_get($request_uri[$i], $this->args);
-				if (is_wp_error($raw_response[$i]) || '200' != wp_remote_retrieve_response_code($raw_response[$i])) {
-					if (PLUGIN_DEBUG) {
-						echo "<p>Bad wp_remote_get Request </p>";
-					}
-
-					return;
-				}
-
-				//$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/acf-json/animals.json');
-				//$pets[$i] = json_decode($jsonpets);
-
-				$pets[$i] = json_decode(wp_remote_retrieve_body($raw_response[$i]));
-
-				if (empty($pets)) {
-					if (PLUGIN_DEBUG) {
-						echo "<p>make_request(): No pets to json_decode </p>";
-					}
-
-					return;
-				}
-
-				$all_pets[] = $pets[$i]->animals;
-				if (!PLUGIN_DEBUG) {
-					echo '<pre>';
-					print_r($all_pets);
-					echo '</pre>';}
-
-			}
-
-			// Save the API response so we don't have to call again for one hour.
-			set_transient('ghhs_pets', $pets, HOUR_IN_SECONDS);
-
-			return $all_pets;
-		}
+		delete_transient('super_ghhs_pets');
 	}
 
 	public function request_and_sort($request_uri = string, $args = array()) {
@@ -287,14 +275,14 @@ class GHHS_Found_Pets {
 		$others = array();
 
 		/* loop through $pets object and sort according to
-			         * statuses. We'll only look for pets currently
-			         * available for adoption due to GHHS request
-		*/
+				         * statuses. We'll only look for pets currently
+				         * available for adoption due to GHHS request
 
-		$status1 = "Available For Adoption";
-		$status2 = "Available for Adoption - Awaiting Spay/Neuter";
-		$status3 = "Available for Adoption - In Foster";
-		$status4 = "Awaiting Spay/Neuter - In Foster";
+			$status1 = "Available For Adoption";
+			$status2 = "Available for Adoption - Awaiting Spay/Neuter";
+			$status3 = "Available for Adoption - In Foster";
+			$status4 = "Awaiting Spay/Neuter - In Foster";
+		*/
 
 		if ($this->multiple_request_flag) {
 			for ($i = 0; $i < count($pets); $i++) {
@@ -304,18 +292,27 @@ class GHHS_Found_Pets {
 					if ($pet->Type === "Cat") {
 						if (in_array($pet->Status, $this->status_array)) {
 							$cats[] = $pet;
+
+							// set $petID_array array for use later in deleting adopted pet
+							$this->petID_array[] = $pet->ID;
 						}
 
 					} else if ($pet->Type === "Dog") {
 
 						if (in_array($pet->Status, $this->status_array)) {
 							$dogs[] = $pet;
+
+							// set $petID_array array for use later in deleting adopted pet
+							$this->petID_array[] = $pet->ID;
 						}
 
 					} else {
 
 						if (in_array($pet->Status, $this->status_array)) {
 							$others[] = $pet;
+
+							// set $petID_array array for use later in deleting adopted pet
+							$this->petID_array[] = $pet->ID;
 						}
 
 					}
@@ -328,18 +325,27 @@ class GHHS_Found_Pets {
 				if ($pet->Type === "Cat") {
 					if (in_array($pet->Status, $this->status_array)) {
 						$cats[] = $pet;
+						// set $petID_array array for use later in deleting adopted pet
+						$this->petID_array[] = $pet->ID;
+
 					}
 
 				} else if ($pet->Type === "Dog") {
 
 					if (in_array($pet->Status, $this->status_array)) {
 						$dogs[] = $pet;
+						// set $petID_array array for use later in deleting adopted pet
+						$this->petID_array[] = $pet->ID;
+
 					}
 
 				} else {
 
 					if (in_array($pet->Status, $this->status_array)) {
 						$others[] = $pet;
+						// set $petID_array array for use later in deleting adopted pet
+						$this->petID_array[] = $pet->ID;
+
 					}
 
 				}
@@ -367,31 +373,79 @@ class GHHS_Found_Pets {
 
 		foreach ($dogs as $dog) {
 
-			$postid = $this->do_animal_post($dog);
+			$postid = $this->create_animal_post($dog);
 			if ($postid) {
-				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
 			} else {
 				printf('<h2>NOOOOOO insert</h2>');
 			}
 		} //end foreach dogs loop
 		foreach ($cats as $cat) {
 
-			$postid = $this->do_animal_post($cat);
+			$postid = $this->create_animal_post($cat);
 			if ($postid) {
-				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
 			} else {
 				printf('<h2>NOOOOOO insert</h2>');
 			}
 		} //end foreach dogs loop
 		foreach ($others as $other) {
 
-			$postid = $this->do_animal_post($other);
+			$postid = $this->create_animal_post($other);
 			if ($postid) {
-				//printf('<h2>successsful do_animal_post: %s</h2>', $postid);
+				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
 			} else {
 				printf('<h2>NOOOOOO insert</h2>');
 			}
 		} //end foreach dogs loop
+
+	}
+
+	public function delete_adopted_animals($petID_array = array()) {
+
+		/* search through created animal posts
+			 * get array of animal post IDs
+			 * if animal_post_id IS NOT FOUND in request $petID_array -> delete_animal_post()
+		*/
+		$animal_post = array(
+			'post_type' => 'animal',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		);
+		$query = new WP_Query($animal_post);
+		$posts = $query->posts;
+
+		$animal_ids = (object) [
+			'ghhs_id' => array(),
+			'wp_id' => array(),
+		];
+		if ($posts) {
+			$i = 0;
+			foreach ($posts as $post) {
+				$animal_ids->ghhs_id[$i] = get_field('animal_id', $post->ID);
+				$animal_ids->wp_id[$i] = $post->ID;
+				$i++;
+			}
+
+		}
+
+		printf('<h4>delete_adopted_animals() count: %d</h4>', count($posts));
+		print_r($animal_ids);
+		printf('<br><br>');
+		$i = 0;
+		foreach ($animal_ids->ghhs_id as $id) {
+			$post_to_delete = $animal_ids->wp_id[$i];
+			printf('aid:');
+			print_r($id);
+			printf('<h2>ghhs: %s</h2>', $id);
+			//printf('<h2>wp: %s</h2>', $aid->wp_id[$i]);
+			if (!in_array($id, $this->petID_array)) {
+				printf('<h2> delete this animal: %d ORRRRR %d</h2>', $id, $animal_ids->wp_id[$i]);
+				$this->delete_animal_post($post_to_delete);
+			}
+			$i++;
+
+		}
 
 	}
 
@@ -458,7 +512,7 @@ class GHHS_Found_Pets {
 		return;
 	}
 
-	public function animal_delete($post_id) {
+	public function delete_animal_post($post_id) {
 		if (get_post_type($post_id) == 'animal') {
 			// <-- members type posts
 			// Force delete
@@ -498,7 +552,7 @@ class GHHS_Found_Pets {
 			foreach ($posts as $post) {
 				//var_dump($post);
 				//printf('<h3>end animal</h3>');
-				$this->animal_delete($post->ID);
+				$this->delete_animal_post($post->ID);
 			}
 
 		}
@@ -527,7 +581,7 @@ class GHHS_Found_Pets {
 		$attachment_check = new Wp_Query($attachment);
 
 		if ($attachment_check->have_posts()) {
-			printf('<h2>attachment exists</h2>');
+			//printf('<h2>attachment exists</h2>');
 			return $attachment_check;
 		} else {
 
@@ -574,7 +628,7 @@ class GHHS_Found_Pets {
 		}
 	}
 
-	public function do_animal_post($animal) {
+	public function create_animal_post($animal) {
 		//if (get_post_type($post_id) == 'animal') {
 
 		$new_animal = array(
@@ -592,7 +646,7 @@ class GHHS_Found_Pets {
 
 			if (PLUGIN_DEBUG) {
 				printf('<h2>NEW ANIMAL</h2>');
-				print_r($animal);
+				//print_r($animal);
 				printf('<h5>Name %s</h5>', $animal->Name);
 			}
 
@@ -628,10 +682,10 @@ class GHHS_Found_Pets {
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
 				add_post_meta($new_post_id, 'adopt_link', $adopt_link);
 
-				printf('<h2 class="red_pet">Photos for %s</h2>', $animal->Name);
-				print_r($animal->Photos);
+				//printf('<h2 class="red_pet">Photos for %s</h2>', $animal->Name);
+				//print_r($animal->Photos);
 				foreach ($animal->Photos as $photo) {
-					printf('<h4>Add Photo: %s</h4>', $photo);
+					//printf('<h4>Add Photo: %s</h4>', $photo);
 					add_post_meta($new_post_id, 'photos', $photo);
 				}
 			} else {
@@ -649,9 +703,9 @@ class GHHS_Found_Pets {
 
 			if (!in_array($animal_status, $this->status_array)) {
 				printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
-				$this->animal_delete($post_id->ID);
+				$this->delete_animal_post($post_id->ID);
 			} else {
-				printf('<h5>Status Match: %s</h5>', $animal->Name);
+				//printf('<h5>Status Match: %s</h5>', $animal->Name);
 			}
 
 			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
@@ -777,6 +831,9 @@ class GHHS_Found_Pets {
 		ob_start();
 
 		$pets_object = $this->request_and_sort($this->request_uri, $this->args);
+		//$pets = $this->super_request($this->args);
+		//print_r($pets_object);
+		//print_r($this->petID_array);
 
 		extract(shortcode_atts(array(
 			'animal_type' => '',
@@ -793,7 +850,8 @@ class GHHS_Found_Pets {
 		$print_mode = $attributes['mode'];
 
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
-		//$this->create_and_update_animals($pets_object);
+		$this->create_and_update_animals($pets_object);
+		$this->delete_adopted_animals($this->petID_array);
 		//$this->delete_all_animals();
 
 		//return ob_get_clean();
