@@ -62,7 +62,8 @@ class GHHS_Found_Pets {
 		$this->ghhs_animals = new GHHS_Animals();
 		add_action('trashed_post', array($this, 'delete_animal_post'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
-		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 12);
+		add_filter('template_include', array($this, 'ghhs_single_animal_template'), 9999);
+		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 9999);
 
 		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
@@ -791,36 +792,34 @@ printf('<h2>ghhs: %s</h2>', $id);
 
 	public function ghhs_archive_animal_template($template) {
 
-		global $post;
-		$delete_post = array(
-			'post_type' => 'animal',
-			'post_status' => 'publish',
-			'posts_per_page' => -1,
-		);
-		$query = new WP_Query($delete_post);
-		$posts = $query->posts;
-		if ($posts) {
+		if (is_archive() && get_post_type('animal')) {
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php')) {
 
-			if (is_archive() && $post->post_type == 'animal') {
-				if (file_exists(plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php')) {
-
-					$archive_template = plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php';
-				}
-				return $archive_template;
-
-			} else if (is_single() && $post->post_type == 'animal') {
-				// Checks for single template by post type
-				if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
-
-					$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
-					return $template;
-				}
-
+				$archive_template = plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php';
 			}
+			return $archive_template;
+
 		} else {
+
 			return $template;
 		}
 
+	}
+
+	public function ghhs_single_animal_template($template) {
+
+		if (get_post_type() == 'animal') {
+			// Checks for single template by post type
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
+
+				$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
+				return $template;
+			}
+
+		} else {
+
+			return $template;
+		}
 	}
 
 	public function run() {
