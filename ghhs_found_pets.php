@@ -45,6 +45,8 @@ class GHHS_Found_Pets {
 	var $ghhs_animals;
 	var $multiple_request_flag = 0;
 	var $petID_array;
+	var $ghhs_pets_object;
+
 	var $status_array = array(
 		'status1' => 'Available For Adoption',
 		'status2' => 'Available for Adoption - Awaiting Spay/Neuter',
@@ -65,9 +67,9 @@ class GHHS_Found_Pets {
 		add_filter('template_include', array($this, 'ghhs_single_animal_template'), 9999);
 		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 9999);
 
-		//add_action('init', array($this, 'run'));
 		//add_action(self::CRON_HOOK, array($this, 'run'));
-		add_shortcode('ghhs_found_pets', array(&$this, 'run'));
+		add_shortcode('ghhs_found_pets', array($this, 'run'));
+		add_shortcode('ghhs_slideshow', array($this, 'display_pets'));
 	}
 
 	/**
@@ -267,8 +269,8 @@ class GHHS_Found_Pets {
 
 		$pets = $this->make_request($request_uri, $args);
 		if (empty($pets)) {
-			echo "<h2>Uh oh. Our shelter is experiencing technical difficulties.</h2>";
-			echo "<h3>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</h3>";
+			echo "<h5>Uh oh. Our shelter is experiencing technical difficulties.</h5>";
+			echo "<p>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</p>";
 			return;
 		}
 
@@ -430,19 +432,10 @@ class GHHS_Found_Pets {
 			}
 
 		}
-/*
-printf('<h4>delete_adopted_animals() count: %d</h4>', count($posts));
-print_r($animal_ids);
-printf('<br><br>');
- */
+
 		$i = 0;
 		foreach ($animal_ids->ghhs_id as $id) {
 
-/*
-printf('aid:');
-print_r($id);
-printf('<h2>ghhs: %s</h2>', $id);
- */
 			if (!in_array($id, $this->petID_array)) {
 				$post_to_delete = $animal_ids->wp_id[$i];
 				printf('<h2> delete this animal: %d ORRRRR %d</h2>', $id, $animal_ids->wp_id[$i]);
@@ -458,63 +451,22 @@ printf('<h2>ghhs: %s</h2>', $id);
 		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
 		// get optional attributes and assign default values if not present
 
-		$cats = $pets_object['cats'];
-		$dogs = $pets_object['dogs'];
-		$others = $pets_object['others'];
-
-		if ($print_mode == "Adopt") {
-
-			$pet_printer = new ghhs_found_pets_printer();
-
-			if ($animal_type == "Cats") {
-				if (empty($cats)) {
-					$pet_printer->display_no_animals_available($animal_type);
-				} else {
-
-					$pet_slideshow = new ghhs_found_pets_slideshow();
-
-					$pet_slideshow->display($cats);
-
-				}
-
-			} else if ($animal_type == "Dogs") {
-
-				if (empty($dogs)) {
-					$pet_printer->display_no_animals_available($animal_type);
-
-				} else {
-
-					$pet_slideshow = new ghhs_found_pets_slideshow();
-
-					$pet_slideshow->display($dogs);
-
-				}
-
-			} else if ($animal_type == "Others") {
-
-				if (empty($others)) {
-					$pet_printer->display_no_animals_available($animal_type);
-				} else {
-
-					$pet_slideshow = new ghhs_found_pets_slideshow();
-
-					$pet_slideshow->display($others);
-
-				}
+		$transient = get_transient('ghhs_pets');
+		if (!empty($transient)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
 			}
-		} else if ($print_mode == "Slideshow") {
-
-			$pet_slideshow = new ghhs_found_pets_slideshow();
-
-			$pet_slideshow->display_all_pictures(array_merge($cats, $dogs, $others));
-
+			$this->ghhs_pets_object = $transient->animals;
 		} else {
-
-			print("<h2>Wrong Use of shortcode. Please try:</h2>");
-			print("<h3>[ghhs_found_pets animal_type='Dogs/Cats/Others' mode='Adopt/Slideshow']</h3>");
+			printf('<h2> no transient can\'t run. </h2>');
+			return;
 		}
 
-		return;
+		$pet_slideshow = new ghhs_found_pets_slideshow();
+		ob_start();
+		$pet_slideshow->display_all_pictures($this->ghhs_pets_object);
+
+		return ob_get_clean();
 	}
 
 	public static function delete_animal_post($post_id) {
@@ -792,23 +744,21 @@ printf('<h2>ghhs: %s</h2>', $id);
 
 	public function ghhs_archive_animal_template($template) {
 
-		if (is_archive() && get_post_type('animal')) {
-			if (file_exists(plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php')) {
+		if (is_archive() && get_post_type() == 'animal') {
 
+			if (file_exists(plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php')) {
 				$archive_template = plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php';
 			}
 			return $archive_template;
 
 		} else {
-
 			return $template;
 		}
 
 	}
-
 	public function ghhs_single_animal_template($template) {
 
-		if (get_post_type() == 'animal') {
+		if (is_single() && get_post_type() == 'animal') {
 			// Checks for single template by post type
 			if (file_exists(plugin_dir_path(__FILE__) . 'templates/single-animal.php')) {
 
@@ -834,27 +784,13 @@ printf('<h2>ghhs: %s</h2>', $id);
 
 		ob_start();
 
-		$pets_object = $this->request_and_sort($this->request_uri, $this->args);
+		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		//$pets = $this->super_request($this->args);
 		//print_r($pets_object);
 		//print_r($this->petID_array);
-		/*
-		extract(shortcode_atts(array(
-			'animal_type' => '',
-			'mode' => '',
-		), $attributes));
 
-		if (PLUGIN_DEBUG) {
-			echo "<h2>attributes - ";
-			print_r($attributes);
-			echo "</h2>";
-
-		}
-		$animal_type = $attributes['animal_type'];
-		$print_mode = $attributes['mode'];
-*/
 		//$this->display_pets($pets_object, $animal_type, $print_mode);
-		$this->create_and_update_animals($pets_object);
+		$this->create_and_update_animals($this->ghhs_pets_object);
 		$this->delete_adopted_animals($this->petID_array);
 		//$this->delete_all_animals();
 
