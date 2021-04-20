@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 }
 
 define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', false);
+define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 
@@ -66,8 +66,8 @@ class GHHS_Found_Pets {
 		add_filter('template_include', array($this, 'ghhs_single_animal_template'), 9999);
 		add_filter('template_include', array($this, 'ghhs_archive_animal_template'), 9999);
 
-		//add_action(self::CRON_HOOK, array($this, 'run'));
-		add_shortcode('ghhs_found_pets', array($this, 'run'));
+		add_action(self::CRON_HOOK, array($this, 'run'));
+		//add_shortcode('ghhs_found_pets', array($this, 'run'));
 		add_shortcode('ghhs_slideshow', array($this, 'display_pets'));
 	}
 
@@ -75,7 +75,6 @@ class GHHS_Found_Pets {
 	 * Hook into the WordPress activate hook
 	 */
 	public static function activate() {
-		//add_action('init', new GHHS_Animals());
 
 		// Do something
 		//Use wp_next_scheduled to check if the event is already scheduled
