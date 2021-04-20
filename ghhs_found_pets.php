@@ -502,7 +502,7 @@ class GHHS_Found_Pets {
 		$query = new WP_Query($delete_post);
 		$posts = $query->posts;
 		if ($posts) {
-			printf('<h4>count: %d</h4>', count($posts));
+			if (PLUGIN_DEBUG) {printf('<h4>count: %d</h4>', count($posts));}
 
 			foreach ($posts as $post) {
 				//var_dump($post);

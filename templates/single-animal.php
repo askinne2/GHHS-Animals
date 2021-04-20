@@ -16,28 +16,28 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-							<main role="main">
-								<!-- POST TAGS --->
-								<div class="post-tags container my-5">
-									<?php
+								<main role="main">
+									<!-- POST TAGS --->
+									<div class="post-tags container my-5">
+										<?php
 	$terms = get_terms('adopt-animals');
 	$count = count($terms);
 	if ($count > 0) {
 		echo '<ul class="list-group list-group-horizontal-sm">';
 		foreach ($terms as $term) {?>
 
-											<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+												<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
 
-										<?php }
+											<?php }
 		echo '</ul>';
 	}?>
-								</div>
-								<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+									</div>
+									<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-									<header class="page-header">
-										<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-									</header>
-								<?php endif;?>
+										<header class="page-header">
+											<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+										</header>
+									<?php endif;?>
 		<div class="page-content container">
 
 
@@ -83,9 +83,9 @@ printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s">%s</
 printf('<button type="button" style="background-color: #0F9EDA;" class="text-white fw-bold btn btn-large" data-bs-toggle="modal" data-bs-target="#adoptInfoModal">Adopt %s</button>', get_field('animal_name'));
 ?>
 							</div>
-							<div class="row my-3">
-								<?php printf('<a style="background-color: #286B87;" class="text-white fw-bold btn btn-large" href="%s">Sponsor %s</a>', '/donate', get_field('name'));?>
-							</div>
+							<!--div class="row my-3">
+								<?php //printf('<a style="background-color: #286B87;" class="text-white fw-bold btn btn-large" href="%s">Sponsor %s</a>', '/donate', get_field('name'));?>
+							</div-->
 							<div class="row my-3">
 								<?php printf('<button type="button" style="background-color: #da9240;" class="text-white fw-bold btn btn-large" data-bs-toggle="modal" data-bs-target="#exampleModal%s">More Photos</button>', get_the_id());?>
 							</div>
@@ -118,10 +118,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																		<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																			<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																		</div>
-																		<?php
+																			<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																				<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																			</div>
+																			<?php
 endforeach;
 else:
 ?>
