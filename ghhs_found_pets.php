@@ -11,7 +11,7 @@
  * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
  *
  *
- * Version:           2.0.0
+ * Version:           2.1.0
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -32,7 +32,6 @@ define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 
 require_once 'ghhs_found_pets_includes.php';
-require_once 'ghhs_found_pets_printer.php';
 require_once 'ghhs_found_pets_slideshow.php';
 require_once 'ghhs_animals.php';
 
@@ -659,7 +658,7 @@ class GHHS_Found_Pets {
 			$animal_status = get_post_meta($post_id->ID, 'status', true);
 
 			if (!in_array($animal_status, $this->status_array)) {
-				printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
+				//printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
 				$this->delete_animal_post($post_id->ID);
 			} else {
 				//printf('<h5>Status Match: %s</h5>', $animal->Name);
@@ -708,21 +707,12 @@ class GHHS_Found_Pets {
 
 				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
 				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
+				foreach ($animal->Photos as $photo) {
+					//printf('<h4>Add Photo: %s</h4>', $photo);
+					update_post_meta($post_id->ID, 'photos', $photo);
+				}
 
-				/***** THIS BREAKS ELEMENTOR ****/
-				//$this->acf_set_featured_image($picture, $post_id->ID);
-				/***** THIS BREAKS ELEMENTOR ****/
-
-				//add_post_meta($post_id, 'cover_photo', 'http://ghhs/wp-content/uploads/2020/04/Cameo-1-1-scaled.jpg');
 			} // end timestamp comparison
-			else {
-				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
-				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
-
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
-				//var_dump($post_thumbnail);
-				//update_post_meta($post_id->ID, '_thumbnail_id', $post_thumbnail);
-			}
 		}
 		return $post_id;
 	} // END public function new_animal_post()
@@ -773,23 +763,16 @@ class GHHS_Found_Pets {
 	}
 
 	public function run() {
-		//$attributes = string) {
 
 		if (REMOVE_TRANSIENT) {
 			$this->ghhs_remove_transient();
 		}
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
-		//$number_requests = $this->query_number_animals($this->request_uri, $this->args);
 
 		ob_start();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
-		//$pets = $this->super_request($this->args);
-		//print_r($pets_object);
-		//print_r($this->petID_array);
-
-		//$this->display_pets($pets_object, $animal_type, $print_mode);
 		$this->create_and_update_animals($this->ghhs_pets_object);
 		$this->delete_adopted_animals($this->petID_array);
 		//$this->delete_all_animals();

@@ -42,6 +42,10 @@ printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ev
 				<h4 class="elementor-heading-title elementor-size-default fw-bold my-3">Our adoption fees start at $100 but vary depending on age and species of pet.</h4>
 			</div>
 		</div>
+		<div class="row my-3">
+			<a id="archive-top">&nbsp;
+			</a>
+		</div>
 		<?php if (PLUGIN_DEBUG) {printf('<h2 class="red_pet">Total Animals: %d.</h2>', $GLOBALS['wp_query']->post_count);}?>
 		<div class="row post-tags container my-3">
 						<?php
@@ -107,6 +111,28 @@ if (!have_posts()) {
 </div> <!-- end card group -->
 
 </div> <!-- end container -->
+<div class="container my-5">
+	<div class="row">
+		<div class="col mx-auto">
+<?php printf('<a href="#archive-top" style="background-color: #0F9EDA;"  class="text-white btn btn-large">Back to Top</a>');?>
+</div>
+</div>
+</div>
+<!-- POST TAGS --->
+				<div class="post-tags container mt-5 my-5">
+					<?php
+$terms = get_terms('adopt-animals');
+$count = count($terms);
+if ($count > 0) {
+	echo '<ul class="list-group list-group-horizontal-sm">';
+	foreach ($terms as $term) {?>
+
+							<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+
+						<?php }
+	echo '</ul>';
+}?>
+				</div>
 <?php wp_link_pages();?>
 
 	<?php
