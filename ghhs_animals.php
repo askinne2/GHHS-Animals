@@ -387,7 +387,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($dog);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
@@ -400,7 +400,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($cat);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
 				}
 
 			} else {
@@ -414,7 +414,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($other);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
