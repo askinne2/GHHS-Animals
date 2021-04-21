@@ -105,7 +105,7 @@ class GHHS_Animals {
 		$timestamp = wp_next_scheduled(self::CRON_HOOK);
 		wp_unschedule_event($timestamp, self::CRON_HOOK);
 		self::delete_all_animals();
-		$this->delete_transient('ghhs_pets');
+
 	}
 
 	public function set_request_uri($request_uri = string) {
