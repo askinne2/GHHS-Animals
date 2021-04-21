@@ -9,7 +9,6 @@ if (!defined('ABSPATH')) {
 // Define path and URL to the ACF plugin.
 define('MY_ACF_PATH', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
 define('MY_ACF_URL', plugins_url(plugin_basename(__DIR__)) . '/includes/acf/');
-//require_once '/path/to/wp-load.php';
 
 if (!class_exists("GHHS_Animals")) {
 	/**
@@ -41,18 +40,8 @@ if (!class_exists("GHHS_Animals")) {
 			// (Optional) Hide the ACF admin menu item.
 			add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
 			function my_acf_settings_show_admin($show_admin) {
-				return true;
+				return false;
 			}
-			//add_action('init', array(&$this, 'new_animal_post'));
-
-			function animal_skip_trash($post_id) {
-				if (get_post_type($post_id) == 'animal') {
-					// <-- members type posts
-					// Force delete
-					wp_delete_post($post_id, true);
-				}
-			}
-			add_action('trashed_post', 'animal_skip_trash');
 		} // END public function __construct()
 
 	} // END class GHHS_Animals
