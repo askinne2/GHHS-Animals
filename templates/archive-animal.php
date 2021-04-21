@@ -77,7 +77,7 @@ if (!have_posts()) {
 						<!--article class="post archive-animal"-->
 						<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_the_post_thumbnail_url($post, 'large'), esc_url($post_link));?>
 						<div class="card-body my-3">
-							<?php printf('<h3 class="card-title">%s</h3>', get_the_title());?>
+							<?php printf('<h4 class="card-title">%s</h4>', get_the_title());?>
 							<p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type'));?></p>
 
 							<?php printf("<p>Breed: %s </p>", get_field('breed'));?>
