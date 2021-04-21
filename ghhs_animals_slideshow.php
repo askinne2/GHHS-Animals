@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-class Ghhs_Found_Pets_Slideshow {
+class GHHS_Animals_Slideshow {
 	public function __construct() {}
 
 	public function display_all_pictures($pets) {
