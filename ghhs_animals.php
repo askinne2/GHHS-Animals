@@ -8,7 +8,7 @@
  * Plugin Name:       GHHS Animals
  * Plugin URI:        https://github.com/askinne2/GHHS-Animals
  *
- * Description:       This plugin creates a shortcode that displays all stray cats, dogs and other animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv.
+ * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
  * Version:           2.1.0
@@ -18,7 +18,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ghhs_animals
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/askinne2/GHHS-Found-Pets
+ * GitHub Plugin URI: https://github.com/askinne2/GHHS-Animals
 
  */
 
@@ -30,6 +30,7 @@ define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
+define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 
 require_once 'ghhs_animals_includes.php';
 require_once 'ghhs_animals_slideshow.php';
@@ -104,6 +105,7 @@ class GHHS_Animals {
 		$timestamp = wp_next_scheduled(self::CRON_HOOK);
 		wp_unschedule_event($timestamp, self::CRON_HOOK);
 		self::delete_all_animals();
+		$this->delete_transient('ghhs_pets');
 	}
 
 	public function set_request_uri($request_uri = string) {
@@ -384,30 +386,64 @@ class GHHS_Animals {
 
 			$postid = $this->create_animal_post($dog);
 			if ($postid) {
-				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				if (PLUGIN_DEBUG) {
+					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				}
 			} else {
-				printf('<h2>NOOOOOO insert</h2>');
+				if (PLUGIN_DEBUG) {
+					printf('<h2>Failed to create %s</h2>', $dog->Name);
+				}
 			}
 		} //end foreach dogs loop
 		foreach ($cats as $cat) {
 
 			$postid = $this->create_animal_post($cat);
 			if ($postid) {
-				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				if (PLUGIN_DEBUG) {
+					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				}
+
 			} else {
-				printf('<h2>NOOOOOO insert</h2>');
+				if (PLUGIN_DEBUG) {
+					printf('<h2>Failed to create %s</h2>', $cat->Name);
+				}
 			}
 		} //end foreach dogs loop
 		foreach ($others as $other) {
 
 			$postid = $this->create_animal_post($other);
 			if ($postid) {
-				//printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				if (PLUGIN_DEBUG) {
+					printf('<h2>successsful create_animal_post: %s</h2>', $postid);
+				}
 			} else {
-				printf('<h2>NOOOOOO insert</h2>');
+				if (PLUGIN_DEBUG) {
+					printf('<h2>Failed to create %s</h2>', $other->Name);
+				}
 			}
 		} //end foreach dogs loop
+	}
 
+	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
+		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
+		// get optional attributes and assign default values if not present
+
+		$transient = get_transient('ghhs_pets');
+		if (!empty($transient)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
+			}
+			$this->ghhs_pets_object = $transient->animals;
+		} else {
+
+			printf('<h2> no transient can\'t run. </h2>');
+			return;
+		}
+
+		$pet_slideshow = new GHHS_Animals_Slideshow();
+		ob_start();
+		$pet_slideshow->display_all_pictures($this->ghhs_pets_object);
+		return ob_get_clean();
 	}
 
 	public function delete_adopted_animals($petID_array = array()) {
@@ -443,49 +479,30 @@ class GHHS_Animals {
 
 			if (!in_array($id, $this->petID_array)) {
 				$post_to_delete = $animal_ids->wp_id[$i];
-				printf('<h2> delete this animal: %d ORRRRR %d</h2>', $id, $animal_ids->wp_id[$i]);
+				if (PLUGIN_DEBUG) {
+					printf('<h2> Delete this animal: %d</h2>', $id, $animal_ids->wp_id[$i]);
+				}
 				$this->delete_animal_post($post_to_delete);
 			}
 			$i++;
 
 		}
-
-	}
-
-	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
-		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
-		// get optional attributes and assign default values if not present
-
-		$transient = get_transient('ghhs_pets');
-		if (!empty($transient)) {
-			if (PLUGIN_DEBUG) {
-				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
-			}
-			$this->ghhs_pets_object = $transient->animals;
-		} else {
-			printf('<h2> no transient can\'t run. </h2>');
-			return;
-		}
-
-		$pet_slideshow = new GHHS_Animals_Slideshow();
-		ob_start();
-		$pet_slideshow->display_all_pictures($this->ghhs_pets_object);
-
-		return ob_get_clean();
 	}
 
 	public static function delete_animal_post($post_id) {
 		if (get_post_type($post_id) == 'animal') {
 			// <-- members type posts
 			// Force delete
-
-			printf('<h2>post id:</h2>');
-			print_r($post_id);
+			if (PLUGIN_DEBUG) {
+				printf('<h2>post id:</h2>');
+				print_r($post_id);
+			}
 			$post_attachments = get_attached_media('', $post_id);
 
-			printf('<h3>post attachments:</h3>');
-			print_r($post_attachments);
-
+			if (PLUGIN_DEBUG) {
+				printf('<h3>post attachments:</h3>');
+				print_r($post_attachments);
+			}
 			if ($post_attachments) {
 
 				foreach ($post_attachments as $attachment) {
@@ -526,7 +543,7 @@ class GHHS_Animals {
 		 * returns attachment ID of either newly created image or attachment ID of existing image
 		 *
 	*/
-	function upload_image($url, $post_id) {
+	public function upload_image($url, $post_id) {
 		// Add Featured Image to Post
 		$image_url = $url; // Define the image URL here
 		$image_name = 'animal-' . $post_id . '.png';
@@ -641,7 +658,7 @@ class GHHS_Animals {
 					add_post_meta($new_post_id, 'adoption_fee', $animal->AdoptionFeeGroup->Price);
 				}
 
-				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
+				$adopt_link = ADOPT_LINK . $animal->ID;
 				add_post_meta($new_post_id, 'adopt_link', $adopt_link);
 
 				//printf('<h2 class="red_pet">Photos for %s</h2>', $animal->Name);
@@ -650,9 +667,13 @@ class GHHS_Animals {
 					//printf('<h4>Add Photo: %s</h4>', $photo);
 					add_post_meta($new_post_id, 'photos', $photo);
 				}
+
 			} else {
 
-				printf('<h2>insert post failed for %s</h2>', $animal->Name);
+				if (PLUGIN_DEBUG) {
+					printf('<h2>insert post failed for %s</h2>', $animal->Name);
+					return NULL;
+				}
 			}
 
 			$post_id = $new_post_id;
@@ -667,36 +688,28 @@ class GHHS_Animals {
 				//printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
 				$this->delete_animal_post($post_id->ID);
 			} else {
-				//printf('<h5>Status Match: %s</h5>', $animal->Name);
+				if (PLUGIN_DEBUG) {
+					printf('<h5>Status Match for existing Animal: %s</h5>', $animal->Name);
+				}
 			}
 
 			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
 
 			if (!PLUGIN_DEBUG) {
-				printf('<h2>Time</h2>');
+				printf('<h2>Last Update Time: </h2>');
 				print_r($postUpdateTime);
 			}
 
 			// ONLY UPDATE IF THE TWO TIMESTAMPS DO NOT MATCH
 			if ($animal->LastUpdatedUnixTime != $postUpdateTime) {
-				$update_animal = array(
-					'post_id' => $post_id->ID,
-					'post_title' => $animal->Name,
-					'post_type' => 'animal',
-					'post_content' => $animal->Description,
-					'post_status' => 'publish',
-					'comment_status' => 'closed', // if you prefer
-					'ping_status' => 'closed', // if you prefer
-				);
 
 				if (PLUGIN_DEBUG) {
 					printf('<h2>UPDATE ANIMAL</h2>');
 					print_r($animal);
 					printf('<h5>Name %s</h5>', $animal->Name);
 				}
-				//$update_post_id = wp_update_post($update_animal, true)
+
 				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
-				//update_post_meta($post_id->ID, '_thumbnail_id', $post_thumbnail);
 
 				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
 				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
@@ -710,11 +723,14 @@ class GHHS_Animals {
 				update_post_meta($post_id->ID, 'bio', $animal->Description);
 				update_post_meta($post_id->ID, 'animal_size', $animal->Size);
 				update_post_meta($post_id->ID, 'last_update_time', $animal->LastUpdatedUnixTime);
+				if (isset($animal->AdoptionFeeGroup->Price)) {
+					add_post_meta($post_id->ID, 'adoption_fee', $animal->AdoptionFeeGroup->Price);
+				}
 
-				$adopt_link = 'https://www.shelterluv.com/matchme/adopt/ghhs-a-' . $animal->ID;
+				$adopt_link = ADOPT_LINK . $animal->ID;
 				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
+
 				foreach ($animal->Photos as $photo) {
-					//printf('<h4>Add Photo: %s</h4>', $photo);
 					update_post_meta($post_id->ID, 'photos', $photo);
 				}
 
@@ -781,7 +797,6 @@ class GHHS_Animals {
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
 		$this->delete_adopted_animals($this->petID_array);
-		//$this->delete_all_animals();
 
 		return ob_get_clean();
 
@@ -789,18 +804,15 @@ class GHHS_Animals {
 
 } // end class definition
 
-if (class_exists('GHHS_Animals')) {
-	// Installation and uninstallation hooks
-	register_activation_hook(__FILE__, array('GHHS_Animals', 'activate'));
-	register_deactivation_hook(__FILE__, array('GHHS_Animals', 'deactivate'));
+// Installation and uninstallation hooks
+register_activation_hook(__FILE__, array('GHHS_Animals', 'activate'));
+register_deactivation_hook(__FILE__, array('GHHS_Animals', 'deactivate'));
 
-	// run GHHS_Animals shortcode
+// run GHHS_Animals shortcode
 
-	function custom_http_request_timeout() {
-		return 15;
-	}
-	add_filter('http_request_timeout', 'custom_http_request_timeout');
-
-	$pets = new GHHS_Animals();
-
+function custom_http_request_timeout() {
+	return 15;
 }
+add_filter('http_request_timeout', 'custom_http_request_timeout');
+
+$pets = new GHHS_Animals();
