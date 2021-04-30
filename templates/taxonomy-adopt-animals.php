@@ -14,21 +14,23 @@ if (!defined('ABSPATH')) {
 get_header();
 
 ?>
-<main role="main">
+<div role="main">
 
 
-
+	<div class="adopt-header align-middle">
 	<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 		<header class="page-header container">
 			<?php
-printf('<h1 class="elementor-heading-title elementor-size-default my-5 fs-1">Adopt an Animal</h1>');
-printf('<h2 class="elementor-heading-title elementor-size-default">Give a fur-ever home to an animal in need.</h2>');
+printf('<h1 class="elementor-heading-title animal-archive-title elementor-size-default my-5 fs-1 text-white">Adopt an Animal</h1>');
+printf('<h2 class="elementor-heading-title animal-archive-title elementor-size-default text-white">Give a fur-ever home to an animal in need.</h2>');
 
 //the_archive_description('<p class="archive-description">', '</p>');
 ?>
 		</header>
 
 	<?php endif;?>
+
+</div> <!-- end adopt-header -->
 	<div class="page-content container">
 		<div class="row my-5">
 			<div class="col">
@@ -146,7 +148,7 @@ if ($wp_query->max_num_pages > 1):
 			<div class="nav-next"><?php previous_posts_link(sprintf(__('newer %s', 'hello-elementor'), '<span class="meta-nav">&rarr;</span>'));?></div>
 		</nav>
 	<?php endif;?>
-</main>
+</div> <!-- end main content -->
 
 <?php
 get_footer();

@@ -11,7 +11,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.1.4
+ * Version:           2.1.5
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -26,8 +26,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', true);
+define('PLUGIN_DEBUG', false);
+define('REMOVE_TRANSIENT', false);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
