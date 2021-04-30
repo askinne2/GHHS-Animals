@@ -16,28 +16,28 @@ get_header();
 while (have_posts()): the_post();
 	?>
 
-												<main role="main">
-													<!-- POST TAGS --->
-													<div class="post-tags container my-5">
-														<?php
+					<main role="main">
+						<!-- POST TAGS --->
+						<div class="post-tags container my-5">
+							<?php
 	$terms = get_terms('adopt-animals');
 	$count = count($terms);
 	if ($count > 0) {
 		echo '<ul class="list-group list-group-horizontal-sm">';
 		foreach ($terms as $term) {?>
 
-																<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+									<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
 
-															<?php }
+								<?php }
 		echo '</ul>';
 	}?>
-													</div>
-													<?php if (apply_filters('hello_elementor_page_title', true)): ?>
+						</div>
+						<?php if (apply_filters('hello_elementor_page_title', true)): ?>
 
-														<header class="page-header">
-															<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
-														</header>
-													<?php endif;?>
+							<header class="page-header">
+								<?php the_title('<h1 class="entry-title single-animal-name fw-bold">', '</h1>');?>
+							</header>
+						<?php endif;?>
 		<div class="page-content container">
 
 
@@ -68,11 +68,22 @@ printf('<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal%s">%s</
 							<div class="row">
 								<?php if (get_field('animal_size')) {printf("<h5>Size: %s </h5>", get_field('animal_size'));} else {echo '';}?>
 							</div>
+							<!-- PET bio -->
+	<?php if (get_field('bio')): ?>
+
+			<div class="row">
+				<h5 class="my-2"><?php echo get_field('animal_name') ?>'s Biography</h5>
+			</div>
+			<div class="row">
+				<?php printf('<p>%s</p>', get_field('bio'));?>
+			</div>
+	<?php endif;?>
+
 							<div class="row">
 								<p>To begin your adoption process, please click the adopt button below. You will be redirected to Shelterluv to complete your adoption.</p>
 							</div>
 							<div class="row">
-								<p>Adoption Fees: Our adoption fees start at $100 but vary depending on age and species of pet.</p>
+								<p>Adoption Fees vary based on pet.</p>
 							</div>
 
 							<!-- action buttons -->
@@ -118,10 +129,10 @@ $photos = get_post_meta(get_the_id(), 'photos');
 if ($photos):
 	foreach ($photos as $photo):
 	?>
-																							<div class="col-lg-4 col-md-12 my-1 my-lg-1">
-																								<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
-																							</div>
-																							<?php
+																<div class="col-lg-4 col-md-12 my-1 my-lg-1">
+																	<img class="img-fluid" src="<?php echo $photo; ?>" alt="<?php echo $photo ?>" />
+																</div>
+																<?php
 endforeach;
 else:
 ?>
@@ -200,33 +211,22 @@ if (get_field('adoption_fee') == 0) {
 
 	</div> <!-- end ADOPT INFO MODAL -->
 
-	<!-- PET bio -->
-<?php if (get_field('bio')): ?>
 
-	<div class="container">
-		<div class="row">
-			<h3 class="my-5"><?php echo get_field('animal_name') ?>'s Biography</h3>
-		</div>
-		<div class="row">
-			<?php printf('<p>%s</p>', get_field('bio'));?>
-		</div>
-	</div> <!-- end PET BIO -->
-<?php endif;?>
-<!-- POST TAGS --->
-				<div class="post-tags container mt-5 my-5">
-					<?php
+	<!-- POST TAGS --->
+	<div class="post-tags container mt-5 my-5">
+		<?php
 $terms = get_terms('adopt-animals');
 $count = count($terms);
 if ($count > 0) {
 	echo '<ul class="list-group list-group-horizontal-sm">';
 	foreach ($terms as $term) {?>
 
-							<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
+				<a href="<?php echo get_term_link($term->term_id); ?>" class="list-group-item list-group-item-action"><?php echo $term->name . 's'; ?> </a>
 
-						<?php }
+			<?php }
 	echo '</ul>';
 }?>
-				</div>
+	</div>
 </div> <!-- end page-content -->
 
 </main>
