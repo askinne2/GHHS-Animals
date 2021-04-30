@@ -631,11 +631,25 @@ class GHHS_Animals {
 
 			// CREATE A NEW ANIMAL POST AND UPDATE THE META FIELDS
 			$new_post_id = wp_insert_post($new_animal);
-			$blah = wp_set_object_terms(
-				$new_post_id,
-				array('0' => 'All Animal', '1' => $animal->Type),
-				'adopt-animals'
-			);
+			if (strcmp($animal->Type, 'Dog') === 0) {
+				$blah = wp_set_object_terms(
+					$new_post_id,
+					array('0' => 'All Animal', '1' => 'Dog'),
+					'adopt-animals'
+				);
+			} else if (strcmp($animal->Type, 'Cat') === 0) {
+				$blah = wp_set_object_terms(
+					$new_post_id,
+					array('0' => 'All Animal', '1' => 'Cat'),
+					'adopt-animals'
+				);
+			} else {
+				$blah = wp_set_object_terms(
+					$new_post_id,
+					array('0' => 'All Animal', '1' => 'Other'),
+					'adopt-animals'
+				);
+			}
 
 			if ($new_post_id) {
 
