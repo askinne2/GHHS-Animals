@@ -1,6 +1,6 @@
 # GHHS Animals Plugin
 
-~Current Version: 2.1.7~
+~Current Version: 2.1.8~
 
 
  This client specific plugin fetches the animals listed in the Shelterluv database for the Greater Huntsville Humane Society and displays them by registering a custom post type Animal.

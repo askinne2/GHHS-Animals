@@ -35,7 +35,7 @@ printf('<h2 class="elementor-heading-title animal-archive-title elementor-size-d
 		<div class="row my-5">
 			<div class="col">
 				<h3 class="my-3">Please view our adoptable pets below.</h3>
-				<h3 class="my-3">To begin your adoption process, please click the image (or button) of the pet you’d like to adopt to view more info about that animal. You will be redirected to Shelterluv to complete your adoption.</h3>
+				<h4 class="my-3">To begin your adoption process, please click the image (or button) of the pet you’d like to adopt to view more info about that animal. You will be redirected to Shelterluv to complete your adoption.</h4>
 			</div>
 		</div>
 		<div class="row my-3">
