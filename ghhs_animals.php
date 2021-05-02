@@ -1,6 +1,6 @@
 <?php
 /**
- * @link              https://github.com/askinne2/GHHS-Found-Pets
+ * @link              https://github.com/askinne2/GHHS-Animals
  * @since             1.0.0
  * @package           [ghhs_animals]
  *
