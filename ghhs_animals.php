@@ -11,7 +11,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.2.0
+ * Version:           2.2.1
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -74,6 +74,7 @@ class GHHS_Animals {
 		// run the GHHS_Animals() program
 		add_action(self::CRON_HOOK, array($this, 'run'));
 		//add_shortcode('GHHS_Animals', array($this, 'run'));
+		add_shortcode('GHHS_Animals_Update', array($this, 'run_update'));
 
 		// functionality added for shortcode [ghhs_slideshow]
 		add_shortcode('ghhs_slideshow', array($this, 'display_pets'));
@@ -807,6 +808,24 @@ class GHHS_Animals {
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 
 		ob_start();
+
+		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
+		$this->create_and_update_animals($this->ghhs_pets_object);
+		$this->delete_adopted_animals($this->petID_array);
+
+		return ob_get_clean();
+
+	}
+	public function run_update() {
+
+		if (REMOVE_TRANSIENT) {
+			$this->ghhs_remove_transient();
+		}
+
+		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
+
+		ob_start();
+		$this->delete_all_animals();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
