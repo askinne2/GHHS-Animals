@@ -11,7 +11,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.2.1
+ * Version:           2.2.2
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -64,6 +64,9 @@ class GHHS_Animals {
 
 		// register Custom Post Type 'Animal' and Taxonomy 'Adopt-Animals'
 		$this->ghhs_animals = new GHHS_Animals_ACF();
+
+		//require_once sprintf("%s/includes/ghhs_animals_update.php", dirname(__FILE__));
+		//new GHHS_Animals_Update();
 
 		// hook into custom post type actions and filters
 		add_action('trashed_post', array($this, 'delete_animal_post'));
@@ -704,7 +707,7 @@ class GHHS_Animals {
 				$this->delete_animal_post($post_id->ID);
 			} else {
 				if (PLUGIN_DEBUG) {
-					printf('<h5>Status Match for existing Animal: %s</h5>', $animal->Name);
+					printf('<h5>Status Match for existing Animal: %s, needs to be updated</h5>', $animal->Name);
 				}
 			}
 
@@ -744,9 +747,9 @@ class GHHS_Animals {
 
 				$adopt_link = ADOPT_LINK . $animal->ID;
 				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
-
+				delete_post_meta($post_id->ID, 'photos');
 				foreach ($animal->Photos as $photo) {
-					update_post_meta($post_id->ID, 'photos', $photo);
+					add_post_meta($post_id->ID, 'photos', $photo);
 				}
 
 			} // end timestamp comparison
@@ -818,14 +821,12 @@ class GHHS_Animals {
 	}
 	public function run_update() {
 
-		if (REMOVE_TRANSIENT) {
-			$this->ghhs_remove_transient();
-		}
+		$this->ghhs_remove_transient();
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 
 		ob_start();
-		$this->delete_all_animals();
+		//$this->delete_all_animals();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);

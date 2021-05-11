@@ -33,7 +33,6 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'label' => 'Animal Type', // display name
 					'query_var' => true,
 					'rewrite' => array('slug' => 'adopt'),
-
 				)
 			);
 

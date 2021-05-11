@@ -4,6 +4,7 @@ if (!class_exists('GHHS_Animals_Settings')) {
 	class GHHS_Animals_Settings {
 
 		const SLUG = "ghhs-animals-options";
+		const UPDATESLUG = "ghhs-animals-update";
 
 		/**
 		 * Construct the plugin object
@@ -20,7 +21,9 @@ if (!class_exists('GHHS_Animals_Settings')) {
 			));
 			add_action('init', array(&$this, "init"));
 			add_action('admin_menu', array(&$this, 'admin_menu'), 20);
+			add_action('admin_menu', array(&$this, 'update_menu'), 20);
 			add_filter("plugin_action_links_$plugin", array(&$this, 'plugin_settings_link'));
+			add_filter("plugin_action_links_$plugin", array(&$this, 'update_settings_link'));
 		} // END public function __construct
 
 		/**
@@ -37,11 +40,23 @@ if (!class_exists('GHHS_Animals_Settings')) {
 				1
 			);
 		}
+		public function update_menu() {
+			// Duplicate link into properties mgmt
+			add_submenu_page(
+				self::UPDATESLUG,
+				__('Options', 'custom'),
+				__('Options', 'custom'),
+				'manage_options',
+				self::UPDATESLUG,
+				1
+			);
+		}
 
 		/**
 		 * Add settings fields via ACF
 		 */
 		public function init() {
+
 			if (function_exists('acf_add_local_field_group')):
 
 				acf_add_local_field_group(array(
@@ -346,6 +361,7 @@ if (!class_exists('GHHS_Animals_Settings')) {
 				));
 
 			endif;
+
 		}
 
 		/**
@@ -354,6 +370,11 @@ if (!class_exists('GHHS_Animals_Settings')) {
 		public function plugin_settings_link($links) {
 			$settings_link = sprintf('<a href="admin.php?page=%s">Settings</a>', self::SLUG);
 			array_unshift($links, $settings_link);
+			return $links;
+		} // END public function plugin_settings_link($links)
+		public function update_settings_link($links) {
+			$update_link = sprintf('<a href="admin.php?page=%s">Update</a>', self::UPDATESLUG);
+			array_unshift($links, $update_link);
 			return $links;
 		} // END public function plugin_settings_link($links)
 	} // END class GHHS_Animals_Settings
