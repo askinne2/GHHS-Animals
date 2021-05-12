@@ -65,9 +65,6 @@ class GHHS_Animals {
 		// register Custom Post Type 'Animal' and Taxonomy 'Adopt-Animals'
 		$this->ghhs_animals = new GHHS_Animals_ACF();
 
-		//require_once sprintf("%s/includes/ghhs_animals_update.php", dirname(__FILE__));
-		//new GHHS_Animals_Update();
-
 		// hook into custom post type actions and filters
 		add_action('trashed_post', array($this, 'delete_animal_post'));
 		add_filter('pre_get_posts', array($this, 'animals_change_posts_per_page'));
@@ -713,7 +710,7 @@ class GHHS_Animals {
 
 			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
 
-			if (!PLUGIN_DEBUG) {
+			if (PLUGIN_DEBUG) {
 				printf('<h2>Last Update Time: </h2>');
 				print_r($postUpdateTime);
 			}
@@ -821,12 +818,13 @@ class GHHS_Animals {
 	}
 	public function run_update() {
 
-		$this->ghhs_remove_transient();
+		if (REMOVE_TRANSIENT) {
+			$this->ghhs_remove_transient();
+		}
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
 
 		ob_start();
-		//$this->delete_all_animals();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
