@@ -26,8 +26,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
-define('REMOVE_TRANSIENT', false);
+define('PLUGIN_DEBUG', true);
+define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
@@ -561,7 +561,10 @@ class GHHS_Animals {
 		$attachment_check = new Wp_Query($attachment);
 
 		if ($attachment_check->have_posts()) {
-			//printf('<h2>attachment exists</h2>');
+			printf('<h2>attachment exists<h2>');
+			$attachment_check->the_post();
+			echo '<li>' . get_the_title() . '</li>';
+
 			return $attachment_check;
 		} else {
 
@@ -704,26 +707,30 @@ class GHHS_Animals {
 				$this->delete_animal_post($post_id->ID);
 			} else {
 				if (PLUGIN_DEBUG) {
-					printf('<h5>Status Match for existing Animal: %s, needs to be updated</h5>', $animal->Name);
+					printf('<h5 class="red_pet">Status Match for existing Animal: %s, needs to be updated</h5>', $animal->Name);
 				}
 			}
 
-			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
+			$postUpdateTime = get_post_timestamp($post_id->ID);
 
 			if (PLUGIN_DEBUG) {
-				printf('<h2>Last Update Time: </h2>');
-				print_r($postUpdateTime);
+				printf('<h2>Last Post Update Time: %s </h2>', $postUpdateTime);
+
+				printf('<h2>Last ShelterLuv Update Time: %s</h2>', $animal->LastUpdatedUnixTime);
+
 			}
 
-			// ONLY UPDATE IF THE TWO TIMESTAMPS DO NOT MATCH
+			// ONLY UPDATE IF THE SHELTERLUV TIMESTAMPS NEWER THAN POST TIME
 			if ($animal->LastUpdatedUnixTime != $postUpdateTime) {
 
 				if (PLUGIN_DEBUG) {
 					printf('<h2>UPDATE ANIMAL</h2>');
 					print_r($animal);
-					printf('<h5>Name %s</h5>', $animal->Name);
+					printf('<h5>Name %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->Name, $animal->CoverPhoto);
+					//printf('<img src="%s">', $animal->CoverPhoto);
 				}
 
+				// insert post meta
 				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
 
 				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
