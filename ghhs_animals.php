@@ -388,7 +388,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($dog);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
@@ -401,7 +401,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($cat);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
 				}
 
 			} else {
@@ -415,7 +415,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($other);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
@@ -544,10 +544,10 @@ class GHHS_Animals {
 		 * returns attachment ID of either newly created image or attachment ID of existing image
 		 *
 	*/
-	public function upload_image($url, $post_id) {
+	public function upload_image($url, $name, $post_id, $animal_id) {
 		// Add Featured Image to Post
 		$image_url = $url; // Define the image URL here
-		$image_name = 'animal-' . $post_id . '.png';
+		$image_name = 'animal-' . $name . '-' . $animal_id . '.png';
 		$upload_dir = wp_upload_dir(); // Set upload folder
 
 		// Set attachment data
@@ -562,8 +562,6 @@ class GHHS_Animals {
 
 		if ($attachment_check->have_posts()) {
 			printf('<h2>attachment exists<h2>');
-			$attachment_check->the_post();
-			echo '<li>' . get_the_title() . '</li>';
 
 			return $attachment_check;
 		} else {
@@ -628,7 +626,7 @@ class GHHS_Animals {
 		if (!$post_id) {
 
 			if (PLUGIN_DEBUG) {
-				printf('<h2>NEW ANIMAL</h2>');
+				printf('<h4 class="red_pet">NEW ANIMAL</h4>');
 				//print_r($animal);
 				printf('<h5>Name %s</h5>', $animal->Name);
 			}
@@ -658,7 +656,7 @@ class GHHS_Animals {
 			if ($new_post_id) {
 
 				// insert post meta
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $new_post_id, $animal->ID);
 
 				add_post_meta($new_post_id, 'animal_id', $animal->ID);
 				add_post_meta($new_post_id, 'animal_name', $animal->Name);
@@ -707,16 +705,15 @@ class GHHS_Animals {
 				$this->delete_animal_post($post_id->ID);
 			} else {
 				if (PLUGIN_DEBUG) {
-					printf('<h5 class="red_pet">Status Match for existing Animal: %s, needs to be updated</h5>', $animal->Name);
+					printf('<h3 class="red_pet">Status Match for existing Animal: %s, needs to be updated</h3>', $animal->Name);
 				}
 			}
 
 			$postUpdateTime = get_post_timestamp($post_id->ID);
 
 			if (PLUGIN_DEBUG) {
-				printf('<h2>Last Post Update Time: %s </h2>', $postUpdateTime);
-
-				printf('<h2>Last ShelterLuv Update Time: %s</h2>', $animal->LastUpdatedUnixTime);
+				printf('<h4>Last Post Update Time: %s </h4>', $postUpdateTime);
+				printf('<h4>Last ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
 
 			}
 
@@ -724,14 +721,14 @@ class GHHS_Animals {
 			if ($animal->LastUpdatedUnixTime != $postUpdateTime) {
 
 				if (PLUGIN_DEBUG) {
-					printf('<h2>UPDATE ANIMAL</h2>');
-					print_r($animal);
-					printf('<h5>Name %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->Name, $animal->CoverPhoto);
+					printf('<h2 class="red_pet">UPDATE ANIMAL</h2>');
+					//print_r($animal);
+					printf('<h5>Name %s<br>ID: %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->Name, $animal->ID, $animal->CoverPhoto);
 					//printf('<img src="%s">', $animal->CoverPhoto);
 				}
 
 				// insert post meta
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $post_id->ID, $animal->ID);
 
 				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
 				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
