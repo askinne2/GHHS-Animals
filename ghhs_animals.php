@@ -11,7 +11,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.2.2
+ * Version:           2.2.3
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -64,9 +64,6 @@ class GHHS_Animals {
 
 		// register Custom Post Type 'Animal' and Taxonomy 'Adopt-Animals'
 		$this->ghhs_animals = new GHHS_Animals_ACF();
-
-		//require_once sprintf("%s/includes/ghhs_animals_update.php", dirname(__FILE__));
-		//new GHHS_Animals_Update();
 
 		// hook into custom post type actions and filters
 		add_action('trashed_post', array($this, 'delete_animal_post'));
@@ -391,7 +388,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($dog);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
@@ -404,7 +401,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($cat);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
 				}
 
 			} else {
@@ -418,7 +415,7 @@ class GHHS_Animals {
 			$postid = $this->create_animal_post($other);
 			if ($postid) {
 				if (PLUGIN_DEBUG) {
-					printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
+					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
 				}
 			} else {
 				if (PLUGIN_DEBUG) {
@@ -547,68 +544,77 @@ class GHHS_Animals {
 		 * returns attachment ID of either newly created image or attachment ID of existing image
 		 *
 	*/
-	public function upload_image($url, $post_id) {
-		// Add Featured Image to Post
-		$image_url = $url; // Define the image URL here
-		$image_name = 'animal-' . $post_id . '.png';
-		$upload_dir = wp_upload_dir(); // Set upload folder
-
+	/*
 		// Set attachment data
 		$attachment = array(
 			'name' => $image_name,
 			'posts_per_page' => 1,
 			'post_type' => 'attachment',
 		);
+*/
+	public function upload_image($url, $name, $post_id, $animal_id) {
+		// Add Featured Image to Post
+		$image_url = $url; // Define the image URL here
+		$image_name = 'animal-' . $name . '-' . $animal_id . '.png';
+		$upload_dir = wp_upload_dir(); // Set upload folder
 
-		// check if image exists
-		$attachment_check = new Wp_Query($attachment);
+		// check if images exists
+		$images = get_attached_media('image', $post_id);
 
-		if ($attachment_check->have_posts()) {
-			//printf('<h2>attachment exists</h2>');
-			return $attachment_check;
-		} else {
-
-			$image_data = file_get_contents($image_url); // Get image data
-			$unique_file_name = wp_unique_filename($upload_dir['path'], $image_name); // Generate unique name
-			$filename = basename($unique_file_name); // Create image file name
-
-			// Check folder permission and define file location
-			if (wp_mkdir_p($upload_dir['path'])) {
-				$file = $upload_dir['path'] . '/' . $filename;
-			} else {
-				$file = $upload_dir['basedir'] . '/' . $filename;
+		if (!empty($images)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h2>attachment exists<h2>');
 			}
+			foreach ($images as $image) {
 
-			// Create the image  file on the server
-			file_put_contents($file, $image_data);
+				wp_delete_attachment($image->ID, true);
 
-			// Check image file type
-			$wp_filetype = wp_check_filetype($filename, null);
-
-			// Set attachment data
-			$attachment = array(
-				'post_mime_type' => $wp_filetype['type'],
-				'post_title' => sanitize_file_name($filename),
-				'post_content' => '',
-				'post_status' => 'inherit',
-			);
-
-			// Create the attachment
-			$attach_id = wp_insert_attachment($attachment, $file, $post_id);
-
-			// Include image.php
-			require_once ABSPATH . 'wp-admin/includes/image.php';
-
-			// Define attachment metadata
-			$attach_data = wp_generate_attachment_metadata($attach_id, $file);
-
-			// Assign metadata to attachment
-			wp_update_attachment_metadata($attach_id, $attach_data);
-
-			// And finally assign featured image to post
-			set_post_thumbnail($post_id, $attach_id);
-			return $attach_id;
+			}
 		}
+		$image_data = file_get_contents($image_url); // Get image data
+		$unique_file_name = wp_unique_filename($upload_dir['path'], $image_name); // Generate unique name
+		if (PLUGIN_DEBUG) {
+			printf('<h4 class="red_pet">unique_file_name: %s</h4>', $unique_file_name);
+		}
+		$filename = basename($unique_file_name); // Create image file name
+
+		// Check folder permission and define file location
+		if (wp_mkdir_p($upload_dir['path'])) {
+			$file = $upload_dir['path'] . '/' . $filename;
+		} else {
+			$file = $upload_dir['basedir'] . '/' . $filename;
+		}
+
+		// Create the image  file on the server
+		file_put_contents($file, $image_data);
+
+		// Check image file type
+		$wp_filetype = wp_check_filetype($filename, null);
+
+		// Set attachment data
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title' => sanitize_file_name($filename),
+			'post_content' => '',
+			'post_status' => 'inherit',
+		);
+
+		// Create the attachment
+		$attach_id = wp_insert_attachment($attachment, $file, $post_id);
+
+		// Include image.php
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		// Define attachment metadata
+		$attach_data = wp_generate_attachment_metadata($attach_id, $file);
+
+		// Assign metadata to attachment
+		wp_update_attachment_metadata($attach_id, $attach_data);
+
+		// And finally assign featured image to post
+		set_post_thumbnail($post_id, $attach_id);
+		return $attach_id;
+
 	}
 
 	public function create_animal_post($animal) {
@@ -628,7 +634,7 @@ class GHHS_Animals {
 		if (!$post_id) {
 
 			if (PLUGIN_DEBUG) {
-				printf('<h2>NEW ANIMAL</h2>');
+				printf('<h4 class="red_pet">NEW ANIMAL</h4>');
 				//print_r($animal);
 				printf('<h5>Name %s</h5>', $animal->Name);
 			}
@@ -658,7 +664,7 @@ class GHHS_Animals {
 			if ($new_post_id) {
 
 				// insert post meta
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $new_post_id);
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $new_post_id, $animal->ID);
 
 				add_post_meta($new_post_id, 'animal_id', $animal->ID);
 				add_post_meta($new_post_id, 'animal_name', $animal->Name);
@@ -700,34 +706,39 @@ class GHHS_Animals {
 			// EITHER UPDATE OR DELETE ACCORDING TO STATUS
 		} else {
 
+			// CHECK IF ANIMAL NEEDS TO BE DELETED BY SHELTERLUV STATUS
 			$animal_status = get_post_meta($post_id->ID, 'status', true);
 
 			if (!in_array($animal_status, $this->status_array)) {
-				//printf('<h5 class="red_pet">Please delete animal: %s</h5>', $animal->Name);
+				if (PLUGIN_DEBUG) {
+					printf('<h5 class="red_pet">Deleting Animal: %s</h5>', $animal->Name);
+				}
 				$this->delete_animal_post($post_id->ID);
+
 			} else {
 				if (PLUGIN_DEBUG) {
-					printf('<h5>Status Match for existing Animal: %s, needs to be updated</h5>', $animal->Name);
+					printf('<h4 class="red_pet">Checking Update Animal: %s</h4>', $animal->Name);
 				}
 			}
 
-			$postUpdateTime = get_post_meta($post_id->ID, 'last_update_time', true);
+			$postUpdateTime = get_post_timestamp($post_id->ID);
+			if (PLUGIN_DEBUG) {
+				printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
+				printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
 
-			if (!PLUGIN_DEBUG) {
-				printf('<h2>Last Update Time: </h2>');
-				print_r($postUpdateTime);
 			}
 
-			// ONLY UPDATE IF THE TWO TIMESTAMPS DO NOT MATCH
-			if ($animal->LastUpdatedUnixTime != $postUpdateTime) {
+			// ONLY UPDATE IF THE SHELTERLUV TIMESTAMP IS NEWER THAN POST TIME
+			if ($animal->LastUpdatedUnixTime >= $postUpdateTime) {
 
 				if (PLUGIN_DEBUG) {
-					printf('<h2>UPDATE ANIMAL</h2>');
-					print_r($animal);
-					printf('<h5>Name %s</h5>', $animal->Name);
+					printf('<h2 class="red_pet">UPDATE ANIMAL: %s</h2>', $animal->Name);
+					//print_r($animal);
+					printf('<h5>ID: %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->ID, $animal->CoverPhoto);
 				}
 
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $post_id->ID);
+				// insert post meta
+				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $post_id->ID, $animal->ID);
 
 				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
 				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
@@ -750,6 +761,39 @@ class GHHS_Animals {
 				delete_post_meta($post_id->ID, 'photos');
 				foreach ($animal->Photos as $photo) {
 					add_post_meta($post_id->ID, 'photos', $photo);
+				}
+
+				printf('<h4 class="red_pet">Time: %s</h4>', time());
+				$update_animal_post = array(
+					'ID' => $post_id->ID,
+					'post_title' => $animal->Name,
+					'post_type' => 'animal',
+					'post_content' => $animal->Description,
+					'post_status' => 'publish',
+					'comment_status' => 'closed', // if you prefer
+					'ping_status' => 'closed', // if you prefer
+					'post_modified' => time(),
+				);
+
+				printf("before update....post ID for %s is: %s", $animal->Name, $post_id->ID);
+				$post_id = wp_insert_post($update_animal_post, true);
+				if (is_wp_error($post_id) || $post_id == 0) {
+					if (PLUGIN_DEBUG) {
+						print('wp_error:');
+						print_r($post_id);
+					}
+
+				}
+
+				printf("after update....post ID for %s is: %s", $animal->name, $post_id);
+
+				$postUpdateTime = get_post_timestamp($post_id);
+
+				if (PLUGIN_DEBUG) {
+					printf('<h4>after call to wp_update_post()</h4>');
+					printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
+					printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
+
 				}
 
 			} // end timestamp comparison
@@ -821,12 +865,14 @@ class GHHS_Animals {
 	}
 	public function run_update() {
 
-		$this->ghhs_remove_transient();
+		if (REMOVE_TRANSIENT) {
+			$this->ghhs_remove_transient();
+		}
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
+		//$this->delete_all_animals();
 
 		ob_start();
-		//$this->delete_all_animals();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
