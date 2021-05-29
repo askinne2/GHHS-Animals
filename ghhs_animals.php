@@ -11,7 +11,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.2.3
+ * Version:           2.2.4
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -425,26 +425,9 @@ class GHHS_Animals {
 		} //end foreach dogs loop
 	}
 
-	public function display_pets($pets_object = array(), $animal_type = string, $print_mode = string) {
-		// probably should loop over cats, then dogs then others... SPLIT THEM APART!!!!!
-		// get optional attributes and assign default values if not present
-
-		$transient = get_transient('ghhs_pets');
-		if (!empty($transient)) {
-			if (PLUGIN_DEBUG) {
-				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
-			}
-			$this->ghhs_pets_object = $transient->animals;
-		} else {
-
-			printf('<h2> no transient can\'t run. </h2>');
-			return;
-		}
-
+	public function display_pets() {
 		$pet_slideshow = new GHHS_Animals_Slideshow();
-		ob_start();
-		$pet_slideshow->display_all_pictures($this->ghhs_pets_object);
-		return ob_get_clean();
+		$pet_slideshow->run();
 	}
 
 	public function delete_adopted_animals($petID_array = array()) {
