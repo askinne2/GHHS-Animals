@@ -1,17 +1,17 @@
 {
     "success": 1,
     "animals": [
-        {
+         {
             "ID": "4997",
             "Internal-ID": "17335916",
-            "Name": "Winston",
+            "Name": "Winston244",
             "LitterGroupId": null,
             "Type": "Dog",
             "CurrentLocation": {
                 "Tier1": "In Foster"
             },
             "Sex": "Male",
-            "Status": "Hold In Foster",
+            "Status": "Available For Adoption",
             "InFoster": false,
             "CurrentWeightPounds": "",
             "Size": "",
@@ -40,7 +40,7 @@
             ],
             "LastIntakeUnixTime": "1539241200",
             "Attributes": [],
-            "LastUpdatedUnixTime": "1574237613"
+            "LastUpdatedUnixTime": "1774237613"
         },
         {
             "ID": "6228",
