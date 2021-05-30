@@ -1,0 +1,4107 @@
+{
+    "success": 1,
+    "animals": [
+         {
+            "ID": "1",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+        {
+            "ID": "2",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "99",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "3",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "4",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "5",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "6",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "7",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "8",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "9",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "10",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "11",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "12",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "13",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "14",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "15",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "16",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "17",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "18",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "19",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "20",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "21",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "22",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "23",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "98",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "24",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "25",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "26",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "27",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "28",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "29",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "30",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "31",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "32",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "33",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "34",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "35",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "36",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "37",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "38",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "39",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "92",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "40",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "41",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "42",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "43",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "44",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "45",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "46",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "47",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "48",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "49",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "50",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "51",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "52",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "53",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "54",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "55",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "56",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "57",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "58",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "59",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "60",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "61",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "62",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "63",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "64",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "65",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "66",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "67",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "68",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "69",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "70",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "100",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "71",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "72",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "73",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "74",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "75",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "76",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "77",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "78",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "79",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "80",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "81",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "82",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "83",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "84",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "85",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "86",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "87",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "88",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "89",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "90",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "91",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "93",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "94",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "95",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "96",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        },
+         {
+            "ID": "97",
+            "Internal-ID": "17335916",
+            "Name": "Winston244",
+            "LitterGroupId": null,
+            "Type": "Dog",
+            "CurrentLocation": {
+                "Tier1": "In Foster"
+            },
+            "Sex": "Male",
+            "Status": "Available For Adoption",
+            "InFoster": false,
+            "CurrentWeightPounds": "",
+            "Size": "",
+            "Altered": "Yes",
+            "DOBUnixTime": 1538636400,
+            "Age": 30,
+            "CoverPhoto": "https://www.shelterluv.com/sites/default/files/default_images/default_dog.png",
+            "Photos": [],
+            "Videos": [],
+            "Breed": "Pyrenees, Great",
+            "Color": "",
+            "Description": "",
+            "PreviousIds": [
+                {
+                    "IdValue": "11070",
+                    "IssuingShelter": "Greater Huntsville Humane Society",
+                    "Type": "Petpoint"
+                }
+            ],
+            "Microchips": [
+                {
+                    "Id": "981020025743981",
+                    "Issuer": "",
+                    "ImplantUnixTime": ""
+                }
+            ],
+            "LastIntakeUnixTime": "1539241200",
+            "Attributes": [],
+            "LastUpdatedUnixTime": "1622395432"
+        }       
+    ],
+    "has_more": true,
+    "total_count": "110"
+}

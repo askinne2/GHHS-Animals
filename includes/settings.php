@@ -285,7 +285,7 @@ if (!class_exists('GHHS_Animals_Settings')) {
 							'key' => 'field_6078559547367',
 							'label' => 'Last Update Time',
 							'name' => 'last_update_time',
-							'type' => 'text',
+							'type' => 'int',
 							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
