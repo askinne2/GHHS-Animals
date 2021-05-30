@@ -26,8 +26,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
-define('REMOVE_TRANSIENT', false);
+define('PLUGIN_DEBUG', true);
+define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
@@ -377,6 +377,39 @@ class GHHS_Animals {
 		return $pets_object;
 	}
 
+	public function check_animal_exists($animal) {
+		$args = array(
+			'post_type' => 'animal',
+			'meta_query' => array(
+				array(
+					'key' => 'animal_id',
+					'value' => $animal->ID,
+					'compare' => '=',
+				),
+			),
+		);
+		$query = new WP_Query($args);
+		if ($query->have_posts()) {
+			$posts = $query->posts;
+			return $posts[0];
+		} else {
+			return false;
+		}
+
+	} // end check_animal_exists()
+
+	public function temp_create_and_update_animals($pets_object) {
+
+		$dogs = $pets_object['dogs'];
+		$cats = $pets_object['cats'];
+		$others = $pets_object['others'];
+
+		$exists = $this->check_animal_exists($dogs[0]);
+		echo '<h2>';
+		echo $exists ? print_r($exists) : 'false';
+		echo '</h2>';
+	}
+
 	public function create_and_update_animals($pets_object) {
 
 		$dogs = $pets_object['dogs'];
@@ -385,44 +418,66 @@ class GHHS_Animals {
 
 		foreach ($dogs as $dog) {
 
-			$postid = $this->create_animal_post($dog);
-			if ($postid) {
-				if (PLUGIN_DEBUG) {
-					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $dog->Name, $postid->ID);
+			$exists = $this->check_animal_exists($dog);
+			if (!$exists) {
+				$postid = $this->create_animal_post($dog);
+				if (!$postid) {
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $dog->Name);
+					}
 				}
 			} else {
-				if (PLUGIN_DEBUG) {
-					printf('<h2>Failed to create %s</h2>', $dog->Name);
+				$pid = $this->update_animal($dog, $exists);
+				if (!$pid) {
+
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $dog->Name);
+					}
 				}
 			}
 		} //end foreach dogs loop
 		foreach ($cats as $cat) {
 
-			$postid = $this->create_animal_post($cat);
-			if ($postid) {
-				if (PLUGIN_DEBUG) {
-					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $cat->Name, $postid->ID);
-				}
+			$exists = $this->check_animal_exists($cat);
 
+			if (!$exists) {
+				$postid = $this->create_animal_post($cat);
+				if (!$postid) {
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $cat->Name);
+					}
+				}
 			} else {
-				if (PLUGIN_DEBUG) {
-					printf('<h2>Failed to create %s</h2>', $cat->Name);
+				$pid = $this->update_animal($cat, $exists);
+				if (!$pid) {
+
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $cat->Name);
+					}
 				}
 			}
-		} //end foreach dogs loop
+		} //end foreach cats loop
 		foreach ($others as $other) {
 
-			$postid = $this->create_animal_post($other);
-			if ($postid) {
-				if (PLUGIN_DEBUG) {
-					//printf('<h2>successsful create_animal_post: %s (%d)</h2>', $other->Name, $postid->ID);
+			$exists = $this->check_animal_exists($other);
+
+			if (!$exists) {
+				$postid = $this->create_animal_post($other);
+				if (!$postid) {
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $other->Name);
+					}
 				}
 			} else {
-				if (PLUGIN_DEBUG) {
-					printf('<h2>Failed to create %s</h2>', $other->Name);
+				$pid = $this->update_animal($other, $exists);
+				if (!$pid) {
+
+					if (PLUGIN_DEBUG) {
+						printf('<h2>Failed to create %s</h2>', $other->Name);
+					}
 				}
 			}
-		} //end foreach dogs loop
+		} //end foreach others loop
 	}
 
 	public function display_pets() {
@@ -687,102 +742,185 @@ class GHHS_Animals {
 
 			// ANIMAL ALREADY EXISTS!
 			// EITHER UPDATE OR DELETE ACCORDING TO STATUS
+		}
+		return $post_id;
+	} // END public function new_animal_post()
+
+	//else {
+	public function update_animal($animal, $post_id) {
+
+		//$post_id = get_page_by_title($animal->Name, OBJECT, 'animal');
+
+		// CHECK IF ANIMAL NEEDS TO BE DELETED BY SHELTERLUV STATUS
+		$animal_status = get_post_meta($post_id->ID, 'status', true);
+
+		if (!in_array($animal_status, $this->status_array)) {
+			if (PLUGIN_DEBUG) {
+				printf('<h5 class="red_pet">Deleting Animal: %s</h5>', $animal->Name);
+			}
+			$this->delete_animal_post($post_id->ID);
+
 		} else {
+			if (PLUGIN_DEBUG) {
+				printf('<h4 class="red_pet">Checking Update Animal: %s</h4>', $animal->Name);
+			}
+		}
 
-			// CHECK IF ANIMAL NEEDS TO BE DELETED BY SHELTERLUV STATUS
-			$animal_status = get_post_meta($post_id->ID, 'status', true);
+		$postUpdateTime = get_post_timestamp($post_id->ID);
+		if (PLUGIN_DEBUG) {
+			printf('<h4 class="red_pet">UPDATE ANIMAL: %s, POST ID: %s</h4>', $animal->Name, $post_id->ID);
 
-			if (!in_array($animal_status, $this->status_array)) {
-				if (PLUGIN_DEBUG) {
-					printf('<h5 class="red_pet">Deleting Animal: %s</h5>', $animal->Name);
-				}
-				$this->delete_animal_post($post_id->ID);
+			printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
+			printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
 
-			} else {
-				if (PLUGIN_DEBUG) {
-					printf('<h4 class="red_pet">Checking Update Animal: %s</h4>', $animal->Name);
-				}
+		}
+
+		// ONLY UPDATE IF THE SHELTERLUV TIMESTAMP IS NEWER THAN POST TIME
+		if ($animal->LastUpdatedUnixTime >= $postUpdateTime) {
+
+			if (PLUGIN_DEBUG) {
+				printf('<h2 class="red_pet">UPDATE ANIMAL: %s</h2>', $animal->Name);
+				//print_r($animal);
+				printf('<h5>ID: %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->ID, $animal->CoverPhoto);
 			}
 
-			$postUpdateTime = get_post_timestamp($post_id->ID);
+			// insert post meta
+			$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $post_id->ID, $animal->ID);
+
+			update_post_meta($post_id->ID, 'animal_id', $animal->ID);
+			update_post_meta($post_id->ID, 'animal_name', $animal->Name);
+			update_post_meta($post_id->ID, 'cover_photo', $animal->CoverPhoto);
+			update_post_meta($post_id->ID, 'color', $animal->Color);
+			update_post_meta($post_id->ID, 'breed', $animal->Breed);
+			update_post_meta($post_id->ID, 'animal_type', $animal->Type);
+			update_post_meta($post_id->ID, 'status', $animal->Status);
+			update_post_meta($post_id->ID, 'sex', $animal->Sex);
+			update_post_meta($post_id->ID, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
+			update_post_meta($post_id->ID, 'bio', $animal->Description);
+			update_post_meta($post_id->ID, 'animal_size', $animal->Size);
+			update_post_meta($post_id->ID, 'last_update_time', $animal->LastUpdatedUnixTime);
+			if (isset($animal->AdoptionFeeGroup->Price)) {
+				add_post_meta($post_id->ID, 'adoption_fee', $animal->AdoptionFeeGroup->Price);
+			}
+
+			$adopt_link = ADOPT_LINK . $animal->ID;
+			update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
+			delete_post_meta($post_id->ID, 'photos');
+			foreach ($animal->Photos as $photo) {
+				add_post_meta($post_id->ID, 'photos', $photo);
+			}
+
+			printf('<h4 class="red_pet">Time: %s</h4>', time());
+			$update_animal_post = array(
+				'ID' => $post_id->ID,
+				'post_title' => $animal->Name,
+				'post_type' => 'animal',
+				'post_content' => $animal->Description,
+				'post_status' => 'publish',
+				'comment_status' => 'closed', // if you prefer
+				'ping_status' => 'closed', // if you prefer
+				'post_modified' => time(),
+			);
+
+			printf("before update....post ID for %s is: %s", $animal->Name, $post_id->ID);
+			$post_id = wp_insert_post($update_animal_post, true);
+			if (is_wp_error($post_id) || $post_id == 0) {
+				if (PLUGIN_DEBUG) {
+					print('wp_error:');
+					print_r($post_id);
+				}
+
+			}
+
+			printf("after update....post ID for %s is: %s", $animal->name, $post_id);
+
+			$postUpdateTime = get_post_timestamp($post_id);
+
 			if (PLUGIN_DEBUG) {
+				printf('<h4>after call to wp_update_post()</h4>');
 				printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
 				printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
 
 			}
 
-			// ONLY UPDATE IF THE SHELTERLUV TIMESTAMP IS NEWER THAN POST TIME
-			if ($animal->LastUpdatedUnixTime >= $postUpdateTime) {
+		} // end timestamp comparison
+		return $post_id;
+	} // end update_animal()
 
-				if (PLUGIN_DEBUG) {
-					printf('<h2 class="red_pet">UPDATE ANIMAL: %s</h2>', $animal->Name);
-					//print_r($animal);
-					printf('<h5>ID: %s</h5><h4>New Photo</h4><h4>cover URL: %s</h4>', $animal->ID, $animal->CoverPhoto);
-				}
+	public function check_duplicate_animals() {
 
-				// insert post meta
-				$post_thumbnail = $this->upload_image($animal->CoverPhoto, $animal->Name, $post_id->ID, $animal->ID);
+		/* basic logic:
+			 * get all animal posts...
+			 * check if animal->ID is in any two places
+			 * delete if oldest shelterluv update time
+			 *
+		*/
 
-				update_post_meta($post_id->ID, 'animal_id', $animal->ID);
-				update_post_meta($post_id->ID, 'animal_name', $animal->Name);
-				update_post_meta($post_id->ID, 'cover_photo', $animal->CoverPhoto);
-				update_post_meta($post_id->ID, 'color', $animal->Color);
-				update_post_meta($post_id->ID, 'breed', $animal->Breed);
-				update_post_meta($post_id->ID, 'animal_type', $animal->Type);
-				update_post_meta($post_id->ID, 'status', $animal->Status);
-				update_post_meta($post_id->ID, 'sex', $animal->Sex);
-				update_post_meta($post_id->ID, 'age', number_format($animal->Age / 12, 1, ' years, ', '') . ' months');
-				update_post_meta($post_id->ID, 'bio', $animal->Description);
-				update_post_meta($post_id->ID, 'animal_size', $animal->Size);
-				update_post_meta($post_id->ID, 'last_update_time', $animal->LastUpdatedUnixTime);
-				if (isset($animal->AdoptionFeeGroup->Price)) {
-					add_post_meta($post_id->ID, 'adoption_fee', $animal->AdoptionFeeGroup->Price);
-				}
+		$args = array(
+			'post_type' => 'animal',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		);
 
-				$adopt_link = ADOPT_LINK . $animal->ID;
-				update_post_meta($post_id->ID, 'adopt_link', $adopt_link);
-				delete_post_meta($post_id->ID, 'photos');
-				foreach ($animal->Photos as $photo) {
-					add_post_meta($post_id->ID, 'photos', $photo);
-				}
+		$animal_ids = array();
+		$query = new WP_Query($args);
+		if ($query->have_posts()) {
+			$posts = $query->posts;
+			foreach ($posts as $index => $post) {
+				$animal_ids[$index] = get_field('animal_id', $post->ID);
+			}
+		}
 
-				printf('<h4 class="red_pet">Time: %s</h4>', time());
-				$update_animal_post = array(
-					'ID' => $post_id->ID,
-					'post_title' => $animal->Name,
-					'post_type' => 'animal',
-					'post_content' => $animal->Description,
-					'post_status' => 'publish',
-					'comment_status' => 'closed', // if you prefer
-					'ping_status' => 'closed', // if you prefer
-					'post_modified' => time(),
-				);
+		if (PLUGIN_DEBUG) {
+			printf('<h4 class="red_pet">check duplicates, </h4>');
+			print_r($animal_ids);
+		}
 
-				printf("before update....post ID for %s is: %s", $animal->Name, $post_id->ID);
-				$post_id = wp_insert_post($update_animal_post, true);
-				if (is_wp_error($post_id) || $post_id == 0) {
+		foreach ($animal_ids as $aid) {
+			$args = array(
+				'post_type' => 'animal',
+				'posts_per_page' => -1,
+				'meta_query' => array(
+					array(
+						'key' => 'animal_id',
+						'value' => $aid,
+						'compare' => '=',
+					),
+				),
+			);
+
+			$query = new WP_Query($args);
+			if ($query->have_posts()) {
+				if ($query->found_posts > 1) {
 					if (PLUGIN_DEBUG) {
-						print('wp_error:');
-						print_r($post_id);
+						printf('<h2 class="red_pet">DUPLICATE, aid - %s</h2>', $aid);
+					}
+					foreach ($query->posts as $i => $post) {
+						if (PLUGIN_DEBUG) {
+							printf('<h4>' . get_field('last_update_time', $post->ID) . '</h4>');
+							printf('<h4> second one: ' . get_field('last_update_time', $query->posts[$i + 1]->ID) . '</h4>');
+						}
+
+						$posttime = get_field('last_update_time', $post->ID);
+						$nextposttime = get_field('last_update_time', $query->posts[$i + 1]->ID);
+						if ($posttime < $nextposttime) {
+							$this->delete_animal_post($post->ID);
+							break;
+						} else if ($posttime > $nextposttime) {
+							$this->delete_animal_post($query->posts[$i + 1]->ID);
+							break;
+						} else if ($posttime == $nextposttime) {
+							$this->delete_animal_post($post->ID);
+							break;
+						}
+
 					}
 
 				}
-
-				printf("after update....post ID for %s is: %s", $animal->name, $post_id);
-
-				$postUpdateTime = get_post_timestamp($post_id);
-
-				if (PLUGIN_DEBUG) {
-					printf('<h4>after call to wp_update_post()</h4>');
-					printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
-					printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
-
-				}
-
-			} // end timestamp comparison
+			}
 		}
-		return $post_id;
-	} // END public function new_animal_post()
+
+	} // END check_duplicate_animals()
 
 	public function animals_change_posts_per_page($query) {
 		if (is_admin() || !$query->is_main_query()) {
@@ -860,6 +998,7 @@ class GHHS_Animals {
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
 		$this->delete_adopted_animals($this->petID_array);
+		$this->check_duplicate_animals();
 
 		return ob_get_clean();
 
