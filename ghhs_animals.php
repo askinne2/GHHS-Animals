@@ -26,7 +26,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
+define('PLUGIN_DEBUG', true);
 define('REMOVE_TRANSIENT', false);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
@@ -35,6 +35,7 @@ define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
 require_once 'ghhs_animals_includes.php';
 require_once 'ghhs_animals_slideshow.php';
 require_once 'ghhs_animals_acf.php';
+require_once 'includes/smush-integration.php';
 
 class GHHS_Animals {
 
@@ -45,6 +46,7 @@ class GHHS_Animals {
 	var $ghhs_animals;
 	var $petID_array;
 	var $ghhs_pets_object;
+	var $animal_images = array();
 
 	var $status_array = array(
 		'status1' => 'Available For Adoption',
@@ -77,6 +79,7 @@ class GHHS_Animals {
 
 		// functionality added for shortcode [ghhs_slideshow]
 		add_shortcode('ghhs_slideshow', array($this, 'display_pets'));
+
 	}
 
 	/**
@@ -616,6 +619,11 @@ class GHHS_Animals {
 		// Create the image  file on the server
 		file_put_contents($file, $image_data);
 
+		$this->animal_images[] = $file;
+		if (PLUGIN_DEBUG) {
+			printf('<h4>added image_url: %s</h4>', $url);
+		}
+
 		// Check image file type
 		$wp_filetype = wp_check_filetype($filename, null);
 
@@ -960,9 +968,9 @@ class GHHS_Animals {
 		}
 
 		$this->request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
-		//$this->delete_all_animals();
 
 		ob_start();
+		//$this->delete_all_animals();
 
 		$this->ghhs_pets_object = $this->request_and_sort($this->request_uri, $this->args);
 		$this->create_and_update_animals($this->ghhs_pets_object);
