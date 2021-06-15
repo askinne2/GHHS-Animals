@@ -27,7 +27,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
+define('PLUGIN_DEBUG', false);
 define('REMOVE_TRANSIENT', false);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
