@@ -1,9 +1,11 @@
 <?php
+
 /**
  * For integration with Smush CDN - don't cache our animal images!
  */
 
-function ghhs_smush_integration($status, $src, $image) {
+function ghhs_smush_integration($status, $src, $image)
+{
 
 	$args = array(
 		'post_type' => 'animal',
@@ -19,7 +21,6 @@ function ghhs_smush_integration($status, $src, $image) {
 		foreach ($posts as $post) {
 			$animal_images[] = get_the_post_thumbnail_url($post->ID);
 		}
-
 	}
 	foreach ($animal_images as $url) {
 
@@ -29,11 +30,8 @@ function ghhs_smush_integration($status, $src, $image) {
 			}
 
 			return true;
-
 		}
-
 	}
-
 }
 
 add_filter('smush_skip_image_from_cdn', 'ghhs_smush_integration', 10, 3);

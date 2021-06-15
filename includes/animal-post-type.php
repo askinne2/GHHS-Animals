@@ -1,26 +1,29 @@
 <?php
+
 /**
  * Add a Custom Post Type: Animal
  */
 //require_once plugins_url(plugin_basename(__DIR__)) . 'ghhs_animals.php';
 
 if (!class_exists('GHHS_Animals_PostType')) {
-	class GHHS_Animals_PostType {
+	class GHHS_Animals_PostType
+	{
 		const SLUG = "animal";
 
 		/**
 		 * Construct the custom post type for Reports
 		 */
-		public function __construct() {
+		public function __construct()
+		{
 			// register actions
 			add_action('init', array(&$this, 'init'));
-
 		} // END public function __construct()
 
 		/**
 		 * Hook into the init action
 		 */
-		public function init() {
+		public function init()
+		{
 
 			register_taxonomy(
 				'adopt-animals', // The name of the taxonomy.
@@ -52,7 +55,8 @@ if (!class_exists('GHHS_Animals_PostType')) {
 			}
 
 			// Register the Animal post type
-			register_post_type(self::SLUG,
+			register_post_type(
+				self::SLUG,
 				array(
 					'labels' => array(
 						'name' => __(sprintf('%ss', ucwords(str_replace("_", " ", self::SLUG))), 'custom'),
@@ -71,7 +75,8 @@ if (!class_exists('GHHS_Animals_PostType')) {
 			);
 
 			add_action('pre_get_posts', 'animals_pre_get_post');
-			function animals_pre_get_post($query) {
+			function animals_pre_get_post($query)
+			{
 
 				if (is_post_type_archive('animal') && !is_admin() && $query->is_main_query()) {
 					$query->set('posts_per_page', -1);
@@ -420,7 +425,6 @@ if (!class_exists('GHHS_Animals_PostType')) {
 					'active' => true,
 					'description' => '',
 				));
-
 			} // END if(function_exists("register_field_group"))
 		} // END public function init()
 

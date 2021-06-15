@@ -15,11 +15,13 @@ if (!class_exists("GHHS_Animals_ACF")) {
 	 * class:   GHHS_Animals
 	 * desc:    plugin class to allow reports be pulled from multipe GA accounts
 	 */
-	class GHHS_Animals_ACF {
+	class GHHS_Animals_ACF
+	{
 		/**
 		 * Created an instance of the GHHS_Animals class
 		 */
-		public function __construct() {
+		public function __construct()
+		{
 			// Set up ACF
 			add_filter('acf/settings/path', function () {
 				return sprintf("%s/includes/acf-pro/", dirname(__FILE__));
@@ -39,7 +41,8 @@ if (!class_exists("GHHS_Animals_ACF")) {
 
 			// (Optional) Hide the ACF admin menu item.
 			add_filter('acf/settings/show_admin', 'my_acf_settings_show_admin');
-			function my_acf_settings_show_admin($show_admin) {
+			function my_acf_settings_show_admin($show_admin)
+			{
 				return false;
 			}
 		} // END public function __construct()

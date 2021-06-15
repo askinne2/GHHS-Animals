@@ -1,7 +1,8 @@
 <?php
 
 if (!class_exists('GHHS_Animals_Settings')) {
-	class GHHS_Animals_Settings {
+	class GHHS_Animals_Settings
+	{
 
 		const SLUG = "ghhs-animals-options";
 		const UPDATESLUG = "ghhs-animals-update";
@@ -9,7 +10,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 		/**
 		 * Construct the plugin object
 		 */
-		public function __construct($plugin) {
+		public function __construct($plugin)
+		{
 			// register actions
 			//$this->add_my_options_page();
 			acf_add_options_page(array(
@@ -29,7 +31,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 		/**
 		 * Add options page
 		 */
-		public function admin_menu() {
+		public function admin_menu()
+		{
 			// Duplicate link into properties mgmt
 			add_submenu_page(
 				self::SLUG,
@@ -40,7 +43,8 @@ if (!class_exists('GHHS_Animals_Settings')) {
 				1
 			);
 		}
-		public function update_menu() {
+		public function update_menu()
+		{
 			// Duplicate link into properties mgmt
 			add_submenu_page(
 				self::UPDATESLUG,
@@ -55,9 +59,10 @@ if (!class_exists('GHHS_Animals_Settings')) {
 		/**
 		 * Add settings fields via ACF
 		 */
-		public function init() {
+		public function init()
+		{
 
-			if (function_exists('acf_add_local_field_group')):
+			if (function_exists('acf_add_local_field_group')) :
 
 				acf_add_local_field_group(array(
 					'key' => 'group_6069369c504fd',
@@ -361,18 +366,19 @@ if (!class_exists('GHHS_Animals_Settings')) {
 				));
 
 			endif;
-
 		}
 
 		/**
 		 * Add the settings link to the plugins page
 		 */
-		public function plugin_settings_link($links) {
+		public function plugin_settings_link($links)
+		{
 			$settings_link = sprintf('<a href="admin.php?page=%s">Settings</a>', self::SLUG);
 			array_unshift($links, $settings_link);
 			return $links;
 		} // END public function plugin_settings_link($links)
-		public function update_settings_link($links) {
+		public function update_settings_link($links)
+		{
 			$update_link = sprintf('<a href="admin.php?page=%s">Update</a>', self::UPDATESLUG);
 			array_unshift($links, $update_link);
 			return $links;

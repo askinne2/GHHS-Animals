@@ -4,7 +4,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-function GHHS_Animals_stylesheet() {
+function GHHS_Animals_stylesheet()
+{
 	wp_register_style('bootstrap_styles', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css');
 	wp_enqueue_style('bootstrap_styles');
 
@@ -13,11 +14,11 @@ function GHHS_Animals_stylesheet() {
 
 	wp_register_style('GHHS_Animals_styles', plugins_url(plugin_basename(__DIR__)) . '/css/ghhs_animals.css');
 	wp_enqueue_style('GHHS_Animals_styles');
-
 };
 add_action('wp_print_styles', 'GHHS_Animals_stylesheet');
 
-function GHHS_Animals_scripts() {
+function GHHS_Animals_scripts()
+{
 
 	wp_register_script('bootstrap_js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js');
 	wp_enqueue_script('bootstrap_js');

@@ -1,78 +1,74 @@
 .single-animal {
-	/*border     : 1px solid white;*/
-	box-shadow: 0 50px 10px #54595F !important;
-	padding: 10px;
-	margin: 10px 5px 10px 5px;
-
+  /*border     : 1px solid white;*/
+  box-shadow: 0 50px 10px #54595f !important;
+  padding: 10px;
+  margin: 10px 5px 10px 5px;
 }
 
-
 @media screen and (max-width: 768px) {
-	.animal-pic {
-		max-width: 75% !important;
-	}
+  .animal-pic {
+    max-width: 75% !important;
+  }
 }
 
 .animal-pic {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: 25%;
-	margin: 0 auto;
-	display: inline-flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 25%;
+  margin: 0 auto;
+  display: inline-flex;
 }
 
 .single-animal-name {
-	text-align: center;
-	font-size: 2em;
-	margin-top: 5px;
-	color: #029bdb !important;
+  text-align: center;
+  font-size: 2em;
+  margin-top: 5px;
+  color: #029bdb !important;
 }
 
 .animal-details {
-	text-align: center;
+  text-align: center;
 }
 
 .animal-breed {
-	text-align: center;
+  text-align: center;
 }
 
 .animal-description {
-	text-align: center;
-	display: none;
+  text-align: center;
+  display: none;
 }
 
 .animal-age {
-	text-align: center;
+  text-align: center;
 }
 
 .adopt-button .elementor-button {
-	background-color: #286B87 !important;
-	margin: 5px;
+  background-color: #286b87 !important;
+  margin: 5px;
 }
 
 .adopt-button .elementor-button:hover {
-	background-color: #0F9EDA !important;
+  background-color: #0f9eda !important;
 }
 
-
 .elementor-cta--skin-classic .elementor-cta__content {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 @media screen and (max-width: 768px) {
-	.elementor-cta--skin-classic .elementor-cta__bg-wrapper {
-		min-height: 200px !important;
-	}
+  .elementor-cta--skin-classic .elementor-cta__bg-wrapper {
+    min-height: 200px !important;
+  }
 }
 
 .elementor-cta--skin-classic .elementor-cta__bg-wrapper {
-	min-height: 300px !important;
+  min-height: 300px !important;
 }
 
 .ghhs-center-align {
-	text-align: center;
-	margin: 20px auto;
+  text-align: center;
+  margin: 20px auto;
 }
-

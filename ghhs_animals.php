@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link              https://github.com/askinne2/GHHS-Animals
  * @since             1.0.0
@@ -37,7 +38,8 @@ require_once 'ghhs_animals_slideshow.php';
 require_once 'ghhs_animals_acf.php';
 require_once 'includes/smush-integration.php';
 
-class GHHS_Animals {
+class GHHS_Animals
+{
 
 	const CRON_HOOK = 'ghhs_update_animals';
 
@@ -55,7 +57,8 @@ class GHHS_Animals {
 		'status4' => 'Awaiting Spay/Neuter - In Foster',
 	);
 
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->args = array(
 			'headers' => array(
@@ -79,13 +82,13 @@ class GHHS_Animals {
 
 		// functionality added for shortcode [ghhs_slideshow]
 		add_shortcode('ghhs_slideshow', array($this, 'display_pets'));
-
 	}
 
 	/**
 	 * Hook into the WordPress activate hook
 	 */
-	public static function activate() {
+	public static function activate()
+	{
 
 		// Do something
 		//Use wp_next_scheduled to check if the event is already scheduled
@@ -96,26 +99,27 @@ class GHHS_Animals {
 			//Schedule the event for right now, then to repeat daily using the hook
 			wp_schedule_event(time(), 'hourly', self::CRON_HOOK);
 		}
-
 	}
 
 	/**
 	 * Hook into the WordPress deactivate hook
 	 */
-	public static function deactivate() {
+	public static function deactivate()
+	{
 		// Do something
 		// Get the timestamp for the next event.
 		$timestamp = wp_next_scheduled(self::CRON_HOOK);
 		wp_unschedule_event($timestamp, self::CRON_HOOK);
 		self::delete_all_animals();
-
 	}
 
-	public function set_request_uri($request_uri = string) {
+	public function set_request_uri($request_uri = string)
+	{
 		$this->request_uri = $request_uri;
 	}
 
-	public function make_local_request() {
+	public function make_local_request()
+	{
 
 		$transient = get_transient('ghhs_pets');
 		if (!empty($transient)) {
@@ -126,7 +130,6 @@ class GHHS_Animals {
 				//printf('</pre>');
 			}
 			return $transient;
-
 		} else {
 			$jsonpets = file_get_contents(plugins_url(plugin_basename(__DIR__)) . '/example-animal-json/large1.json');
 			$pets = json_decode($jsonpets);
@@ -144,7 +147,6 @@ class GHHS_Animals {
 					}
 					set_transient('ghhs_pets', $pets->animals, HOUR_IN_SECONDS);
 					return $pets->animals;
-
 				} else {
 
 					if (PLUGIN_DEBUG) {
@@ -179,9 +181,7 @@ class GHHS_Animals {
 							$all_pets[] = json_decode($jsonpets[$i])->animals;
 
 							$animals = call_user_func_array('array_merge', $all_pets);
-
 						}
-
 					}
 
 					if (empty($animals)) {
@@ -197,7 +197,6 @@ class GHHS_Animals {
 						set_transient('ghhs_pets', $animals, HOUR_IN_SECONDS);
 						return $animals;
 					}
-
 				} // end multiple request check
 			} // end empty(pets) check
 		} // end transient check
@@ -207,7 +206,8 @@ class GHHS_Animals {
 		* returns an unsorted $pets object of all published animals from shelterluv
 		*
 		*/
-	public function make_request($request_uri = string, $args = array()) {
+	public function make_request($request_uri = string, $args = array())
+	{
 
 		$transient = get_transient('ghhs_pets');
 		if (!empty($transient)) {
@@ -215,7 +215,6 @@ class GHHS_Animals {
 				printf('<h2 class="red_pet">TRANSIENT FOUND</h2>');
 			}
 			return $transient;
-
 		} else {
 
 			$request_uri = 'https://www.shelterluv.com/api/v1/animals/?status_type=publishable';
@@ -246,7 +245,6 @@ class GHHS_Animals {
 				}
 				set_transient('ghhs_pets', $pets->animals, HOUR_IN_SECONDS);
 				return $pets->animals;
-
 			} else {
 
 				if (PLUGIN_DEBUG) {
@@ -279,11 +277,9 @@ class GHHS_Animals {
 							echo "<p>Bad wp_remote_get Request. in Multiple Request. </p>";
 						}
 						return;
-
 					} else {
 						$all_pets[] = json_decode(wp_remote_retrieve_body($jsonpets[$i]))->animals;
 						$animals = call_user_func_array('array_merge', $all_pets);
-
 					}
 
 					if (empty($animals)) {
@@ -306,11 +302,13 @@ class GHHS_Animals {
 
 	} // end make_request()
 
-	public function ghhs_remove_transient() {
+	public function ghhs_remove_transient()
+	{
 		delete_transient('ghhs_pets');
 	}
 
-	public function request_and_sort($request_uri = string, $args = array()) {
+	public function request_and_sort($request_uri = string, $args = array())
+	{
 
 		if (LOCAL_JSON) {
 			$pets = $this->make_local_request();
@@ -319,7 +317,6 @@ class GHHS_Animals {
 				echo "<p>Please email <a href=\"mailto:info@ghhs.org\">info@ghhs.org</a> to let them know about the problem you have experienced. We apologize and will fix the issue ASAP.</p>";
 				return;
 			}
-
 		} else {
 
 			$pets = $this->make_request($request_uri, $args);
@@ -351,9 +348,7 @@ class GHHS_Animals {
 					$cats[] = $pet;
 					// set $petID_array array for use later in deleting adopted pet
 					$this->petID_array[] = $pet->ID;
-
 				}
-
 			} else if ($pet->Type === "Dog") {
 
 				if (in_array($pet->Status, $this->status_array)) {
@@ -361,18 +356,14 @@ class GHHS_Animals {
 
 					// set $petID_array array for use later in deleting adopted pet
 					$this->petID_array[] = $pet->ID;
-
 				}
-
 			} else {
 
 				if (in_array($pet->Status, $this->status_array)) {
 					$others[] = $pet;
 					// set $petID_array array for use later in deleting adopted pet
 					$this->petID_array[] = $pet->ID;
-
 				}
-
 			}
 		} // end of foreach loop
 
@@ -389,7 +380,8 @@ class GHHS_Animals {
 		return $pets_object;
 	}
 
-	public function check_animal_exists($animal) {
+	public function check_animal_exists($animal)
+	{
 		$args = array(
 			'post_type' => 'animal',
 			'meta_query' => array(
@@ -407,10 +399,10 @@ class GHHS_Animals {
 		} else {
 			return false;
 		}
-
 	} // end check_animal_exists()
 
-	public function create_and_update_animals($pets_object) {
+	public function create_and_update_animals($pets_object)
+	{
 
 		$dogs = $pets_object['dogs'];
 		$cats = $pets_object['cats'];
@@ -481,12 +473,14 @@ class GHHS_Animals {
 		} //end foreach others loop
 	}
 
-	public function display_pets() {
+	public function display_pets()
+	{
 		$pet_slideshow = new GHHS_Animals_Slideshow();
 		$pet_slideshow->run();
 	}
 
-	public function delete_adopted_animals($petID_array = array()) {
+	public function delete_adopted_animals($petID_array = array())
+	{
 
 		/* search through created animal posts
 			 * get array of animal post IDs
@@ -511,7 +505,6 @@ class GHHS_Animals {
 				$animal_ids->wp_id[$i] = $post->ID;
 				$i++;
 			}
-
 		}
 
 		$i = 0;
@@ -525,11 +518,11 @@ class GHHS_Animals {
 				$this->delete_animal_post($post_to_delete);
 			}
 			$i++;
-
 		}
 	}
 
-	public static function delete_animal_post($post_id) {
+	public static function delete_animal_post($post_id)
+	{
 		if (get_post_type($post_id) == 'animal') {
 			// <-- members type posts
 			// Force delete
@@ -548,15 +541,14 @@ class GHHS_Animals {
 				foreach ($post_attachments as $attachment) {
 
 					wp_delete_attachment($attachment->ID, true);
-
 				}
-
 			}
 			wp_delete_post($post_id, true);
 		}
 	}
 
-	public static function delete_all_animals() {
+	public static function delete_all_animals()
+	{
 
 		$delete_post = array(
 			'post_type' => 'animal',
@@ -566,16 +558,16 @@ class GHHS_Animals {
 		$query = new WP_Query($delete_post);
 		$posts = $query->posts;
 		if ($posts) {
-			if (PLUGIN_DEBUG) {printf('<h4>count: %d</h4>', count($posts));}
+			if (PLUGIN_DEBUG) {
+				printf('<h4>count: %d</h4>', count($posts));
+			}
 
 			foreach ($posts as $post) {
 				//var_dump($post);
 				//printf('<h3>end animal</h3>');
 				self::delete_animal_post($post->ID);
 			}
-
 		}
-
 	}
 
 	/*
@@ -583,7 +575,8 @@ class GHHS_Animals {
 		 * returns attachment ID of either newly created image or attachment ID of existing image
 		 *
 	*/
-	public function upload_image($url, $name, $post_id, $animal_id) {
+	public function upload_image($url, $name, $post_id, $animal_id)
+	{
 		// Add Featured Image to Post
 		$image_url = $url; // Define the image URL here
 		$image_name = 'animal-' . $name . '-' . $animal_id . '.png';
@@ -599,7 +592,6 @@ class GHHS_Animals {
 			foreach ($images as $image) {
 
 				wp_delete_attachment($image->ID, true);
-
 			}
 		}
 		$image_data = file_get_contents($image_url); // Get image data
@@ -650,10 +642,10 @@ class GHHS_Animals {
 		// And finally assign featured image to post
 		set_post_thumbnail($post_id, $attach_id);
 		return $attach_id;
-
 	}
 
-	public function create_animal_post($animal) {
+	public function create_animal_post($animal)
+	{
 
 		$new_animal = array(
 			'post_title' => $animal->Name,
@@ -716,7 +708,6 @@ class GHHS_Animals {
 				//printf('<h4>Add Photo: %s</h4>', $photo);
 				add_post_meta($new_post_id, 'photos', $photo);
 			}
-
 		} else {
 
 			if (PLUGIN_DEBUG) {
@@ -728,7 +719,8 @@ class GHHS_Animals {
 		return $new_post_id;
 	} // END public function new_animal_post()
 
-	public function update_animal($animal, $post_id) {
+	public function update_animal($animal, $post_id)
+	{
 
 		//$post_id = get_page_by_title($animal->Name, OBJECT, 'animal');
 
@@ -740,7 +732,6 @@ class GHHS_Animals {
 				printf('<h5 class="red_pet">Deleting Animal: %s</h5>', $animal->Name);
 			}
 			$this->delete_animal_post($post_id->ID);
-
 		} else {
 			if (PLUGIN_DEBUG) {
 				printf('<h4 class="red_pet">Checking Update Animal: %s</h4>', $animal->Name);
@@ -752,7 +743,6 @@ class GHHS_Animals {
 
 			printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
 			printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
-
 		}
 
 		// ONLY UPDATE IF THE SHELTERLUV TIMESTAMP IS NEWER THAN POST TIME
@@ -807,7 +797,6 @@ class GHHS_Animals {
 					print('wp_error:');
 					print_r($post_id);
 				}
-
 			}
 
 			$postUpdateTime = get_post_timestamp($post_id);
@@ -816,14 +805,13 @@ class GHHS_Animals {
 				printf('<h4>after call to wp_update_post()</h4>');
 				printf('<h4>Post Update Time: %s </h4>', $postUpdateTime);
 				printf('<h4>ShelterLuv Update Time: %s</h4>', $animal->LastUpdatedUnixTime);
-
 			}
-
 		} // end timestamp comparison
 		return $post_id;
 	} // end update_animal()
 
-	public function check_duplicate_animals() {
+	public function check_duplicate_animals()
+	{
 
 		/* basic logic:
 			 * get all animal posts...
@@ -889,16 +877,14 @@ class GHHS_Animals {
 							$this->delete_animal_post($post->ID);
 							break;
 						}
-
 					}
-
 				}
 			}
 		}
-
 	} // END check_duplicate_animals()
 
-	public function animals_change_posts_per_page($query) {
+	public function animals_change_posts_per_page($query)
+	{
 		if (is_admin() || !$query->is_main_query()) {
 			return;
 		}
@@ -913,7 +899,8 @@ class GHHS_Animals {
 		}
 	}
 
-	public function ghhs_archive_animal_template($template) {
+	public function ghhs_archive_animal_template($template)
+	{
 
 		if (is_archive() && get_post_type() == 'animal') {
 
@@ -921,13 +908,12 @@ class GHHS_Animals {
 				$archive_template = plugin_dir_path(__FILE__) . 'templates/taxonomy-adopt-animals.php';
 			}
 			return $archive_template;
-
 		} else {
 			return $template;
 		}
-
 	}
-	public function ghhs_single_animal_template($template) {
+	public function ghhs_single_animal_template($template)
+	{
 
 		if (is_single() && get_post_type() == 'animal') {
 			// Checks for single template by post type
@@ -936,14 +922,14 @@ class GHHS_Animals {
 				$template = plugin_dir_path(__FILE__) . 'templates/single-animal.php';
 				return $template;
 			}
-
 		} else {
 
 			return $template;
 		}
 	}
 
-	public function run() {
+	public function run()
+	{
 
 		if (REMOVE_TRANSIENT) {
 			$this->ghhs_remove_transient();
@@ -959,9 +945,9 @@ class GHHS_Animals {
 		$this->check_duplicate_animals();
 
 		return ob_get_clean();
-
 	}
-	public function run_update() {
+	public function run_update()
+	{
 
 		if (REMOVE_TRANSIENT) {
 			$this->ghhs_remove_transient();
@@ -978,9 +964,7 @@ class GHHS_Animals {
 		$this->check_duplicate_animals();
 
 		return ob_get_clean();
-
 	}
-
 } // end class definition
 
 // Installation and uninstallation hooks
@@ -989,7 +973,8 @@ register_deactivation_hook(__FILE__, array('GHHS_Animals', 'deactivate'));
 
 // run GHHS_Animals shortcode
 
-function custom_http_request_timeout() {
+function custom_http_request_timeout()
+{
 	return 15;
 }
 add_filter('http_request_timeout', 'custom_http_request_timeout');

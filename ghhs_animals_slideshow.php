@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * This file displays the content of an API request made in the found_pets_shortcode
@@ -9,10 +10,14 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-class GHHS_Animals_Slideshow {
-	public function __construct() {}
+class GHHS_Animals_Slideshow
+{
+	public function __construct()
+	{
+	}
 
-	public function print_opening_html() {
+	public function print_opening_html()
+	{
 
 		if (PLUGIN_DEBUG) {
 			echo "<h2>printing slideshow</h2>";
@@ -21,33 +26,35 @@ class GHHS_Animals_Slideshow {
 		echo '<div class="carousel-inner mx-auto">';
 	}
 
-	public function print_closing_html() {
-		?>
+	public function print_closing_html()
+	{
+?>
 		</div> <!-- end carousel-inner -->
 
 
-    <!-- Carousel controls
+		<!-- Carousel controls
     <a class="carousel-control-prev" href="#petCarousel" data-slide="prev">
         <span class="carousel-control-prev-icon"></span>
     </a>
     <a class="carousel-control-next" href="#petCarousel" data-slide="next">
         <span class="carousel-control-next-icon"></span>
     </a> -->
-  </div>
+		</div>
 
-  <script language="JavaScript" type="text/javascript">
-    jQuery(function($) {
-  $(document).ready(function(){
-    $('.carousel').carousel({
-      interval: 5000
-    });
-  });
-});
-</script>
+		<script language="JavaScript" type="text/javascript">
+			jQuery(function($) {
+				$(document).ready(function() {
+					$('.carousel').carousel({
+						interval: 5000
+					});
+				});
+			});
+		</script>
 <?php
-} // end print_closing_html()
+	} // end print_closing_html()
 
-	public function run() {
+	public function run()
+	{
 		$args = array(
 			'post_type' => 'animal',
 			'post_status' => 'publish',
@@ -84,5 +91,4 @@ class GHHS_Animals_Slideshow {
 			return;
 		}
 	}
-
 }
