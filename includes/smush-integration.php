@@ -5,7 +5,8 @@
 function ghhs_smush_integration($status, $src) {
                 static $thumbnail_url;
                 if( is_null( $thumbnail_url ) ){
-                        if ( is_singular( 'animal' ) || (is_archive() && get_post_type() == 'animal') ) {                                $img = get_the_post_thumbnail_url(get_queried_object_id());
+                        if ( is_singular( 'animal' ) || (is_archive() && get_post_type() == 'animal') ) {  
+                                $img = get_the_post_thumbnail_url(get_queried_object_id());
                                 if( $img ){
                                         $thumbnail_url = substr($img, 0, strrpos( $img, '.' ) );
                                 }else{
