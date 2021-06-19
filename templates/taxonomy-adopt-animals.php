@@ -1,8 +1,8 @@
 <?php
 
 /**
-Archive Name: Animal Post
-Archive Post Type: animal
+ * Archive Name: Animal Post
+ * Archive Post Type: animal
  *
  * The archive template for displaying animals (custom post type)
  *
@@ -74,7 +74,14 @@ get_header();
 					<div class="col card text-center archive animal archive-animal mx-auto" style="width: 18rem;">
 
 						<!--article class="post archive-animal"-->
-						<?php printf('<a href="%s"><img src="%s" class="card-img-top img-fluid" alt="%s"> </a>', esc_url($post_link), get_the_post_thumbnail_url($post, 'large'), esc_url($post_link)); ?>
+						<?php printf('<a href="%s">', esc_url($post_link));
+						$attr = array(
+							'class' => 'card-img-top img-fluid',
+							'alt' => get_the_title(),
+						);
+						the_post_thumbnail('large', $attr);
+						printf('</a>');
+						?>
 						<div class="card-body my-3">
 							<?php printf('<h4 class="card-title">%s</h4>', get_the_title()); ?>
 							<p class="card-text"><?php printf("%s %s %s", get_field('color'), get_field('sex'), get_field('animal_type')); ?></p>

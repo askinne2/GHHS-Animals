@@ -113,7 +113,7 @@ class GHHS_Animals
 		self::delete_all_animals();
 	}
 
-	public function set_request_uri($request_uri = string)
+	public function set_request_uri($request_uri)
 	{
 		$this->request_uri = $request_uri;
 	}
@@ -206,7 +206,7 @@ class GHHS_Animals
 		* returns an unsorted $pets object of all published animals from shelterluv
 		*
 		*/
-	public function make_request($request_uri = string, $args = array())
+	public function make_request($request_uri, $args = array())
 	{
 
 		$transient = get_transient('ghhs_pets');
@@ -307,7 +307,7 @@ class GHHS_Animals
 		delete_transient('ghhs_pets');
 	}
 
-	public function request_and_sort($request_uri = string, $args = array())
+	public function request_and_sort($request_uri, $args = array())
 	{
 
 		if (LOCAL_JSON) {
