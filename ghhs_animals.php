@@ -12,7 +12,7 @@
  * Description:       Displays all animals that are currently listed in Greater Huntsville Humane Society's database in Shelterluv on website.
  *
  *
- * Version:           2.3.4
+ * Version:           2.3.5
  * Author:            Andrew Skinner
  * Author URI:        https://www.21adsmedia.com
  * License:           GPL-2.0+
@@ -27,8 +27,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', false);
-define('REMOVE_TRANSIENT', false);
+define('PLUGIN_DEBUG', true);
+define('REMOVE_TRANSIENT', true);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
@@ -37,6 +37,7 @@ require_once 'ghhs_animals_includes.php';
 require_once 'ghhs_animals_slideshow.php';
 require_once 'ghhs_animals_acf.php';
 require_once 'includes/smush-integration.php';
+
 
 class GHHS_Animals
 {
@@ -59,10 +60,10 @@ class GHHS_Animals
 
 	public function __construct()
 	{
-
+		require_once 'shelterluv-key.php';
 		$this->args = array(
 			'headers' => array(
-				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
+				'x-api-key' => $secret,
 			),
 		);
 
