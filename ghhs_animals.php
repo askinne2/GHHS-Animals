@@ -27,8 +27,8 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-define('PLUGIN_DEBUG', true);
-define('REMOVE_TRANSIENT', true);
+define('PLUGIN_DEBUG', false);
+define('REMOVE_TRANSIENT', false);
 define('LOCAL_JSON', false);
 define('GHHS_UPLOADS', 'wp-content/uploads/ghhs-animals');
 define('ADOPT_LINK', 'https://www.shelterluv.com/matchme/adopt/ghhs-a-');
@@ -63,7 +63,7 @@ class GHHS_Animals
 		require_once 'shelterluv-key.php';
 		$this->args = array(
 			'headers' => array(
-				'x-api-key' => $secret,
+				'x-api-key' => '7a8f9f04-3052-455f-bf65-54e833f2a5e7',
 			),
 		);
 

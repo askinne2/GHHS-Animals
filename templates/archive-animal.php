@@ -17,7 +17,7 @@
 	<main role="main">
 
 
-
+	<!--div class="adopt-header align-middle"-->
 		<?php if (apply_filters('hello_elementor_page_title', true)) : ?>
 			<header class="page-header container">
 				<?php
@@ -29,6 +29,8 @@
 			</header>
 
 		<?php endif; ?>
+
+	<!--/div--> <!-- end adopt-header -->
 		<div class="page-content container">
 			<div class="row my-5">
 				<div class="col">

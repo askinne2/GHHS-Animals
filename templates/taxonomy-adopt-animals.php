@@ -11,6 +11,8 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
+define('DONOTCACHEPAGE', true);
+
 
 get_header();
 
@@ -18,16 +20,17 @@ get_header();
 <div role="main">
 
 
+
 	<div class="adopt-header align-middle">
 		<?php if (apply_filters('hello_elementor_page_title', true)) : ?>
-			<header class="page-header container">
+			<div class="page-header container">
 				<?php
 				printf('<h1 class="elementor-heading-title animal-archive-title elementor-size-default my-5 fs-1 text-white">Adopt an Animal</h1>');
-				printf('<h2 class="elementor-heading-title animal-archive-title elementor-size-default text-white">Give a fur-ever home to an animal in need.</h2>');
+				printf('<h3 class="elementor-heading-title animal-archive-title elementor-size-default text-white">Give a fur-ever home to an animal in need.</h3>');
 
 				//the_archive_description('<p class="archive-description">', '</p>');
 				?>
-			</header>
+			</div>
 
 		<?php endif; ?>
 

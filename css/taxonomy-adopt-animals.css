@@ -9,25 +9,31 @@
   text-shadow: 0px 0px 10px rgb(0 0 0 / 30%);
 }
 
+.photo-contest {
+    /*linear-gradient defines the color of the filter, you can try change the colors value*/
+    min-height: 30vh;
+    width: 100%;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: linear-gradient(0deg, rgba(44, 92, 175, 0.51) 100%, rgb(3, 8, 68) 100%), url(https://ghhs.org/wp-content/uploads/2020/10/MYA-____-scaled.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    opacity: 0.99; /*Opacity this is the key*/
+    }
+
 .adopt-header {
-  min-height: 70vh;
+  min-height: 60vh;
   width: 100%;
   position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
-  background-color: #0f9eda9c;
-}
-.adopt-header::before {
-  content: " ";
-  background-image: url(https://ghhs.org/wp-content/uploads/2020/12/foodpuo.jpg);
+  background: linear-gradient(0deg, rgba(15, 158, 218, 0.62) 100%, rgb(15, 158, 218, 0.62) 100%), url(https://ghhs.org/wp-content/uploads/2020/12/foodpuo.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  opacity: 0.5;
-  z-index: -1;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+  opacity: 0.99; /*Opacity this is the key*/
 }
